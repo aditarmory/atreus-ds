@@ -1,0 +1,113 @@
+<div class="topbar">
+    <div class="breadcrumb">Foundation <span class="breadcrumb-sep">›</span> <b>Colors</b></div>
+    <div class="topbar-right">
+      <button class="btn-sm" onclick="exportTokensJSON()">tokens.json</button>
+      <button class="btn-sm" onclick="exportTailwindConfig()">tailwind.config</button>
+      <button class="btn-sm btn-accent" onclick="copyAllCSS()">Copy CSS vars</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="page-header">
+      <div class="page-label">Foundation / Colors</div>
+      <h1 class="page-title">Color System</h1>
+      <p class="page-desc">Token-based color system built on base primitives and semantic adaptive layers. All values map directly to Figma Variables.</p>
+    </div>
+    <div class="export-bar">
+      <div class="export-bar-info">
+        <strong>5 color scales · 55 base tokens · 40+ adaptive semantic tokens</strong>
+        <span>Click any swatch to copy its hex value.</span>
+      </div>
+    </div>
+
+    <div class="section-label">Base Colors</div>
+
+    <div class="palette-section">
+      <div class="palette-header">
+        <div class="palette-title">Gray</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="palette-count">11 steps</div>
+          <div class="view-toggle">
+            <button class="view-btn active" onclick="setView('gray','swatch',this)">Swatch</button>
+            <button class="view-btn" onclick="setView('gray','list',this)">List</button>
+          </div>
+        </div>
+      </div>
+      <div id="gray-swatch" class="swatch-row"></div>
+      <div id="gray-list" class="list-view"><div id="gray-list-inner" class="color-list"></div></div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-header">
+        <div class="palette-title">Orange</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="palette-count">10 steps</div>
+          <div class="view-toggle">
+            <button class="view-btn active" onclick="setView('orange','swatch',this)">Swatch</button>
+            <button class="view-btn" onclick="setView('orange','list',this)">List</button>
+          </div>
+        </div>
+      </div>
+      <div id="orange-swatch" class="swatch-row"></div>
+      <div id="orange-list" class="list-view"><div id="orange-list-inner" class="color-list"></div></div>
+    </div>
+
+    <div class="palette-section">
+      <div class="palette-header">
+        <div class="palette-title">Teal</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="palette-count">10 steps</div>
+          <div class="view-toggle">
+            <button class="view-btn active" onclick="setView('teal','swatch',this)">Swatch</button>
+            <button class="view-btn" onclick="setView('teal','list',this)">List</button>
+          </div>
+        </div>
+      </div>
+      <div id="teal-swatch" class="swatch-row"></div>
+      <div id="teal-list" class="list-view"><div id="teal-list-inner" class="color-list"></div></div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="section-label">Adaptive Color</div>
+    <div class="adaptive-intro">
+      <div class="ai-icon">🎛️</div>
+      <div class="ai-text">
+        <strong>Semantic Token System</strong>
+        <p>Adaptive colors abstract by role. <code>$text-primary</code> maps to different values in light vs dark theme. Toggle preview below.</p>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:24px">
+    </div>
+    <div id="adaptive-container"></div>
+
+    <hr class="section-divider">
+    <div class="section-label">Semantic Scale</div>
+    <div class="palette-section">
+      <div class="palette-header">
+        <div class="palette-title">Red</div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <div class="palette-count">10 steps</div>
+          <div class="view-toggle">
+            <button class="view-btn active" onclick="setView('red','swatch',this)">Swatch</button>
+            <button class="view-btn" onclick="setView('red','list',this)">List</button>
+          </div>
+        </div>
+      </div>
+      <div id="red-swatch" class="swatch-row"></div>
+      <div id="red-list" class="list-view"><div id="red-list-inner" class="color-list"></div></div>
+    </div>
+    <!-- Green palette -->
+    <div class="palette-section">
+      <div class="palette-header">
+        <div>
+          <div class="palette-title">Green</div>
+          <div class="palette-count">11 steps · 0–90</div>
+        </div>
+        <div class="view-toggle">
+          <button class="view-btn active" onclick="setView('green','swatch',this)">Swatch</button>
+          <button class="view-btn" onclick="setView('green','list',this)">List</button>
+        </div>
+      </div>
+      <div id="green-swatch" class="swatch-row"></div>
+      <div id="green-list" class="list-view"><div id="green-list-inner" class="color-list"></div></div>
+    </div>
+  </div>

@@ -1,0 +1,452 @@
+<div class="topbar">
+    <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>Buttons</b></div>
+    <div class="topbar-right">
+      <button class="btn-sm" onclick="exportButtonTokens()">tokens.json</button>
+      <button class="btn-sm btn-accent" onclick="copyButtonCSS()">Copy CSS</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="page-header">
+      <div class="page-label">Components / Buttons</div>
+      <h1 class="page-title">Button</h1>
+      <p class="page-desc">Buttons trigger actions. They communicate the action that will happen when a user interacts with them. Atreus buttons use rounded pill-shaped containers to feel approachable and modern.</p>
+    </div>
+
+    <!-- Hero -->
+    <div class="comp-hero">
+      <div class="comp-hero-preview">
+        <button class="btn-atreus btn-filled btn-lg-size">Primary</button>
+        <button class="btn-atreus btn-outline btn-lg-size">Secondary</button>
+        <button class="btn-atreus btn-ghost btn-lg-size">Ghost</button>
+      </div>
+      <div class="comp-hero-info">
+        <h2>3 Types · 3 Sizes · 2 States</h2>
+        <p>Filled for primary CTAs, Outline for secondary actions, Ghost for tertiary or low-emphasis actions. All sizes use the same border-radius token: <code>$border-radius-full</code> → <code>100px</code>.</p>
+        <div class="token-strip" style="margin-top:12px;margin-bottom:0">
+          <span class="token-chip" onclick="copyText('#87CCA9','Copied #87CCA9')"><span class="chip-swatch" style="background:#87CCA9"></span>$button-primary-default</span>
+          <span class="token-chip" onclick="copyText('#1a1a1a','Copied border color')"><span class="chip-swatch" style="background:#1a1a1a"></span>$border-primary</span>
+          <span class="token-chip" onclick="copyText('#238453','Copied #238453')"><span class="chip-swatch" style="background:#238453"></span>$text-harmony</span>
+          <span class="token-chip" onclick="copyText('#F3F3F3','Copied #F3F3F3')"><span class="chip-swatch" style="background:#F3F3F3;border:1px solid #ddd"></span>$button-primary-disabled</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Props -->
+    <div class="section-label">Interactive Preview</div>
+    <div class="props-demo">
+      <div class="props-demo-controls">
+        <div class="ctrl-group">
+          <div class="ctrl-label">Type</div>
+          <div class="ctrl-pills" id="ctrl-type">
+            <span class="ctrl-pill active" onclick="setCtrl('type',this,'filled')">Filled</span>
+            <span class="ctrl-pill" onclick="setCtrl('type',this,'outline')">Outline</span>
+            <span class="ctrl-pill" onclick="setCtrl('type',this,'ghost')">Ghost</span>
+          </div>
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Size</div>
+          <div class="ctrl-pills" id="ctrl-size">
+            <span class="ctrl-pill" onclick="setCtrl('size',this,'sm')">Small</span>
+            <span class="ctrl-pill active" onclick="setCtrl('size',this,'md')">Medium</span>
+            <span class="ctrl-pill" onclick="setCtrl('size',this,'lg')">Large</span>
+          </div>
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">State</div>
+          <div class="ctrl-pills" id="ctrl-state">
+            <span class="ctrl-pill active" onclick="setCtrl('state',this,'enable')">Enable</span>
+            <span class="ctrl-pill" onclick="setCtrl('state',this,'disabled')">Disabled</span>
+          </div>
+        </div>
+        <div class="ctrl-group">
+          <div class="ctrl-label">Icon</div>
+          <div class="ctrl-pills" id="ctrl-icon">
+            <span class="ctrl-pill active" onclick="setCtrl('icon',this,'none')">None</span>
+            <span class="ctrl-pill" onclick="setCtrl('icon',this,'leading')">Leading</span>
+            <span class="ctrl-pill" onclick="setCtrl('icon',this,'trailing')">Trailing</span>
+          </div>
+        </div>
+      </div>
+      <div class="props-demo-stage" id="btn-preview-stage">
+        <button class="btn-atreus btn-filled btn-md-size">Button</button>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Anatomy -->
+    <div class="section-label">Anatomy</div>
+    <div class="anatomy-box">
+      <div style="display:inline-flex;align-items:center;gap:8px;position:relative">
+        <div class="anatomy-btn">
+          <span style="position:relative">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:block"><circle cx="12" cy="12" r="9" stroke="#1a1a1a" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="anatomy-number" style="top:-8px;right:-8px">2</span>
+          </span>
+          <span style="position:relative">Button<span class="anatomy-number" style="top:-8px;right:-8px">3</span></span>
+          <span class="anatomy-number" style="top:-12px;right:-12px">4</span>
+        </div>
+        <span class="anatomy-number" style="position:absolute;top:-12px;left:-12px">1</span>
+      </div>
+      <div class="anatomy-legend">
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — pill shape, border-radius: 100px</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Leading icon (optional) — 16px or 24px</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">3</span>Label — Sora Bold, 12–14px</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">4</span>Trailing icon (optional) — 16px or 24px</div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Variants -->
+    <div class="section-label">Variants</div>
+    <div class="variant-grid">
+      <!-- Filled -->
+      <div class="variant-card">
+        <div class="variant-card-header">
+          <div class="variant-card-title">Filled</div>
+          <div class="variant-card-tag">type="Filled"</div>
+        </div>
+        <div class="variant-card-body">
+          <button class="btn-atreus btn-filled btn-sm-size">Small</button>
+          <button class="btn-atreus btn-filled btn-md-size">Medium</button>
+          <button class="btn-atreus btn-filled btn-lg-size">Large</button>
+          <button class="btn-atreus btn-filled btn-md-size disabled">Disabled</button>
+        </div>
+      </div>
+      <!-- Outline -->
+      <div class="variant-card">
+        <div class="variant-card-header">
+          <div class="variant-card-title">Outline</div>
+          <div class="variant-card-tag">type="Outline"</div>
+        </div>
+        <div class="variant-card-body">
+          <button class="btn-atreus btn-outline btn-sm-size">Small</button>
+          <button class="btn-atreus btn-outline btn-md-size">Medium</button>
+          <button class="btn-atreus btn-outline btn-lg-size">Large</button>
+          <button class="btn-atreus btn-outline btn-md-size disabled">Disabled</button>
+        </div>
+      </div>
+      <!-- Ghost -->
+      <div class="variant-card">
+        <div class="variant-card-header">
+          <div class="variant-card-title">Ghost</div>
+          <div class="variant-card-tag">type="Ghost"</div>
+        </div>
+        <div class="variant-card-body">
+          <button class="btn-atreus btn-ghost btn-sm-size">Small</button>
+          <button class="btn-atreus btn-ghost btn-md-size">Medium</button>
+          <button class="btn-atreus btn-ghost btn-lg-size">Large</button>
+          <button class="btn-atreus btn-ghost btn-md-size disabled">Disabled</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- States Matrix -->
+    <div class="section-label">States · All Variants</div>
+    <div class="states-grid">
+      <div class="state-row-header">Size: Medium (default)</div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-filled btn-md-size">Filled</button>
+        <div class="state-label">Enable</div>
+      </div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-outline btn-md-size">Outline</button>
+        <div class="state-label">Enable</div>
+      </div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-ghost btn-md-size">Ghost</button>
+        <div class="state-label">Enable</div>
+      </div>
+      <div class="state-cell">
+        <div style="height:38px"></div>
+        <div class="state-label">—</div>
+      </div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-filled btn-md-size disabled">Filled</button>
+        <div class="state-label">Disabled</div>
+      </div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-outline btn-md-size disabled">Outline</button>
+        <div class="state-label">Disabled</div>
+      </div>
+      <div class="state-cell">
+        <button class="btn-atreus btn-ghost btn-md-size disabled">Ghost</button>
+        <div class="state-label">Disabled</div>
+      </div>
+      <div class="state-cell">
+        <div style="height:38px"></div>
+        <div class="state-label">—</div>
+      </div>
+    </div>
+
+    <!-- Spec Table -->
+    <div class="section-label">Design Specs</div>
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">📐 Layout & Spacing</div>
+      <table class="spec-table">
+        <thead><tr><th>Property</th><th>Small</th><th>Medium</th><th>Large</th><th>Token</th></tr></thead>
+        <tbody>
+          <tr><td>Height</td><td class="spec-value">34px</td><td class="spec-value">38px</td><td class="spec-value">48px</td><td><span class="spec-token">auto via padding</span></td></tr>
+          <tr><td>Padding H</td><td class="spec-value">12px</td><td class="spec-value">16px</td><td class="spec-value">24px</td><td><span class="spec-token">$spacing-04 · $spacing-05 · $spacing-07</span></td></tr>
+          <tr><td>Padding V</td><td class="spec-value">8px</td><td class="spec-value">9px</td><td class="spec-value">12px</td><td><span class="spec-token">$spacing-03 · —</span></td></tr>
+          <tr><td>Border Radius</td><td class="spec-value">100px</td><td class="spec-value">100px</td><td class="spec-value">100px</td><td><span class="spec-token">$border-radius-full</span></td></tr>
+          <tr><td>Border Width</td><td class="spec-value">1px</td><td class="spec-value">1px</td><td class="spec-value">1px</td><td>—</td></tr>
+          <tr><td>Icon size</td><td class="spec-value">16×16px</td><td class="spec-value">16×16px</td><td class="spec-value">24×24px</td><td>—</td></tr>
+          <tr><td>Gap (icon–label)</td><td class="spec-value">4px</td><td class="spec-value">4px</td><td class="spec-value">4px</td><td><span class="spec-token">$spacing-02</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">🎨 Color Tokens</div>
+      <table class="spec-table">
+        <thead><tr><th>Variant · State</th><th>Background</th><th>Border</th><th>Text</th></tr></thead>
+        <tbody>
+          <tr><td>Filled · Enable</td><td><span class="spec-token">$button-primary-default</span> <code>#87CCA9</code></td><td><span class="spec-token">$border-primary</span> <code>#1A1A1A</code></td><td><span class="spec-token">$text-primary</span> <code>#1A1A1A</code></td></tr>
+          <tr><td>Filled · Disabled</td><td><span class="spec-token">$button-primary-disabled</span> <code>#F3F3F3</code></td><td><span class="spec-token">$button-outlined-disabled</span> <code>#DADADA</code></td><td><span class="spec-token">$text-disabled</span> <code>#CDCDCD</code></td></tr>
+          <tr><td>Outline · Enable</td><td>transparent</td><td><span class="spec-token">$button-outlined-default</span> <code>#1A1A1A</code></td><td><span class="spec-token">$text-primary</span> <code>#1A1A1A</code></td></tr>
+          <tr><td>Outline · Disabled</td><td>transparent</td><td><span class="spec-token">$button-outlined-disabled</span> <code>#DADADA</code></td><td><span class="spec-token">$text-disabled</span> <code>#CDCDCD</code></td></tr>
+          <tr><td>Ghost · Enable</td><td>transparent</td><td>transparent</td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td></tr>
+          <tr><td>Ghost · Disabled</td><td>transparent</td><td>transparent</td><td><span class="spec-token">$text-disabled</span> <code>#CDCDCD</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">✏️ Typography</div>
+      <table class="spec-table">
+        <thead><tr><th>Size</th><th>Font</th><th>Weight</th><th>Font Size</th><th>Line Height</th></tr></thead>
+        <tbody>
+          <tr><td>Small</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">12px</td><td class="spec-value">18px</td></tr>
+          <tr><td>Medium</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">14px</td><td class="spec-value">20px</td></tr>
+          <tr><td>Large</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">14px</td><td class="spec-value">20px</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Button Icon -->
+    <div class="section-label">Button Icon</div>
+    <p class="page-desc" style="margin-bottom:28px">Icon-only buttons at 44×44px — all variants follow the same green token system. Floating variants add a drop shadow for elevation.</p>
+
+    <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr 1fr">
+      <div class="variant-card">
+        <div class="variant-card-header"><div class="variant-card-title">Button Icon</div><div class="variant-card-tag">plain</div></div>
+        <div class="variant-card-body" style="gap:20px">
+          <button class="btn-icon btn-icon-plain">⊙</button>
+          <button class="btn-icon btn-icon-plain disabled">⊙</button>
+          <div class="state-label">Enable · Disabled</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-card-header"><div class="variant-card-title">Button Icon Green</div><div class="variant-card-tag">green</div></div>
+        <div class="variant-card-body" style="gap:20px">
+          <button class="btn-icon btn-icon-filled">⊙</button>
+          <button class="btn-icon btn-icon-filled disabled">⊙</button>
+          <div class="state-label">Enable · Disabled</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-card-header"><div class="variant-card-title">Button Floating</div><div class="variant-card-tag">floating</div></div>
+        <div class="variant-card-body" style="gap:20px">
+          <button class="btn-icon btn-icon-floating">⊙</button>
+          <button class="btn-icon btn-icon-floating disabled">⊙</button>
+          <div class="state-label">Enable · Disabled</div>
+        </div>
+      </div>
+      <div class="variant-card">
+        <div class="variant-card-header"><div class="variant-card-title">Floating Green</div><div class="variant-card-tag">float+green</div></div>
+        <div class="variant-card-body" style="gap:20px">
+          <button class="btn-icon btn-icon-floating-green">⊙</button>
+          <button class="btn-icon btn-icon-floating-green disabled">⊙</button>
+          <div class="state-label">Enable · Disabled</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">📐 Button Icon Specs</div>
+      <table class="spec-table">
+        <thead><tr><th>Variant</th><th>Size</th><th>Background</th><th>Border</th><th>Shadow</th></tr></thead>
+        <tbody>
+          <tr><td>Button Icon</td><td class="spec-value">44×44px</td><td>transparent</td><td>transparent</td><td>—</td></tr>
+          <tr><td>Button Icon Green</td><td class="spec-value">44×44px</td><td><span class="spec-token">$button-primary-default</span></td><td><span class="spec-token">$border-primary</span></td><td>—</td></tr>
+          <tr><td>Button Floating</td><td class="spec-value">44×44px</td><td><code>#FFFFFF</code></td><td>transparent</td><td>0 4px 10px rgba(26,26,26,0.25)</td></tr>
+          <tr><td>Floating Green</td><td class="spec-value">44×44px</td><td><span class="spec-token">$button-primary-default</span></td><td><span class="spec-token">$border-primary</span></td><td>0 4px 10px rgba(26,26,26,0.25)</td></tr>
+          <tr><td>Icon padding</td><td>—</td><td colspan="3"><span class="spec-value">10px</span> all sides · icon size: <span class="spec-value">24×24px</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Button Docked -->
+    <div class="section-label">Button Docked</div>
+    <p class="page-desc" style="margin-bottom:28px">Fixed bottom action areas for mobile. The Docked component is a container for one or two buttons anchored to the bottom of the screen. Three layout variants: Side by Side, Stacked, and S&amp;K (Syarat &amp; Ketentuan / checkbox + button).</p>
+
+    <div class="docked-demo-row">
+      <div class="docked-demo-cell">
+        <div class="docked-demo-label">Side by Side · Default</div>
+        <div class="docked-preview">
+          <div style="height:60px;background:#f0f0f0"></div>
+          <div class="docked-component side-by-side">
+            <div class="docked-btn-outline">Secondary</div>
+            <div class="docked-btn-primary">Primary</div>
+          </div>
+          <div class="docked-spacer"></div>
+        </div>
+      </div>
+      <div class="docked-demo-cell">
+        <div class="docked-demo-label">Stacked · Default</div>
+        <div class="docked-preview">
+          <div style="height:60px;background:#f0f0f0"></div>
+          <div class="docked-component">
+            <div class="docked-btn-primary">Primary</div>
+            <div class="docked-btn-outline">Secondary</div>
+            <div class="docked-btn-ghost">Ghost</div>
+          </div>
+          <div class="docked-spacer"></div>
+        </div>
+      </div>
+      <div class="docked-demo-cell">
+        <div class="docked-demo-label">S&amp;K · Default</div>
+        <div class="docked-preview">
+          <div style="height:60px;background:#f0f0f0"></div>
+          <div class="docked-component">
+            <div class="docked-sk-row">
+              <div class="docked-sk-checkbox"></div>
+              <div class="docked-sk-text">Saya telah membaca dan menyetujui <a href="#">Syarat dan Ketentuan</a></div>
+            </div>
+            <div class="docked-btn-primary">Primary</div>
+            <div class="docked-btn-outline">Secondary</div>
+            <div class="docked-btn-ghost">Ghost</div>
+          </div>
+          <div class="docked-spacer"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spec-table-wrap">
+      <div class="spec-table-title">📐 Button Docked Specs</div>
+      <table class="spec-table">
+        <thead><tr><th>Property</th><th>Value</th><th>Note</th></tr></thead>
+        <tbody>
+          <tr><td>Container width</td><td class="spec-value">375px (full)</td><td>Mobile viewport</td></tr>
+          <tr><td>Top border radius</td><td class="spec-value">20px 20px 0 0</td><td>Rounded top corners only</td></tr>
+          <tr><td>Padding top</td><td class="spec-value">24px</td><td><span class="spec-token">$spacing-07</span></td></tr>
+          <tr><td>Padding H</td><td class="spec-value">16px</td><td><span class="spec-token">$spacing-05</span></td></tr>
+          <tr><td>Gap between buttons</td><td class="spec-value">12px</td><td><span class="spec-token">$spacing-04</span></td></tr>
+          <tr><td>Bottom spacer</td><td class="spec-value">24px</td><td>Safe area / bottom space</td></tr>
+          <tr><td>Sticky shadow</td><td class="spec-value">0 0 25px rgba(0,0,0,0.1)</td><td>Style = "Sticky" only</td></tr>
+          <tr><td>Button height</td><td class="spec-value">44px</td><td>All button types within Docked</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Guidelines -->
+    <div class="section-label">Usage Guidelines</div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+      <div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#E9F7F3">🎯</div>
+          <div class="usage-content">
+            <strong>Use Filled for primary CTAs only</strong>
+            <p>Reserve the Filled (green) button for the single most important action on a screen. Never use two Filled buttons side by side without hierarchy.</p>
+          </div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#E9F7FA">✌️</div>
+          <div class="usage-content">
+            <strong>Outline for secondary actions</strong>
+            <p>Use Outline as a visual counterpart to Filled when you need two buttons side by side — e.g., "Cancel" + "Confirm".</p>
+          </div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#FEF6F1">👻</div>
+          <div class="usage-content">
+            <strong>Ghost for tertiary, destructive, or links</strong>
+            <p>Ghost buttons are for lowest-priority actions. In Stacked docked layouts, Ghost sits at the bottom as a clear visual de-emphasis.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#E9F7F3">📱</div>
+          <div class="usage-content">
+            <strong>Use Docked for mobile bottom actions</strong>
+            <p>Bottom-fixed actions should always use the Docked component, never floating individual buttons. This ensures consistent safe area handling and shadow treatment.</p>
+          </div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#FEF6F1">⚡</div>
+          <div class="usage-content">
+            <strong>Use Button Icon for icon-only actions</strong>
+            <p>Never use a regular button with just an icon. The Button Icon component is specifically sized and spaced for icon-only tap targets at 44×44px minimum.</p>
+          </div>
+        </div>
+        <div class="usage-card">
+          <div class="usage-icon" style="background:#F6F6F6">🔢</div>
+          <div class="usage-content">
+            <strong>Limit icons to one side per button</strong>
+            <p>Buttons can have a leading OR trailing icon, not both simultaneously. Leading icons suggest direction or type; trailing icons suggest progression or navigation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Do / Don't</div>
+    <div class="do-dont-grid">
+      <div class="do-box">
+        <div class="do-header">✓ DO</div>
+        <div class="do-body">
+          <div style="display:flex;gap:8px;margin-bottom:4px">
+            <button class="btn-atreus btn-filled btn-md-size">Confirm</button>
+            <button class="btn-atreus btn-outline btn-md-size">Cancel</button>
+          </div>
+          <div class="guideline-row"><span class="guideline-icon">✓</span>Use Filled + Outline pair for binary choices</div>
+          <div style="margin-top:12px"><button class="btn-atreus btn-filled btn-lg-size" style="width:100%">Continue</button></div>
+          <div class="guideline-row"><span class="guideline-icon">✓</span>Full-width Filled in Docked for single primary action</div>
+          <div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+            <button class="btn-atreus btn-ghost btn-md-size">Skip</button>
+          </div>
+          <div class="guideline-row"><span class="guideline-icon">✓</span>Ghost for skip / dismiss actions — no unnecessary weight</div>
+        </div>
+      </div>
+      <div class="dont-box">
+        <div class="dont-header">✗ DON'T</div>
+        <div class="do-body">
+          <div style="display:flex;gap:8px;margin-bottom:4px">
+            <button class="btn-atreus btn-filled btn-md-size">Save</button>
+            <button class="btn-atreus btn-filled btn-md-size">Cancel</button>
+          </div>
+          <div class="guideline-row"><span class="guideline-icon">✗</span>Never use two Filled buttons side by side — no hierarchy</div>
+          <div style="margin-top:12px"><button class="btn-atreus btn-filled btn-sm-size">Very Long CTA Text That Goes On Forever</button></div>
+          <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use overly long button labels — keep to 1–3 words</div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn-atreus btn-outline btn-md-size disabled">Confirm</button>
+          </div>
+          <div class="guideline-row"><span class="guideline-icon">✗</span>Don't show disabled buttons without clear context why they're disabled</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="section-label">CSS Custom Properties</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
+      <span style="color:#9B9B9B">/* Button tokens */</span><br>
+      <span style="color:#1C95AD">--btn-bg-filled</span>: <span style="color:#87CCA9">#87CCA9</span>; <span style="color:#9B9B9B">/* $button-primary-default */</span><br>
+      <span style="color:#1C95AD">--btn-border-default</span>: <span style="color:#1a1a1a">#1A1A1A</span>; <span style="color:#9B9B9B">/* $border-primary */</span><br>
+      <span style="color:#1C95AD">--btn-bg-disabled</span>: <span style="color:#F3F3F3">#F3F3F3</span>; <span style="color:#9B9B9B">/* $button-primary-disabled */</span><br>
+      <span style="color:#1C95AD">--btn-border-disabled</span>: <span style="color:#DADADA">#DADADA</span>; <span style="color:#9B9B9B">/* $button-outlined-disabled */</span><br>
+      <span style="color:#1C95AD">--btn-text-ghost</span>: <span style="color:#238453">#238453</span>; <span style="color:#9B9B9B">/* $text-harmony / $text-link */</span><br>
+      <span style="color:#1C95AD">--btn-text-disabled</span>: <span style="color:#CDCDCD">#CDCDCD</span>; <span style="color:#9B9B9B">/* $text-disabled */</span><br>
+      <span style="color:#1C95AD">--btn-radius</span>: <span style="color:#FE6201">100px</span>; <span style="color:#9B9B9B">/* $border-radius-full */</span><br>
+      <span style="color:#1C95AD">--btn-floating-shadow</span>: <span style="color:#FE6201">0 4px 10px rgba(26,26,26,0.25)</span>;
+    </div>
+
+  </div>

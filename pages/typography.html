@@ -1,0 +1,94 @@
+<div class="topbar">
+    <div class="breadcrumb">Foundation <span class="breadcrumb-sep">›</span> <b>Typography</b></div>
+    <div class="topbar-right">
+      <button class="btn-sm" onclick="exportTypoTokens()">tokens.json</button>
+      <button class="btn-sm btn-accent" onclick="exportTypoCSS()">Copy CSS vars</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="page-header">
+      <div class="page-label">Foundation / Typography</div>
+      <h1 class="page-title">Typography</h1>
+      <p class="page-desc">Two-font system — <strong>Sora</strong> for all UI text — headings, body, labels, and meta. All sizes in px for Mobile viewport.</p>
+    </div>
+
+    <div class="section-label">Typefaces</div>
+    <div class="typo-fonts">
+      <div class="font-card">
+        <div class="font-card-role">Primary · UI Text</div>
+        <div class="font-card-name" style="font-family:'Sora',sans-serif">Sora</div>
+        <div class="font-card-sub">google/Sora · Variable</div>
+        <div class="font-card-specimen" style="font-family:'Sora',sans-serif">The quick brown fox jumps<br>over the lazy dog.<br><span style="font-size:17px">0 1 2 3 4 5 6 7 8 9</span></div>
+        <div class="font-card-weights"><span class="fw-badge">Regular · 400</span><span class="fw-badge active">Bold · 700</span></div>
+      </div>
+      <div class="font-card">
+        <div class="font-card-role">Secondary · Labels & Meta</div>
+        <div class="font-card-name" style="font-family:'Sora',sans-serif">Sora</div>
+        <div class="font-card-sub">google/Sora · Variable</div>
+        <div class="font-card-specimen" style="font-family:'Sora',sans-serif">The quick brown fox jumps<br>over the lazy dog.<br><span style="font-size:17px">0 1 2 3 4 5 6 7 8 9</span></div>
+        <div class="font-card-weights"><span class="fw-badge">Regular · 400</span><span class="fw-badge">Medium · 500</span><span class="fw-badge active">Bold · 700</span></div>
+      </div>
+    </div>
+
+    <div class="section-label">Type Scale · Mobile</div>
+    <div class="typo-preview-toggle">
+      <span class="preview-label">Preview:</span>
+      <input class="preview-input" id="preview-text" value="The quick brown fox jumps over the lazy dog." oninput="updatePreview(this.value)">
+    </div>
+
+    <div class="typo-section">
+      <div class="typo-section-header">
+        <div class="typo-section-title">Title</div>
+        <div class="typo-section-meta">Sora · Bold 700 · Headings</div>
+      </div>
+      <div class="type-grid-header">
+        <div class="col-header">Preview</div><div class="col-header">Style</div>
+        <div class="col-header">Usage</div><div class="col-header">Weight</div>
+        <div class="col-header">Size</div><div class="col-header">Line Ht</div>
+      </div>
+      <div id="type-title"></div>
+    </div>
+
+    <div class="typo-section">
+      <div class="typo-section-header">
+        <div class="typo-section-title">Body</div>
+        <div class="typo-section-meta">Sora · Regular 400 · Paragraphs</div>
+      </div>
+      <div class="type-grid-header">
+        <div class="col-header">Preview</div><div class="col-header">Style</div>
+        <div class="col-header">Usage</div><div class="col-header">Weight</div>
+        <div class="col-header">Size</div><div class="col-header">Line Ht</div>
+      </div>
+      <div id="type-body"></div>
+    </div>
+
+    <div class="typo-section">
+      <div class="typo-section-header">
+        <div class="typo-section-title">Small Title</div>
+        <div class="typo-section-meta">Sora · Bold 700 · Labels & Chips</div>
+      </div>
+      <div class="type-grid-header">
+        <div class="col-header">Preview</div><div class="col-header">Style</div>
+        <div class="col-header">Usage</div><div class="col-header">Weight</div>
+        <div class="col-header">Size</div><div class="col-header">Line Ht</div>
+      </div>
+      <div id="type-small-title"></div>
+    </div>
+
+    <div class="typo-section">
+      <div class="typo-section-header">
+        <div class="typo-section-title">Caption</div>
+        <div class="typo-section-meta">Sora · Regular 400 · Helper text</div>
+      </div>
+      <div class="type-grid-header">
+        <div class="col-header">Preview</div><div class="col-header">Style</div>
+        <div class="col-header">Usage</div><div class="col-header">Weight</div>
+        <div class="col-header">Size</div><div class="col-header">Line Ht</div>
+      </div>
+      <div id="type-caption"></div>
+    </div>
+
+    <hr class="section-divider">
+    <div class="section-label">CSS Custom Properties</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto" id="typo-css-preview"></div>
+  </div>

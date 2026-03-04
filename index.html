@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Atreus Design System — hibank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<aside class="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-sub">hibank Design</div>
+    <div class="sb-logo-title">Atreus <span>DS</span></div>
+    <div class="sb-logo-badge">v1.0 · Foundation</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-section">Foundation</div>
+    <a class="sb-item active" onclick="showPage('colors',this)">
+      <span class="sb-dot" style="background:#FE6201"></span> Colors
+    </a>
+    <a class="sb-item" onclick="showPage('typography',this)">
+      <span class="sb-dot" style="background:#1C95AD"></span> Typography
+    </a>
+    <a class="sb-item" onclick="showPage('spacing',this)">
+      <span class="sb-dot" style="background:#9B9B9B"></span> Spacing
+    </a>
+    <a class="sb-item disabled">
+      <span class="sb-dot" style="background:#DADADA"></span> Icons
+    </a>
+    <div class="sb-section">Components</div>
+    <a class="sb-item" onclick="showPage('buttons',this)">
+      <span class="sb-dot" style="background:#87CCA9"></span> Buttons
+    </a>
+    <a class="sb-item disabled"><span class="sb-dot" style="background:#DADADA"></span> Forms</a>
+    <a class="sb-item disabled"><span class="sb-dot" style="background:#DADADA"></span> Cards</a>
+  </nav>
+  <div class="sb-footer">Atreus DS · hibank</div>
+</aside>
+
+<!-- ═══ MAIN ═══ -->
+<main class="main">
+  <div id="page-container">
+    <!-- Pages are loaded here dynamically -->
+    <div class="page-loading">
+      <div class="loading-spinner"></div>
+    </div>
+  </div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

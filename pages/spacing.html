@@ -1,0 +1,40 @@
+<div class="topbar">
+    <div class="breadcrumb">Foundation <span class="breadcrumb-sep">›</span> <b>Spacing</b></div>
+    <div class="topbar-right">
+      <button class="btn-sm" onclick="exportSpacingTokens()">tokens.json</button>
+      <button class="btn-sm btn-accent" onclick="exportSpacingCSS()">Copy CSS vars</button>
+    </div>
+  </div>
+  <div class="content">
+    <div class="page-header">
+      <div class="page-label">Foundation / Spacing</div>
+      <h1 class="page-title">Spacing</h1>
+      <p class="page-desc">Consistent spacing creates visual balance that makes the UI easier to scan. Apply spacing tokens to margin and padding — both vertical and horizontal.</p>
+    </div>
+
+    <div class="spacing-intro">
+      <div class="ai-icon">📐</div>
+      <div class="ai-text">
+        <strong>Spacing Scale</strong>
+        <p>12 steps from <code>2px</code> to <code>80px</code>. Based on a 4px base unit. Use tokens instead of hardcoded values — this ensures consistency across all components.</p>
+      </div>
+    </div>
+
+    <!-- Visual ruler -->
+    <div style="margin-bottom:32px">
+      <div id="spacing-ruler" style="display:flex;align-items:flex-end;gap:6px;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow-x:auto"></div>
+    </div>
+
+    <table class="spacing-table">
+      <thead>
+        <tr>
+          <th style="width:100px">Visual</th>
+          <th>Token</th>
+          <th>px</th>
+          <th>rem</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody id="spacing-tbody"></tbody>
+    </table>
+  </div>
