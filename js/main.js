@@ -64,6 +64,9 @@ function initPage(id) {
     case 'buttons':
       updateBtnPreview();
       break;
+    case 'bottomsheets':
+      if (typeof renderBlocker === 'function') renderBlocker('rekening');
+      break;
   }
 }
 

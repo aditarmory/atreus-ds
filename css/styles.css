@@ -324,3 +324,114 @@ code{font-family:'DM Mono',monospace;font-size:.88em;background:var(--surface);p
 .loading-spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .page{display:block;animation:fadeIn .2s ease}
+
+/* ── BOTTOM SHEET ─────────────────────────── */
+.bs-sheet {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+}
+.bs-header {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 4px;
+}
+.bs-header-offcenter {
+  justify-content: space-between;
+  gap: 8px;
+  padding: 0 0 8px 0;
+}
+.bs-header-center {
+  justify-content: space-between;
+  gap: 8px;
+}
+.bs-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 21px;
+  line-height: 32px;
+  color: #1a1a1a;
+  flex: 1;
+}
+.bs-header-center .bs-title {
+  text-align: center;
+}
+.bs-close-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.bs-body {
+  padding: 4px 0;
+}
+.bs-body-center {
+  text-align: center;
+}
+.bs-desc {
+  font-family: 'Sora', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #828282;
+  margin: 0;
+}
+.bs-illus-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.bs-illus-placeholder {
+  width: 216px;
+  height: 128px;
+  background: #CDCDCD;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.bs-docked {
+  margin-top: 16px;
+  padding: 24px 0 12px;
+}
+.bs-docked-sidebyside {
+  display: flex;
+  gap: 12px;
+}
+.bs-docked-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Blocker cards mini grid */
+.blocker-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.blocker-thumb {
+  width: 100%;
+}
+.blocker-cta-mini {
+  background: #87CCA9;
+  border: 1.5px solid #1a1a1a;
+  border-radius: 100px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 8px 20px;
+  cursor: pointer;
+  width: 100%;
+}

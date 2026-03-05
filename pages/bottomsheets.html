@@ -1,0 +1,656 @@
+<div class="content">
+
+  <!-- ═══ HERO ═══ -->
+  <div class="page-label">Components</div>
+  <h1 class="page-title">Bottom Sheet</h1>
+  <p class="page-desc">Bottom sheet muncul dari bawah layar dan digunakan untuk menampilkan konten tambahan, konfirmasi aksi, atau informasi kontekstual tanpa meninggalkan halaman saat ini.</p>
+
+  <div class="comp-hero">
+    <div class="comp-hero-preview" style="background:#f5f5f5;border-radius:16px;padding:0;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;min-height:280px;position:relative">
+      <div style="background:rgba(51,51,51,0.4);position:absolute;inset:0;border-radius:16px"></div>
+      <div class="bs-sheet" style="position:relative;z-index:1;width:100%;max-width:340px">
+        <div class="bs-header bs-header-center">
+          <div style="width:44px"></div>
+          <span class="bs-title">Konfirmasi Transfer</span>
+          <button class="bs-close-btn" onclick="this.closest('.bs-sheet').style.display='none'">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div class="bs-body">
+          <p class="bs-desc">Pastikan data transfer sudah benar sebelum melanjutkan proses.</p>
+        </div>
+        <div class="bs-docked bs-docked-sidebyside">
+          <button class="btn-atreus btn-outline btn-md-size" style="flex:1">Batal</button>
+          <button class="btn-atreus btn-filled btn-md-size" style="flex:1">Konfirmasi</button>
+        </div>
+        <div style="height:16px;background:#fff"></div>
+      </div>
+    </div>
+    <div class="comp-hero-info">
+      <h2>3 Tipe Group · 5 Blocker Variants</h2>
+      <p>Building blocks yang bisa dikombinasikan: Plain Bottom Sheet sebagai header, docked buttons sebagai footer, dan content area di tengah.</p>
+      <div class="token-chips">
+        <span class="token-chip"><span class="token-swatch" style="background:#fff;border:1px solid #e0e0e0"></span>bg: White</span>
+        <span class="token-chip"><span class="token-swatch" style="background:#1a1a1a"></span>radius: 20px top</span>
+        <span class="token-chip"><span class="token-swatch" style="background:#87CCA9"></span>btn: Green 40</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 1: PLAIN BOTTOM SHEET (Building Blocks) ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">01 — Building Blocks</div>
+  <h2 class="section-title">Plain Bottom Sheet</h2>
+  <p class="section-desc">Header section dari bottom sheet. Tiga tipe layout tergantung kebutuhan konten dan navigasi.</p>
+
+  <div class="variant-grid" style="grid-template-columns:repeat(3,1fr)">
+
+    <!-- Type 1: Without Image / Off-center -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Off-center</div>
+        <div class="variant-card-tag">type="Without Image / Off-center"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-header bs-header-offcenter">
+            <span class="bs-title" style="flex:1">Title</span>
+            <button class="bs-close-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="bs-body">
+            <p class="bs-desc">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>✓ Leading action optional</span>
+        <span>✓ Title kiri</span>
+      </div>
+    </div>
+
+    <!-- Type 2: With Image -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">With Image</div>
+        <div class="variant-card-tag">type="With Image"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-illus-row">
+            <div style="width:44px"></div>
+            <div class="bs-illus-placeholder"></div>
+            <button class="bs-close-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="bs-body bs-body-center">
+            <h3 class="bs-title" style="text-align:center">Title</h3>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>✓ Ilustrasi 216×128px</span>
+        <span>✓ Title center</span>
+      </div>
+    </div>
+
+    <!-- Type 3: Without Image / Center -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Center</div>
+        <div class="variant-card-tag">type="Without Image / Center"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-header bs-header-center">
+            <div style="width:44px"></div>
+            <span class="bs-title">Title</span>
+            <button class="bs-close-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="bs-body">
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>✓ Title center</span>
+        <span>✓ Tanpa ilustrasi</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Optional: Drag Indicator -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-top:16px;display:flex;align-items:center;gap:24px">
+    <div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:4px">isDragIndicator</div>
+      <div style="font-size:12px;color:var(--text-muted)">Tambahkan drag handle di atas sheet saat bottom sheet bisa di-dismiss dengan swipe down</div>
+    </div>
+    <div style="background:#f2f2f2;border-radius:12px 12px 0 0;padding:10px 40px;flex-shrink:0;text-align:center">
+      <div style="width:72px;height:6px;background:#e6e6e6;border-radius:100px;margin:0 auto"></div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: GROUP BOTTOM SHEET ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">02 — Group Variants</div>
+  <h2 class="section-title">Group Bottom Sheet</h2>
+  <p class="section-desc">Kombinasi Plain Bottom Sheet + Button Docked. Tiga varian tergantung jenis aksi yang ditawarkan.</p>
+
+  <div class="variant-grid" style="grid-template-columns:repeat(3,1fr)">
+
+    <!-- Transactional -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Transactional</div>
+        <div class="variant-card-tag">variant="Transactional"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-illus-row">
+            <div style="width:44px"></div>
+            <div class="bs-illus-placeholder"></div>
+            <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="bs-body bs-body-center">
+            <h3 class="bs-title" style="text-align:center">Title</h3>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+          <div class="bs-docked bs-docked-sidebyside">
+            <button class="btn-atreus btn-outline btn-md-size" style="flex:1">Button</button>
+            <button class="btn-atreus btn-filled btn-md-size" style="flex:1">Button</button>
+          </div>
+          <div style="height:16px;background:#fff"></div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>Side-by-side buttons</span>
+        <span>Outline + Filled</span>
+      </div>
+    </div>
+
+    <!-- Destructive -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Destructive</div>
+        <div class="variant-card-tag">variant="Destructive"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-illus-row">
+            <div style="width:44px"></div>
+            <div class="bs-illus-placeholder"></div>
+            <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="bs-body bs-body-center">
+            <h3 class="bs-title" style="text-align:center">Title</h3>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+          <div class="bs-docked bs-docked-stacked">
+            <button class="btn-atreus btn-filled btn-md-size" style="width:100%">Button</button>
+            <button class="btn-atreus btn-outline btn-md-size" style="width:100%">Button</button>
+          </div>
+          <div style="height:16px;background:#fff"></div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>Stacked buttons</span>
+        <span>Primary → Secondary</span>
+      </div>
+    </div>
+
+    <!-- Acknowledgement -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Acknowledgement</div>
+        <div class="variant-card-tag">variant="Acknowledgement"</div>
+      </div>
+      <div class="variant-card-body" style="padding:0;background:#f2f2f2;border-radius:8px;overflow:hidden">
+        <div class="bs-sheet" style="border-radius:12px 12px 0 0">
+          <div class="bs-illus-row">
+            <div style="width:44px"></div>
+            <div class="bs-illus-placeholder"></div>
+            <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="bs-body bs-body-center">
+            <h3 class="bs-title" style="text-align:center">Title</h3>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+          </div>
+          <div class="bs-docked bs-docked-stacked">
+            <button class="btn-atreus btn-filled btn-md-size" style="width:100%">Button</button>
+          </div>
+          <div style="height:16px;background:#fff"></div>
+        </div>
+      </div>
+      <div class="variant-card-meta">
+        <span>Single button</span>
+        <span>Satu keputusan saja</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: BLOCKER BOTTOM SHEET ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">03 — Ready-to-use</div>
+  <h2 class="section-title">Blocker Bottom Sheet</h2>
+  <p class="section-desc">Komponen siap pakai untuk skenario error dan blocker yang paling sering muncul di hibank. Langsung bisa dipakai tanpa konfigurasi tambahan.</p>
+
+  <!-- Interactive Demo -->
+  <div class="props-demo">
+    <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Variant</div>
+        <div class="ctrl-pills" style="flex-wrap:wrap;gap:6px">
+          <span class="ctrl-pill active" onclick="setBlocker(this,'rekening')">Rekening tidak ditemukan</span>
+          <span class="ctrl-pill" onclick="setBlocker(this,'ewallet')">Akun e-wallet tidak ditemukan</span>
+          <span class="ctrl-pill" onclick="setBlocker(this,'saldo')">Saldo tidak cukup</span>
+          <span class="ctrl-pill" onclick="setBlocker(this,'koneksi')">Koneksi bermasalah</span>
+          <span class="ctrl-pill" onclick="setBlocker(this,'login')">Login terlebih dahulu</span>
+        </div>
+      </div>
+    </div>
+    <div class="props-demo-stage" style="background:#f2f2f2;border-radius:12px;min-height:320px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative">
+      <div style="background:rgba(51,51,51,0.4);position:absolute;inset:0"></div>
+      <div id="blocker-preview" style="position:relative;z-index:1;width:100%;max-width:360px">
+        <!-- filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- All 5 blockers grid -->
+  <div class="variant-grid" style="grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px">
+    <div class="blocker-card">
+      <div class="blocker-thumb">
+        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">rekening tidak ditemukan</div>
+        <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">periksa kembali nomor tujuan transfer</div>
+      </div>
+      <button class="blocker-cta-mini">ok</button>
+    </div>
+    <div class="blocker-card">
+      <div class="blocker-thumb">
+        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">akun e-wallet tidak ditemukan</div>
+        <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">pastikan nomor handphone sudah benar</div>
+      </div>
+      <button class="blocker-cta-mini">coba lagi</button>
+    </div>
+    <div class="blocker-card">
+      <div class="blocker-thumb">
+        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">saldo tidak cukup</div>
+        <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">silahkan isi kembali dana pada kantong</div>
+      </div>
+      <button class="blocker-cta-mini">kembali</button>
+    </div>
+    <div class="blocker-card">
+      <div class="blocker-thumb">
+        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">koneksi bermasalah</div>
+        <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">jaringan internet kamu terputus</div>
+      </div>
+      <button class="blocker-cta-mini">coba lagi</button>
+    </div>
+    <div class="blocker-card">
+      <div class="blocker-thumb">
+        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">login terlebih dahulu</div>
+        <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">silakan login untuk melanjutkan</div>
+      </div>
+      <button class="blocker-cta-mini">login</button>
+    </div>
+  </div>
+
+  <!-- ═══ ANATOMY ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">Anatomy</div>
+  <h2 class="section-title">Struktur Komponen</h2>
+
+  <div class="anatomy-box" style="position:relative;padding:32px">
+    <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap">
+      <!-- Annotated Preview -->
+      <div style="position:relative;background:#f2f2f2;border-radius:16px;overflow:hidden;flex-shrink:0;width:280px">
+        <!-- Dim overlay top -->
+        <div style="background:rgba(51,51,51,0.3);height:80px;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:11px;color:rgba(255,255,255,0.7)">overlay</span>
+        </div>
+        <!-- Sheet -->
+        <div style="background:#fff;border-radius:16px 16px 0 0;padding:16px">
+          <!-- Annotation 1 -->
+          <div style="position:absolute;left:-8px;top:95px;display:flex;align-items:center;gap:4px">
+            <span class="anatomy-num">1</span>
+            <div style="width:20px;height:1px;background:#c54600"></div>
+          </div>
+          <!-- Illus row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+            <div style="width:36px"></div>
+            <div style="width:120px;height:72px;background:#CDCDCD;border-radius:6px"></div>
+            <button style="width:36px;height:36px;border-radius:50%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <!-- Body -->
+          <div style="text-align:center;margin-bottom:8px">
+            <div style="font-size:16px;font-weight:700;font-family:'Sora',sans-serif;color:#1a1a1a">Title</div>
+            <div style="font-size:11px;font-family:'Sora',sans-serif;color:#828282;margin-top:4px">Write some description here. This section can only contain 1-2 sentences maximum.</div>
+          </div>
+          <!-- Annotation 2 -->
+          <div style="position:absolute;left:-8px;top:208px;display:flex;align-items:center;gap:4px">
+            <span class="anatomy-num">2</span>
+            <div style="width:20px;height:1px;background:#c54600"></div>
+          </div>
+          <!-- Docked -->
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <button style="flex:1;border:1.5px solid #1a1a1a;border-radius:100px;padding:10px;background:transparent;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
+            <button style="flex:1;border:1.5px solid #1a1a1a;border-radius:100px;padding:10px;background:#87CCA9;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
+          </div>
+          <div style="height:12px"></div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="anatomy-legend" style="flex:1;min-width:200px">
+        <div class="anatomy-legend-item">
+          <span class="anatomy-legend-num">1</span>
+          <div>
+            <strong>Plain Bottom Sheet</strong>
+            <p>Container utama — border-radius: 20px top-left/top-right. Terdiri dari ilustrasi (opsional), heading, dan deskripsi. Width fixed 375px (mobile).</p>
+          </div>
+        </div>
+        <div class="anatomy-legend-item">
+          <span class="anatomy-legend-num">2</span>
+          <div>
+            <strong>Button / Docked</strong>
+            <p>Footer actions — padding-top: 24px, padding-H: 16px, gap antar button: 12px. Bottom safe area: 24px. Bisa Side-by-side atau Stacked.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SPECS TABLE ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">Specifications</div>
+  <h2 class="section-title">Layout & Spacing</h2>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">📐 Dimensions & Spacing</div>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Property</th><th>Value</th><th>Token</th><th>Keterangan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Width</td><td>375px</td><td>—</td><td>Fixed mobile width</td></tr>
+        <tr><td>Border Radius</td><td>20px top-left/right</td><td>$radius-xl</td><td>Hanya sudut atas</td></tr>
+        <tr><td>Sheet Padding</td><td>16px</td><td>$spacing-05</td><td>All sides</td></tr>
+        <tr><td>Gap (ilustrasi↔body)</td><td>16px</td><td>$spacing-05</td><td>Vertikal</td></tr>
+        <tr><td>Ilustrasi size</td><td>216×128px</td><td>—</td><td>Centered dalam row</td></tr>
+        <tr><td>Title font</td><td>Sora Bold 21px / 32px</td><td>$title-2</td><td>#1a1a1a</td></tr>
+        <tr><td>Description font</td><td>Sora Regular 14px / 20px</td><td>$body-2</td><td>#828282</td></tr>
+        <tr><td>Close button size</td><td>44×44px</td><td>$touch-target</td><td>Padding 10px, icon 24px</td></tr>
+        <tr><td>Drag indicator</td><td>72×6px</td><td>—</td><td>Radius 100px, #E6E6E6</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🎯 Button Docked Spacing</div>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Property</th><th>Value</th><th>Keterangan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Padding Top</td><td>24px</td><td>Jarak dari sheet ke button area</td></tr>
+        <tr><td>Padding H</td><td>16px</td><td>Kiri & kanan</td></tr>
+        <tr><td>Gap (side-by-side)</td><td>12px</td><td>Antara 2 button</td></tr>
+        <tr><td>Gap (stacked)</td><td>12px</td><td>Antara button atas & bawah</td></tr>
+        <tr><td>Bottom Space</td><td>24px</td><td>Safe area untuk home indicator</td></tr>
+        <tr><td>Button Height</td><td>44px</td><td>Medium size (semua Docked)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🎨 Color Tokens</div>
+    <table class="spec-table">
+      <thead>
+        <tr><th>Element</th><th>Token</th><th>Value</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Sheet background</td><td>$background-ui-1</td><td>#FFFFFF</td></tr>
+        <tr><td>Overlay</td><td>$overlay-dark</td><td>rgba(51,51,51,0.7)</td></tr>
+        <tr><td>Title</td><td>$text-primary</td><td>#1A1A1A</td></tr>
+        <tr><td>Description</td><td>$text-secondary</td><td>#828282</td></tr>
+        <tr><td>Button Filled bg</td><td>$button-primary-default</td><td>#87CCA9</td></tr>
+        <tr><td>Button border</td><td>$border-primary</td><td>#1A1A1A</td></tr>
+        <tr><td>Drag indicator</td><td>—</td><td>#E6E6E6</td></tr>
+        <tr><td>Ilustrasi placeholder</td><td>$icon-neutral-disabled</td><td>#CDCDCD</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ GUIDELINES ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">Usage Guidelines</div>
+  <h2 class="section-title">Kapan & Bagaimana Menggunakan</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F7F3">🎯</div>
+      <div class="usage-content">
+        <strong>Gunakan untuk aksi kontekstual</strong>
+        <p>Bottom sheet cocok untuk konfirmasi, pilihan, atau info tambahan yang berhubungan langsung dengan konten di halaman saat ini — bukan untuk navigasi utama.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#FFF3E9">⚡</div>
+      <div class="usage-content">
+        <strong>Blocker untuk error states</strong>
+        <p>Gunakan Blocker Bottom Sheet untuk skenario yang memblokir user action: rekening tidak ditemukan, saldo kurang, koneksi putus, dan login required.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F0FF">🔢</div>
+      <div class="usage-content">
+        <strong>Pilih variant yang tepat</strong>
+        <p>Transactional = 2 pilihan setara. Destructive = 1 aksi utama + 1 cancel. Acknowledgement = hanya 1 button karena tidak ada alternatif.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#F3E9FF">✍️</div>
+      <div class="usage-content">
+        <strong>Konten maksimal 1-2 kalimat</strong>
+        <p>Description area hanya untuk 1-2 kalimat ringkas. Jika butuh konten lebih panjang, pertimbangkan halaman terpisah atau modal full-screen.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Do/Don't -->
+  <div class="do-dont-grid">
+    <div class="do-box">
+      <div class="do-header">✓ DO</div>
+      <div class="do-body">
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Gunakan satu primary action</div>
+          <div style="background:#f5f5f5;border-radius:10px;padding:12px;display:flex;gap:8px">
+            <button class="btn-atreus btn-outline btn-md-size" style="flex:1;font-size:11px">Batal</button>
+            <button class="btn-atreus btn-filled btn-md-size" style="flex:1;font-size:11px">Konfirmasi</button>
+          </div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Deskripsi yang jelas dan singkat</div>
+          <div style="font-size:12px;color:#828282;font-family:'Sora',sans-serif;padding:0 4px">"Hapus akun ini secara permanen?"</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Overlay gelap untuk fokus user</div>
+          <div style="font-size:12px;color:#828282">rgba(51,51,51,0.7) selalu aktif</div>
+        </div>
+      </div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-header">✗ DON'T</div>
+      <div class="do-body">
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan stack 3+ button</div>
+          <div style="background:#f5f5f5;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px">
+            <button class="btn-atreus btn-filled btn-md-size" style="width:100%;font-size:11px;opacity:0.5">Opsi A</button>
+            <button class="btn-atreus btn-outline btn-md-size" style="width:100%;font-size:11px;opacity:0.5">Opsi B</button>
+            <button class="btn-atreus btn-outline btn-md-size" style="width:100%;font-size:11px;opacity:0.5">Opsi C</button>
+          </div>
+        </div>
+        <div style="margin-bottom:16px">
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan untuk navigasi utama</div>
+          <div style="font-size:12px;color:#828282">Bottom sheet bukan pengganti tab bar atau halaman baru</div>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan pakai teks deskripsi terlalu panjang</div>
+          <div style="font-size:12px;color:#828282">Maksimal 2 kalimat — jika lebih, buat halaman terpisah</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ CSS TOKENS ═══ -->
+  <div class="section-divider"></div>
+  <div class="section-label">Implementation</div>
+  <h2 class="section-title">CSS Custom Properties</h2>
+
+  <div style="background:#1a1a1a;border-radius:12px;padding:24px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:#ccc;margin-bottom:12px;overflow-x:auto">
+    <span style="color:#888">/* Bottom Sheet Tokens */</span><br>
+    <span style="color:#87CCA9">--bs-bg</span><span style="color:#fff">:</span> <span style="color:#FE6201">#FFFFFF</span><span style="color:#888">; /* $background-ui-1 */</span><br>
+    <span style="color:#87CCA9">--bs-overlay</span><span style="color:#fff">:</span> <span style="color:#FE6201">rgba(51,51,51,0.7)</span><span style="color:#888">; /* $overlay-dark */</span><br>
+    <span style="color:#87CCA9">--bs-radius</span><span style="color:#fff">:</span> <span style="color:#FE6201">20px</span><span style="color:#888">; /* top-left & top-right */</span><br>
+    <span style="color:#87CCA9">--bs-padding</span><span style="color:#fff">:</span> <span style="color:#FE6201">16px</span><span style="color:#888">; /* $spacing-05 */</span><br>
+    <span style="color:#87CCA9">--bs-gap</span><span style="color:#fff">:</span> <span style="color:#FE6201">16px</span><span style="color:#888">; /* gap between sections */</span><br>
+    <span style="color:#87CCA9">--bs-docked-pt</span><span style="color:#fff">:</span> <span style="color:#FE6201">24px</span><span style="color:#888">; /* docked padding-top */</span><br>
+    <span style="color:#87CCA9">--bs-btn-gap</span><span style="color:#fff">:</span> <span style="color:#FE6201">12px</span><span style="color:#888">; /* gap between buttons */</span><br>
+    <span style="color:#87CCA9">--bs-safe-area</span><span style="color:#fff">:</span> <span style="color:#FE6201">24px</span><span style="color:#888">; /* bottom safe area */</span>
+  </div>
+
+  <div style="display:flex;gap:8px">
+    <button class="export-btn" onclick="copyBSTokens()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/></svg>
+      Copy CSS Variables
+    </button>
+    <button class="export-btn" onclick="exportBSTokens()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Export Tokens JSON
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ── BLOCKER PREVIEW DATA ────────────────────────────
+const blockerData = {
+  rekening: {
+    title: 'rekening tidak ditemukan',
+    desc: 'periksa kembali nomor tujuan transfer',
+    cta: 'ok'
+  },
+  ewallet: {
+    title: 'akun e-wallet tidak ditemukan',
+    desc: 'pastikan nomor handphone yang kamu masukkan sudah benar',
+    cta: 'coba lagi'
+  },
+  saldo: {
+    title: 'saldo tidak cukup',
+    desc: 'silahkan mengisi kembali dana pada kantong kamu',
+    cta: 'kembali'
+  },
+  koneksi: {
+    title: 'koneksi bermasalah',
+    desc: 'jaringan internet kamu terputus, segera sambungkan kembali perangkat ke dalam jaringan.',
+    cta: 'coba lagi'
+  },
+  login: {
+    title: 'login terlebih dahulu',
+    desc: 'Nomor handphone telah terdaftar sebagai nasabah. Silakan login terlebih dahulu untuk melanjutkan.',
+    cta: 'login'
+  }
+};
+
+function setBlocker(el, key) {
+  document.querySelectorAll('#page-container .ctrl-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  renderBlocker(key);
+}
+
+function renderBlocker(key) {
+  const d = blockerData[key];
+  const stage = document.getElementById('blocker-preview');
+  if (!stage) return;
+  stage.innerHTML = `
+    <div class="bs-sheet" style="border-radius:16px 16px 0 0">
+      <div class="bs-illus-row">
+        <div style="width:44px"></div>
+        <div class="bs-illus-placeholder" style="width:140px;height:84px;border-radius:8px;background:#CDCDCD;flex-shrink:0"></div>
+        <button class="bs-close-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="bs-body bs-body-center">
+        <h3 class="bs-title" style="text-align:center;font-size:17px">${d.title}</h3>
+        <p class="bs-desc" style="text-align:center">${d.desc}</p>
+      </div>
+      <div class="bs-docked bs-docked-stacked">
+        <button class="btn-atreus btn-filled btn-md-size" style="width:100%">${d.cta}</button>
+      </div>
+      <div style="height:20px;background:#fff"></div>
+    </div>`;
+}
+
+// Init on page load
+(function() {
+  renderBlocker('rekening');
+})();
+
+// ── EXPORT FUNCTIONS ────────────────────────────────
+function copyBSTokens() {
+  const css = `/* Bottom Sheet CSS Custom Properties */
+:root {
+  --bs-bg: #FFFFFF;
+  --bs-overlay: rgba(51,51,51,0.7);
+  --bs-radius: 20px;
+  --bs-padding: 16px;
+  --bs-gap: 16px;
+  --bs-docked-pt: 24px;
+  --bs-btn-gap: 12px;
+  --bs-safe-area: 24px;
+  --bs-title-color: #1A1A1A;
+  --bs-desc-color: #828282;
+  --bs-illus-size: 216px 128px;
+  --bs-close-size: 44px;
+}`;
+  navigator.clipboard.writeText(css).then(() => {
+    if (typeof showToast === 'function') showToast('Bottom Sheet CSS vars copied!');
+  });
+}
+
+function exportBSTokens() {
+  const tokens = {
+    "bottomSheet": {
+      "background": { "value": "#FFFFFF", "type": "color", "description": "Sheet background" },
+      "overlay": { "value": "rgba(51,51,51,0.7)", "type": "color", "description": "Backdrop overlay" },
+      "borderRadius": { "value": "20px", "type": "borderRadius", "description": "Top corners only" },
+      "padding": { "value": "16px", "type": "spacing" },
+      "gap": { "value": "16px", "type": "spacing" },
+      "dockedPaddingTop": { "value": "24px", "type": "spacing" },
+      "buttonGap": { "value": "12px", "type": "spacing" },
+      "safeArea": { "value": "24px", "type": "spacing" },
+      "titleColor": { "value": "#1A1A1A", "type": "color" },
+      "descColor": { "value": "#828282", "type": "color" }
+    }
+  };
+  const blob = new Blob([JSON.stringify(tokens, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'bottomsheet-tokens.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  if (typeof showToast === 'function') showToast('bottomsheet-tokens.json downloaded!');
+}
+</script>
