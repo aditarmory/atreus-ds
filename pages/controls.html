@@ -96,45 +96,52 @@
   <!-- Anatomy -->
   <div class="section-label">Anatomy</div>
   <div class="anatomy-box">
-    <div style="display:inline-flex;align-items:center;gap:32px;flex-wrap:wrap">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start">
+
       <!-- Radio anatomy -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
-        <div style="position:relative;display:inline-block">
-          <div class="ctrl-radio ctrl-active" style="position:relative">
-            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
-            <span class="anatomy-number" style="top:2px;left:2px;width:10px;height:10px;font-size:8px">2</span>
-          </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;width:80px;height:60px">
+          <!-- component centered -->
+          <div class="ctrl-radio ctrl-active" id="anat-radio"></div>
+          <!-- number 1: container outline -->
+          <span class="anatomy-number" style="position:absolute;top:8px;right:4px">1</span>
+          <!-- number 2: inner dot -->
+          <span class="anatomy-number" style="position:absolute;bottom:8px;left:4px">2</span>
         </div>
         <div class="anatomy-legend">
           <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — circle, 20×20px, border 2px</div>
-          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Inner dot — 10×10px, shown when selected</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Inner dot — 8×8px, shown when selected</div>
         </div>
       </div>
+
       <!-- Checkbox anatomy -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
-        <div style="position:relative;display:inline-block">
-          <div class="ctrl-checkbox ctrl-cb-checked" style="position:relative">
-            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
-          </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;width:80px;height:60px">
+          <div class="ctrl-checkbox ctrl-cb-checked"></div>
+          <span class="anatomy-number" style="position:absolute;top:8px;right:4px">1</span>
+          <span class="anatomy-number" style="position:absolute;bottom:8px;left:4px">2</span>
         </div>
         <div class="anatomy-legend">
           <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — square, 16×16px, border-radius 4px</div>
-          <div class="anatomy-legend-item" style="padding-left:4px"><span class="anatomy-legend-num" style="visibility:hidden">1</span>Check icon — shown when selected, 44×44px tap target</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Check icon — shown when selected</div>
         </div>
       </div>
+
       <!-- Switch anatomy -->
-      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
-        <div style="position:relative;display:inline-block">
-          <div class="ctrl-switch ctrl-sw-on" style="position:relative">
-            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
-            <span class="anatomy-number" style="top:4px;right:4px;width:10px;height:10px;font-size:8px">2</span>
-          </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="position:relative;display:flex;align-items:center;justify-content:center;width:90px;height:60px">
+          <div class="ctrl-switch ctrl-sw-on"></div>
+          <!-- 1 = track -->
+          <span class="anatomy-number" style="position:absolute;top:8px;left:4px">1</span>
+          <!-- 2 = thumb -->
+          <span class="anatomy-number" style="position:absolute;bottom:8px;right:4px">2</span>
         </div>
         <div class="anatomy-legend">
           <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Track — 36×20px, border-radius 100px</div>
           <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Thumb — 16×16px circle, transitions on toggle</div>
         </div>
       </div>
+
     </div>
   </div>
 
