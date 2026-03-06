@@ -1,0 +1,805 @@
+<div class="topbar">
+  <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>Controls</b></div>
+  <div class="topbar-right">
+    <button class="btn-sm" onclick="exportControlTokens()">tokens.json</button>
+    <button class="btn-sm btn-accent" onclick="copyControlCSS()">Copy CSS</button>
+  </div>
+</div>
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Components / Controls</div>
+    <h1 class="page-title">Control</h1>
+    <p class="page-desc">Selection Controls let users make choices or toggle settings. They capture input when options are predefined — Radio Buttons for single-choice, Checkboxes for multi-select, and Switches for immediate on/off state changes.</p>
+  </div>
+
+  <!-- Hero -->
+  <div class="comp-hero">
+    <div class="comp-hero-preview" style="gap:24px;flex-wrap:wrap">
+      <!-- Radio Default -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-radio ctrl-default"></div>
+        <div class="state-label">Radio · Default</div>
+      </div>
+      <!-- Radio Active -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-radio ctrl-active"></div>
+        <div class="state-label">Radio · Active</div>
+      </div>
+      <!-- Checkbox Default -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-checkbox ctrl-cb-default"></div>
+        <div class="state-label">Checkbox · Default</div>
+      </div>
+      <!-- Checkbox Checked -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-checkbox ctrl-cb-checked"></div>
+        <div class="state-label">Checkbox · Checked</div>
+      </div>
+      <!-- Switch Off -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-switch ctrl-sw-off"></div>
+        <div class="state-label">Switch · Off</div>
+      </div>
+      <!-- Switch On -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+        <div class="ctrl-switch ctrl-sw-on"></div>
+        <div class="state-label">Switch · On</div>
+      </div>
+    </div>
+    <div class="comp-hero-info">
+      <h2>3 Types · 2 States · 1 Size</h2>
+      <p>Radio Buttons for single selection, Checkboxes for multi-select, Switches for immediate binary actions. All types share a consistent 44×44px tap target and use the same green token system.</p>
+      <div class="token-strip" style="margin-top:12px;margin-bottom:0">
+        <span class="token-chip" onclick="copyText('#238453','Copied #238453')"><span class="chip-swatch" style="background:#238453"></span>$text-harmony</span>
+        <span class="token-chip" onclick="copyText('#87CCA9','Copied #87CCA9')"><span class="chip-swatch" style="background:#87CCA9"></span>$button-primary-default</span>
+        <span class="token-chip" onclick="copyText('#B4B4B4','Copied #B4B4B4')"><span class="chip-swatch" style="background:#B4B4B4"></span>$text-disabled</span>
+        <span class="token-chip" onclick="copyText('#1A1A1A','Copied #1A1A1A')"><span class="chip-swatch" style="background:#1A1A1A"></span>$border-primary</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Preview -->
+  <div class="section-label">Interactive Preview</div>
+  <div class="props-demo">
+    <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Type</div>
+        <div class="ctrl-pills" id="ictrl-type">
+          <span class="ctrl-pill active" onclick="setICtrl('type',this,'radio')">Radio</span>
+          <span class="ctrl-pill" onclick="setICtrl('type',this,'checkbox')">Checkbox</span>
+          <span class="ctrl-pill" onclick="setICtrl('type',this,'switch')">Switch</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">State</div>
+        <div class="ctrl-pills" id="ictrl-state">
+          <span class="ctrl-pill active" onclick="setICtrl('state',this,'default')">Default</span>
+          <span class="ctrl-pill" onclick="setICtrl('state',this,'active')">Active</span>
+          <span class="ctrl-pill" onclick="setICtrl('state',this,'disabled')">Disabled</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Selected</div>
+        <div class="ctrl-pills" id="ictrl-selected">
+          <span class="ctrl-pill active" onclick="setICtrl('selected',this,'off')">Off</span>
+          <span class="ctrl-pill" onclick="setICtrl('selected',this,'on')">On</span>
+        </div>
+      </div>
+    </div>
+    <div class="props-demo-stage" id="ctrl-preview-stage" style="min-height:100px">
+      <div class="ctrl-radio ctrl-default"></div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Anatomy -->
+  <div class="section-label">Anatomy</div>
+  <div class="anatomy-box">
+    <div style="display:inline-flex;align-items:center;gap:32px;flex-wrap:wrap">
+      <!-- Radio anatomy -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <div style="position:relative;display:inline-block">
+          <div class="ctrl-radio ctrl-active" style="position:relative">
+            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
+            <span class="anatomy-number" style="top:2px;left:2px;width:10px;height:10px;font-size:8px">2</span>
+          </div>
+        </div>
+        <div class="anatomy-legend">
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — circle, 20×20px, border 2px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Inner dot — 10×10px, shown when selected</div>
+        </div>
+      </div>
+      <!-- Checkbox anatomy -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <div style="position:relative;display:inline-block">
+          <div class="ctrl-checkbox ctrl-cb-checked" style="position:relative">
+            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
+          </div>
+        </div>
+        <div class="anatomy-legend">
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — square, 16×16px, border-radius 4px</div>
+          <div class="anatomy-legend-item" style="padding-left:4px"><span class="anatomy-legend-num" style="visibility:hidden">1</span>Check icon — shown when selected, 44×44px tap target</div>
+        </div>
+      </div>
+      <!-- Switch anatomy -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
+        <div style="position:relative;display:inline-block">
+          <div class="ctrl-switch ctrl-sw-on" style="position:relative">
+            <span class="anatomy-number" style="top:-8px;right:-8px">1</span>
+            <span class="anatomy-number" style="top:4px;right:4px;width:10px;height:10px;font-size:8px">2</span>
+          </div>
+        </div>
+        <div class="anatomy-legend">
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Track — 36×20px, border-radius 100px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Thumb — 16×16px circle, transitions on toggle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Variants -->
+  <div class="section-label">Variants · Types</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr">
+    <!-- Radio Button -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Radio Button</div>
+        <div class="variant-card-tag">type="Radio Button"</div>
+      </div>
+      <div class="variant-card-body" style="gap:20px;flex-direction:row;align-items:flex-start;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-default"></div></div>
+          <div class="state-label">Default · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-active"></div></div>
+          <div class="state-label">Active · On</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-disabled"></div></div>
+          <div class="state-label">Disabled · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-disabled ctrl-disabled-on"></div></div>
+          <div class="state-label">Disabled · On</div>
+        </div>
+      </div>
+    </div>
+    <!-- Checkbox -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Checkbox</div>
+        <div class="variant-card-tag">type="Checkbox"</div>
+      </div>
+      <div class="variant-card-body" style="gap:20px;flex-direction:row;align-items:flex-start;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-default"></div></div>
+          <div class="state-label">Default · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-checked"></div></div>
+          <div class="state-label">Active · On</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-disabled"></div></div>
+          <div class="state-label">Disabled · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-disabled ctrl-cb-disabled-on"></div></div>
+          <div class="state-label">Disabled · On</div>
+        </div>
+      </div>
+    </div>
+    <!-- Switch -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Switch</div>
+        <div class="variant-card-tag">type="Switch"</div>
+      </div>
+      <div class="variant-card-body" style="gap:20px;flex-direction:row;align-items:flex-start;flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-off"></div></div>
+          <div class="state-label">Default · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-on"></div></div>
+          <div class="state-label">Active · On</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-disabled"></div></div>
+          <div class="state-label">Disabled · Off</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px">
+          <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-disabled ctrl-sw-disabled-on"></div></div>
+          <div class="state-label">Disabled · On</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- States Matrix -->
+  <div class="section-label">States · All Types</div>
+  <div class="states-grid">
+    <div class="state-row-header">All types at their standard size</div>
+    <!-- Row 1: Default Off -->
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-default"></div></div>
+      <div class="state-label">Radio · Default</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-default"></div></div>
+      <div class="state-label">Checkbox · Default</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-off"></div></div>
+      <div class="state-label">Switch · Off</div>
+    </div>
+    <div class="state-cell">
+      <div style="height:44px"></div>
+      <div class="state-label">—</div>
+    </div>
+    <!-- Row 2: Active On -->
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-active"></div></div>
+      <div class="state-label">Radio · Active</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-checked"></div></div>
+      <div class="state-label">Checkbox · Checked</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-on"></div></div>
+      <div class="state-label">Switch · On</div>
+    </div>
+    <div class="state-cell">
+      <div style="height:44px"></div>
+      <div class="state-label">—</div>
+    </div>
+    <!-- Row 3: Disabled -->
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-radio ctrl-disabled"></div></div>
+      <div class="state-label">Radio · Disabled</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-checkbox ctrl-cb-disabled"></div></div>
+      <div class="state-label">Checkbox · Disabled</div>
+    </div>
+    <div class="state-cell">
+      <div class="ctrl-tap-target"><div class="ctrl-switch ctrl-sw-disabled"></div></div>
+      <div class="state-label">Switch · Disabled</div>
+    </div>
+    <div class="state-cell">
+      <div style="height:44px"></div>
+      <div class="state-label">—</div>
+    </div>
+  </div>
+
+  <!-- Design Specs -->
+  <div class="section-label">Design Specs</div>
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">📐 Layout & Sizing</div>
+    <table class="spec-table">
+      <thead><tr><th>Property</th><th>Radio Button</th><th>Checkbox</th><th>Switch</th><th>Token</th></tr></thead>
+      <tbody>
+        <tr><td>Tap target</td><td class="spec-value">44×44px</td><td class="spec-value">44×44px</td><td class="spec-value">44×44px</td><td><span class="spec-token">$spacing-touch-target</span></td></tr>
+        <tr><td>Component size</td><td class="spec-value">20×20px</td><td class="spec-value">16×16px</td><td class="spec-value">36×20px</td><td>—</td></tr>
+        <tr><td>Border width</td><td class="spec-value">2px</td><td class="spec-value">1.5px</td><td>—</td><td>—</td></tr>
+        <tr><td>Border radius</td><td class="spec-value">100px (circle)</td><td class="spec-value">4px</td><td class="spec-value">100px</td><td><span class="spec-token">$border-radius-full</span></td></tr>
+        <tr><td>Inner dot / thumb</td><td class="spec-value">10×10px</td><td>checkmark icon</td><td class="spec-value">16×16px</td><td>—</td></tr>
+        <tr><td>Padding (tap target)</td><td class="spec-value">12px</td><td class="spec-value">12px</td><td class="spec-value">4px V · 12px H</td><td><span class="spec-token">$spacing-04</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🎨 Color Tokens</div>
+    <table class="spec-table">
+      <thead><tr><th>Type · State</th><th>Track / Fill</th><th>Border</th><th>Thumb / Icon</th></tr></thead>
+      <tbody>
+        <tr><td>Radio · Default</td><td>transparent</td><td><span class="spec-token">$border-primary</span> <code>#1A1A1A</code></td><td>—</td></tr>
+        <tr><td>Radio · Active (On)</td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Radio · Disabled</td><td>transparent</td><td><span class="spec-token">$text-disabled</span> <code>#B4B4B4</code></td><td>—</td></tr>
+        <tr><td>Checkbox · Default</td><td>transparent</td><td><span class="spec-token">$border-primary</span> <code>#1A1A1A</code></td><td>—</td></tr>
+        <tr><td>Checkbox · Checked</td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Checkbox · Disabled</td><td>transparent</td><td><span class="spec-token">$text-disabled</span> <code>#B4B4B4</code></td><td>—</td></tr>
+        <tr><td>Switch · Off</td><td><code>#9B9B9B</code></td><td>transparent</td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Switch · On</td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td><td>transparent</td><td><code>#FFFFFF</code></td></tr>
+        <tr><td>Switch · Disabled</td><td><span class="spec-token">$text-disabled</span> <code>#B4B4B4</code></td><td>transparent</td><td><code>#FFFFFF</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Usage Guidelines -->
+  <div class="section-label">Usage Guidelines</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">🔘</div>
+        <div class="usage-content">
+          <strong>Radio for single choice</strong>
+          <p>Use Radio Buttons when the user must pick exactly one option from a mutually exclusive list. Always pre-select the most common or safest default.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">☑️</div>
+        <div class="usage-content">
+          <strong>Checkbox for multi-select</strong>
+          <p>Use Checkboxes when the user can pick zero, one, or many options independently. Also valid for a single binary choice like "I agree to the Terms."</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7FA">🔁</div>
+        <div class="usage-content">
+          <strong>Switch for instant state change</strong>
+          <p>Use Switches when toggling a setting takes effect immediately — no "Save" needed. Don't use a Switch inside a form that requires submission.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#FEF6F1">🎯</div>
+        <div class="usage-content">
+          <strong>44×44px minimum tap target</strong>
+          <p>All controls must have a 44×44px invisible tap area regardless of the visible component size. This meets WCAG touch target requirements.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">👁️</div>
+        <div class="usage-content">
+          <strong>Visible state always</strong>
+          <p>Default, selected, and disabled states must always be visually distinct. Never style a disabled control the same as an enabled one.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#F6F6F6">⬛</div>
+        <div class="usage-content">
+          <strong>Group logically, label clearly</strong>
+          <p>Related controls belong together visually. Every control needs an adjacent label — never rely on the control icon alone to communicate purpose.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">When to use which control</div>
+  <div class="spec-table-wrap" style="margin-bottom:32px">
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>✅ Use this</th>
+          <th>❌ Instead of a…</th>
+          <th>Because…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Radio Button Group</td>
+          <td>Checkbox Group</td>
+          <td>You need the user to select only one option from a list (e.g., "Select a delivery speed").</td>
+        </tr>
+        <tr>
+          <td>Checkbox</td>
+          <td>Radio Button Group</td>
+          <td>The user can select zero, one, or many options from a list (e.g., "Choose your pizza toppings").</td>
+        </tr>
+        <tr>
+          <td>Switch / Toggle</td>
+          <td>Checkbox</td>
+          <td>The choice represents an instantaneous state change that doesn't need to be submitted (e.g., "Turn on Wi-Fi").</td>
+        </tr>
+        <tr>
+          <td>Checkbox</td>
+          <td>Switch / Toggle</td>
+          <td>The choice is part of a form and needs to be submitted with other data (e.g., "Remember me on this computer").</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-label">Do / Don't</div>
+  <div class="do-dont-grid">
+    <div class="do-box">
+      <div class="do-header">✓ DO</div>
+      <div class="do-body">
+        <!-- Radio group demo -->
+        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:4px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-radio ctrl-active"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Option A</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-radio ctrl-default"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Option B</span>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use Radio Button group when only one selection is allowed</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-checkbox ctrl-cb-checked"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Notifications</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-checkbox ctrl-cb-checked"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Dark mode</span>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use Checkboxes when multiple selections are valid</div>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px">
+          <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-switch ctrl-sw-on"></div></div>
+          <span style="font-size:14px;color:#1a1a1a">Wi-Fi enabled</span>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use Switch for settings that apply instantly</div>
+      </div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-header">✗ DON'T</div>
+      <div class="do-body">
+        <!-- Two radios both "on" — impossible but misused -->
+        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:4px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-checkbox ctrl-cb-checked"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Option A</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-checkbox ctrl-cb-default"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Option B</span>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use Checkboxes when only one choice is possible — use Radio</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-radio ctrl-active"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Notification</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-radio ctrl-active" style="border-color:#B4B4B4"></div></div>
+            <span style="font-size:14px;color:#1a1a1a">Dark mode</span>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use Radio Buttons for independent, multi-select preferences</div>
+        <div style="margin-top:12px;display:flex;align-items:center;gap:8px">
+          <div class="ctrl-tap-target" style="width:44px;height:44px"><div class="ctrl-switch ctrl-sw-off"></div></div>
+          <span style="font-size:14px;color:#1a1a1a">Agree to Terms</span>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use Switch for form fields that need explicit submission</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Principles -->
+  <div class="section-label">Principles</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px">
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F7F3">✨</div>
+      <div class="usage-content">
+        <strong>Visible State</strong>
+        <p>Default, selected, and disabled must always be visually distinct — using border color, fill, and opacity — never relying on color alone.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F7FA">⬛</div>
+      <div class="usage-content">
+        <strong>Logical Grouping</strong>
+        <p>Group related controls visually. Use consistent alignment and spacing so it's immediately clear which controls belong to a single question.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#FEF6F1">👍</div>
+      <div class="usage-content">
+        <strong>Sensible Defaults</strong>
+        <p>Pre-select the safest or most common option to reduce cognitive load. Radio Button groups should always have one option selected on load.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="section-label">CSS Custom Properties</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
+    <span style="color:#9B9B9B">/* Control tokens */</span><br>
+    <span style="color:#1C95AD">--ctrl-color-active</span>: <span style="color:#238453">#238453</span>; <span style="color:#9B9B9B">/* $text-harmony — selected state for all types */</span><br>
+    <span style="color:#1C95AD">--ctrl-color-default-border</span>: <span style="color:#1a1a1a">#1A1A1A</span>; <span style="color:#9B9B9B">/* $border-primary — unselected border */</span><br>
+    <span style="color:#1C95AD">--ctrl-color-disabled</span>: <span style="color:#B4B4B4">#B4B4B4</span>; <span style="color:#9B9B9B">/* $text-disabled — disabled state */</span><br>
+    <span style="color:#1C95AD">--ctrl-color-switch-off</span>: <span style="color:#9B9B9B">#9B9B9B</span>; <span style="color:#9B9B9B">/* $text-secondary — switch off track */</span><br>
+    <span style="color:#1C95AD">--ctrl-thumb-color</span>: <span style="color:#FFFFFF">#FFFFFF</span>; <span style="color:#9B9B9B">/* always white thumb/check */</span><br>
+    <span style="color:#1C95AD">--ctrl-radio-size</span>: <span style="color:#FE6201">20px</span>; <span style="color:#9B9B9B">/* radio outer circle */</span><br>
+    <span style="color:#1C95AD">--ctrl-checkbox-size</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* checkbox square */</span><br>
+    <span style="color:#1C95AD">--ctrl-switch-w</span>: <span style="color:#FE6201">36px</span>; <span style="color:#9B9B9B">/* switch track width */</span><br>
+    <span style="color:#1C95AD">--ctrl-switch-h</span>: <span style="color:#FE6201">20px</span>; <span style="color:#9B9B9B">/* switch track height */</span><br>
+    <span style="color:#1C95AD">--ctrl-tap-target</span>: <span style="color:#FE6201">44px</span>; <span style="color:#9B9B9B">/* minimum touch area */</span>
+  </div>
+
+</div>
+
+<style>
+/* ── Control Base Components ── */
+.ctrl-tap-target {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* ── Radio Button ── */
+.ctrl-radio {
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  border: 2px solid #1A1A1A;
+  background: transparent;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color .18s, background .18s;
+}
+.ctrl-radio.ctrl-active {
+  border-color: #238453;
+  background: #238453;
+}
+.ctrl-radio.ctrl-active::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background: #FFFFFF;
+}
+.ctrl-radio.ctrl-disabled {
+  border-color: #B4B4B4;
+  background: transparent;
+  cursor: not-allowed;
+}
+.ctrl-radio.ctrl-disabled.ctrl-disabled-on {
+  background: #B4B4B4;
+}
+.ctrl-radio.ctrl-disabled.ctrl-disabled-on::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 100px;
+  background: #FFFFFF;
+}
+
+/* ── Checkbox ── */
+.ctrl-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid #1A1A1A;
+  background: transparent;
+  position: relative;
+  flex-shrink: 0;
+  transition: border-color .18s, background .18s;
+}
+.ctrl-checkbox.ctrl-cb-checked {
+  border-color: #238453;
+  background: #238453;
+}
+.ctrl-checkbox.ctrl-cb-checked::after {
+  content: '';
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  width: 5px;
+  height: 8px;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+.ctrl-checkbox.ctrl-cb-disabled {
+  border-color: #B4B4B4;
+  background: transparent;
+  cursor: not-allowed;
+}
+.ctrl-checkbox.ctrl-cb-disabled.ctrl-cb-disabled-on {
+  background: #B4B4B4;
+}
+.ctrl-checkbox.ctrl-cb-disabled.ctrl-cb-disabled-on::after {
+  content: '';
+  position: absolute;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  width: 5px;
+  height: 8px;
+  border-right: 2px solid #FFFFFF;
+  border-bottom: 2px solid #FFFFFF;
+}
+
+/* ── Switch ── */
+.ctrl-switch {
+  width: 36px;
+  height: 20px;
+  border-radius: 100px;
+  background: #9B9B9B;
+  position: relative;
+  flex-shrink: 0;
+  transition: background .18s;
+  cursor: pointer;
+}
+.ctrl-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 100px;
+  background: #FFFFFF;
+  transition: transform .18s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.ctrl-switch.ctrl-sw-on {
+  background: #238453;
+}
+.ctrl-switch.ctrl-sw-on::after {
+  transform: translateX(16px);
+}
+.ctrl-switch.ctrl-sw-disabled {
+  background: #B4B4B4;
+  cursor: not-allowed;
+}
+.ctrl-switch.ctrl-sw-disabled.ctrl-sw-disabled-on {
+  background: #B4B4B4;
+}
+.ctrl-switch.ctrl-sw-disabled.ctrl-sw-disabled-on::after {
+  transform: translateX(16px);
+}
+</style>
+
+<script>
+// ─── CONTROL INTERACTIVE PREVIEW ───
+const ictrlState = { type: 'radio', state: 'default', selected: 'off' };
+
+function setICtrl(key, el, val) {
+  ictrlState[key] = val;
+  el.closest('.ctrl-pills').querySelectorAll('.ctrl-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  updateCtrlPreview();
+}
+
+function updateCtrlPreview() {
+  const stage = document.getElementById('ctrl-preview-stage');
+  const { type, state, selected } = ictrlState;
+
+  let html = '';
+  const isOn = selected === 'on';
+  const isDisabled = state === 'disabled';
+  const isActive = state === 'active';
+
+  if (type === 'radio') {
+    let cls = 'ctrl-radio';
+    if (isDisabled) {
+      cls += ' ctrl-disabled';
+      if (isOn) cls += ' ctrl-disabled-on';
+    } else if (isOn || isActive) {
+      cls += ' ctrl-active';
+    } else {
+      cls += ' ctrl-default';
+    }
+    html = `<div class="${cls}"></div>`;
+  } else if (type === 'checkbox') {
+    let cls = 'ctrl-checkbox';
+    if (isDisabled) {
+      cls += ' ctrl-cb-disabled';
+      if (isOn) cls += ' ctrl-cb-disabled-on';
+    } else if (isOn || isActive) {
+      cls += ' ctrl-cb-checked';
+    } else {
+      cls += ' ctrl-cb-default';
+    }
+    html = `<div class="${cls}"></div>`;
+  } else if (type === 'switch') {
+    let cls = 'ctrl-switch';
+    if (isDisabled) {
+      cls += ' ctrl-sw-disabled';
+      if (isOn) cls += ' ctrl-sw-disabled-on';
+    } else if (isOn || isActive) {
+      cls += ' ctrl-sw-on';
+    } else {
+      cls += ' ctrl-sw-off';
+    }
+    html = `<div class="${cls}"></div>`;
+  }
+
+  stage.innerHTML = html;
+}
+
+// ─── CONTROL EXPORTS ───
+function exportControlTokens() {
+  const tokens = {
+    control: {
+      "color-active":        { value: "#238453", type: "color", description: "$text-harmony — selected state fill & border" },
+      "color-default-border":{ value: "#1A1A1A", type: "color", description: "$border-primary — unselected border" },
+      "color-disabled":      { value: "#B4B4B4", type: "color", description: "$text-disabled — disabled state" },
+      "color-switch-off":    { value: "#9B9B9B", type: "color", description: "$text-secondary — switch off track" },
+      "color-thumb":         { value: "#FFFFFF", type: "color", description: "thumb/checkmark color" },
+      "radio-size":          { value: "20px",    type: "dimension" },
+      "checkbox-size":       { value: "16px",    type: "dimension" },
+      "switch-width":        { value: "36px",    type: "dimension" },
+      "switch-height":       { value: "20px",    type: "dimension" },
+      "tap-target":          { value: "44px",    type: "dimension" }
+    }
+  };
+  const b = new Blob([JSON.stringify(tokens, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = 'atreus-control-tokens.json'; a.click();
+}
+
+function copyControlCSS() {
+  const css = `:root {
+  --ctrl-color-active: #238453;         /* $text-harmony */
+  --ctrl-color-default-border: #1A1A1A; /* $border-primary */
+  --ctrl-color-disabled: #B4B4B4;       /* $text-disabled */
+  --ctrl-color-switch-off: #9B9B9B;     /* $text-secondary */
+  --ctrl-thumb-color: #FFFFFF;
+  --ctrl-radio-size: 20px;
+  --ctrl-checkbox-size: 16px;
+  --ctrl-switch-w: 36px;
+  --ctrl-switch-h: 20px;
+  --ctrl-tap-target: 44px;
+}
+
+/* Radio Button */
+.ctrl-radio {
+  width: var(--ctrl-radio-size); height: var(--ctrl-radio-size);
+  border-radius: 100px; border: 2px solid var(--ctrl-color-default-border);
+  background: transparent; position: relative; transition: all .18s;
+}
+.ctrl-radio.active {
+  border-color: var(--ctrl-color-active); background: var(--ctrl-color-active);
+}
+.ctrl-radio.active::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%); width: 8px; height: 8px;
+  border-radius: 100px; background: var(--ctrl-thumb-color);
+}
+.ctrl-radio.disabled { border-color: var(--ctrl-color-disabled); cursor: not-allowed; }
+
+/* Checkbox */
+.ctrl-checkbox {
+  width: var(--ctrl-checkbox-size); height: var(--ctrl-checkbox-size);
+  border-radius: 4px; border: 1.5px solid var(--ctrl-color-default-border);
+  background: transparent; position: relative; transition: all .18s;
+}
+.ctrl-checkbox.checked {
+  border-color: var(--ctrl-color-active); background: var(--ctrl-color-active);
+}
+.ctrl-checkbox.checked::after {
+  content: ''; position: absolute; top: 47%; left: 50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  width: 5px; height: 8px;
+  border-right: 2px solid var(--ctrl-thumb-color);
+  border-bottom: 2px solid var(--ctrl-thumb-color);
+}
+.ctrl-checkbox.disabled { border-color: var(--ctrl-color-disabled); cursor: not-allowed; }
+
+/* Switch */
+.ctrl-switch {
+  width: var(--ctrl-switch-w); height: var(--ctrl-switch-h);
+  border-radius: 100px; background: var(--ctrl-color-switch-off);
+  position: relative; transition: background .18s; cursor: pointer;
+}
+.ctrl-switch::after {
+  content: ''; position: absolute; top: 2px; left: 2px;
+  width: 16px; height: 16px; border-radius: 100px;
+  background: var(--ctrl-thumb-color); transition: transform .18s;
+}
+.ctrl-switch.on { background: var(--ctrl-color-active); }
+.ctrl-switch.on::after { transform: translateX(16px); }
+.ctrl-switch.disabled { background: var(--ctrl-color-disabled); cursor: not-allowed; }`;
+  copyText(css, 'Control CSS vars copied!');
+}
+</script>

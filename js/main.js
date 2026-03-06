@@ -64,6 +64,9 @@ function initPage(id) {
     case 'buttons':
       updateBtnPreview();
       break;
+    case 'controls':
+  updateCtrlPreview();
+  break;
     case 'bottomsheets':
       if (typeof renderBlocker === 'function') renderBlocker('rekening');
       break;
