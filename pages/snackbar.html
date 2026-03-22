@@ -14,29 +14,45 @@
 
   <!-- Hero -->
   <div class="comp-hero">
-    <div class="comp-hero-preview" style="flex-direction:column;gap:12px;align-items:stretch;min-width:280px;max-width:340px">
-      <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box">
-        <span style="flex:1;font-family:'Sora',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;line-height:1.4">Message sent successfully</span>
+    <div class="comp-hero-preview" style="flex-direction:column;gap:10px;align-items:stretch;min-width:280px;max-width:340px">
+      <!-- Default -->
+      <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;width:100%;box-sizing:border-box">
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Message sent successfully</span>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box">
-        <span style="flex:1;font-family:'Sora',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;line-height:1.4">File uploaded to server</span>
-        <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#87CCA9;white-space:nowrap;cursor:pointer;flex-shrink:0">Undo</span>
+      <!-- Success -->
+      <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:14px 12px;width:100%;box-sizing:border-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer completed</span>
+        <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer">View</span>
       </div>
-      <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box">
-        <span style="flex:1;font-family:'Sora',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;line-height:1.4">Connection lost. Retrying…</span>
+      <!-- Error -->
+      <div style="display:flex;align-items:center;gap:10px;background:#4D1A1A;border-radius:20px;padding:14px 12px;width:100%;box-sizing:border-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer failed. Try again.</span>
+        <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#FC5858;white-space:nowrap;flex-shrink:0;cursor:pointer">Retry</span>
+      </div>
+      <!-- Warning -->
+      <div style="display:flex;align-items:center;gap:10px;background:#4D3200;border-radius:20px;padding:14px 12px;width:100%;box-sizing:border-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expires in 5 minutes</span>
+      </div>
+      <!-- Info -->
+      <div style="display:flex;align-items:center;gap:10px;background:#0A2E36;border-radius:20px;padding:14px 12px;width:100%;box-sizing:border-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">New feature available</span>
         <button style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
     <div class="comp-hero-info">
-      <h2>1 Type · 3 Variants · 2 States</h2>
-      <p>A single dark container with a message label, an optional action link, and an optional close icon. All snackbars sit at the bottom of the viewport with 16px horizontal margin and a 20px border radius.</p>
+      <h2>5 Types · 3 Variants · 2 States</h2>
+      <p>A single container with a message label, semantic icon, optional action link, and optional close icon. All snackbars sit at the bottom of the viewport with 16px horizontal margin and a 20px border radius. Type communicates severity — Default for neutral, Success/Error/Warning/Info for semantic feedback.</p>
       <div class="token-strip" style="margin-top:12px;margin-bottom:0">
-        <span class="token-chip" onclick="copyText('#1A1A1A','Copied #1A1A1A')"><span class="chip-swatch" style="background:#1A1A1A"></span>$snackbar-bg</span>
-        <span class="token-chip" onclick="copyText('#FFFFFF','Copied #FFFFFF')"><span class="chip-swatch" style="background:#FFFFFF;border:1px solid #eee"></span>$snackbar-text</span>
+        <span class="token-chip" onclick="copyText('#1A1A1A','Copied #1A1A1A')"><span class="chip-swatch" style="background:#1A1A1A"></span>$snackbar-bg-default</span>
+        <span class="token-chip" onclick="copyText('#1A4D35','Copied #1A4D35')"><span class="chip-swatch" style="background:#1A4D35"></span>$snackbar-bg-success</span>
+        <span class="token-chip" onclick="copyText('#4D1A1A','Copied #4D1A1A')"><span class="chip-swatch" style="background:#4D1A1A"></span>$snackbar-bg-error</span>
         <span class="token-chip" onclick="copyText('#87CCA9','Copied #87CCA9')"><span class="chip-swatch" style="background:#87CCA9"></span>$snackbar-action</span>
-        <span class="token-chip" onclick="copyText('20px','Copied 20px')"><span class="chip-swatch" style="background:#E8E8E8;border-radius:4px;font-size:9px;color:#333;display:flex;align-items:center;justify-content:center;width:18px;height:18px;flex-shrink:0">r</span>$border-radius-lg</span>
       </div>
     </div>
   </div>
@@ -45,6 +61,16 @@
   <div class="section-label">Interactive Preview</div>
   <div class="props-demo">
     <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Type</div>
+        <div class="ctrl-pills" id="sctrl-type">
+          <span class="ctrl-pill active" onclick="setSCtrl('type',this,'default')">Default</span>
+          <span class="ctrl-pill" onclick="setSCtrl('type',this,'success')">Success</span>
+          <span class="ctrl-pill" onclick="setSCtrl('type',this,'error')">Error</span>
+          <span class="ctrl-pill" onclick="setSCtrl('type',this,'warning')">Warning</span>
+          <span class="ctrl-pill" onclick="setSCtrl('type',this,'info')">Info</span>
+        </div>
+      </div>
       <div class="ctrl-group">
         <div class="ctrl-label">Variant</div>
         <div class="ctrl-pills" id="sctrl-variant">
@@ -79,27 +105,35 @@
   <div class="anatomy-box">
     <div style="display:flex;flex-direction:column;align-items:flex-start;gap:24px;width:100%">
       <div style="position:relative;width:100%;max-width:360px">
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box;position:relative">
+        <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box;position:relative">
           <span class="anatomy-number" style="position:absolute;top:-12px;left:-12px">1</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;position:relative">
+            <circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/>
+            <path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <span class="anatomy-number" style="position:absolute;top:-10px;left:-10px">2</span>
+          </svg>
+          <!-- anatomy-number 2 outside svg -->
+          <span class="anatomy-number" style="position:absolute;top:6px;left:32px">2</span>
           <span style="flex:1;font-family:'Sora',sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;line-height:1.4;position:relative">
             Payment processed
-            <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px">2</span>
+            <span class="anatomy-number" style="position:absolute;top:-10px;right:-8px">3</span>
           </span>
           <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#87CCA9;white-space:nowrap;cursor:pointer;flex-shrink:0;position:relative">
             View
-            <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px">3</span>
+            <span class="anatomy-number" style="position:absolute;top:-10px;right:-8px">4</span>
           </span>
           <button style="display:flex;align-items:center;justify-content:center;width:24px;height:24px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0;position:relative" aria-label="Close">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px">4</span>
+            <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px">5</span>
           </button>
         </div>
       </div>
       <div class="anatomy-legend">
-        <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — dark fill <code>#1A1A1A</code>, border-radius: 20px, padding: 16px 12px</div>
-        <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Message — Sora Regular 14px, color <code>#FFFFFF</code>, flex: 1</div>
-        <div class="anatomy-legend-item"><span class="anatomy-legend-num">3</span>Action (optional) — Sora Bold 14px, color <code>#87CCA9</code>, no border</div>
-        <div class="anatomy-legend-item"><span class="anatomy-legend-num">4</span>Close icon (optional) — 16×16px, color <code>#FFFFFF</code>, opacity 0.6</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — dark fill by type, border-radius: 20px, padding: 16px 12px</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Semantic icon (optional) — 16×16px, color matches type accent — absent on Default</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">3</span>Message — Sora Regular 14px, color <code>#FFFFFF</code>, flex: 1</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">4</span>Action (optional) — Sora Bold 14px, color matches type accent, no border</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">5</span>Close icon (optional) — 16×16px, color <code>#FFFFFF</code>, opacity 0.6</div>
       </div>
     </div>
   </div>
@@ -110,53 +144,106 @@
   <div class="section-label">Variants</div>
   <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr">
 
+    <!-- Message Only -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">Message Only</div>
         <div class="variant-card-tag">variant="message-only"</div>
       </div>
       <div class="variant-card-body" style="flex-direction:column;gap:10px;align-items:stretch">
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
           <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Changes saved</span>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
-          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">This message is a bit longer to show wrapping behavior on narrow widths</span>
+        <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer completed</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Payment failed</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D3200;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expires soon</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#0A2E36;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">New feature available</span>
         </div>
       </div>
     </div>
 
+    <!-- With Action -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">With Action</div>
         <div class="variant-card-tag">variant="with-action"</div>
       </div>
       <div class="variant-card-body" style="flex-direction:column;gap:10px;align-items:stretch">
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
           <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Item deleted</span>
           <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer">Undo</span>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
-          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Photo uploaded</span>
+        <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer completed</span>
           <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer">View</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer failed</span>
+          <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#FC5858;white-space:nowrap;flex-shrink:0;cursor:pointer">Retry</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D3200;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expires soon</span>
+          <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#FF9B00;white-space:nowrap;flex-shrink:0;cursor:pointer">Extend</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#0A2E36;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">New feature available</span>
+          <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#30AEC7;white-space:nowrap;flex-shrink:0;cursor:pointer">Try it</span>
         </div>
       </div>
     </div>
 
+    <!-- With Close -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">With Close</div>
         <div class="variant-card-tag">variant="with-close"</div>
       </div>
       <div class="variant-card-body" style="flex-direction:column;gap:10px;align-items:stretch">
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+        <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
           <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Connection lost. Retrying…</span>
           <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
         </div>
-        <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
-          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Update available</span>
-          <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer;margin-right:4px">Install</span>
+        <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Verification complete</span>
+          <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Upload failed. Check your connection.</span>
+          <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#4D3200;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Low storage. Free up space.</span>
+          <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;background:#0A2E36;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+          <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Scheduled maintenance tonight</span>
           <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
@@ -164,6 +251,89 @@
       </div>
     </div>
 
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- States Matrix -->
+  <div class="section-label">States · All Types</div>
+  <div class="states-grid">
+    <div class="state-row-header">All 5 types at message-only state — shows container color + icon per type</div>
+
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:8px;background:#1A1A1A;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Changes saved</span>
+      </div>
+      <div class="state-label">Default</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#1A4D35;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer done</span>
+      </div>
+      <div class="state-label">Success</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#4D1A1A;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Payment failed</span>
+      </div>
+      <div class="state-label">Error</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#4D3200;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expiring</span>
+      </div>
+      <div class="state-label">Warning</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#0A2E36;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Feature available</span>
+      </div>
+      <div class="state-label">Info</div>
+    </div>
+    <!-- Row: with action -->
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:8px;background:#1A1A1A;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Item deleted</span>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0">Undo</span>
+      </div>
+      <div class="state-label">Default + Action</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#1A4D35;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Transfer done</span>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0">View</span>
+      </div>
+      <div class="state-label">Success + Action</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#4D1A1A;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Payment failed</span>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#FC5858;white-space:nowrap;flex-shrink:0">Retry</span>
+      </div>
+      <div class="state-label">Error + Action</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#4D3200;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expiring</span>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#FF9B00;white-space:nowrap;flex-shrink:0">Extend</span>
+      </div>
+      <div class="state-label">Warning + Action</div>
+    </div>
+    <div class="state-cell">
+      <div style="display:flex;align-items:center;gap:7px;background:#0A2E36;border-radius:14px;padding:10px 11px;box-sizing:border-box;min-width:120px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="flex:1;font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#FFFFFF;line-height:1.4">Feature available</span>
+        <span style="font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#30AEC7;white-space:nowrap;flex-shrink:0">Try it</span>
+      </div>
+      <div class="state-label">Info + Action</div>
+    </div>
   </div>
 
   <hr class="section-divider">
@@ -175,29 +345,31 @@
     <table class="spec-table">
       <thead><tr><th>Property</th><th>Value</th><th>Token</th></tr></thead>
       <tbody>
-        <tr><td>Container background</td><td class="spec-value">#1A1A1A</td><td><span class="spec-token">$snackbar-bg</span></td></tr>
         <tr><td>Border radius</td><td class="spec-value">20px</td><td><span class="spec-token">$border-radius-lg</span></td></tr>
         <tr><td>Padding</td><td class="spec-value">16px 12px</td><td><span class="spec-token">$spacing-05 / $spacing-04</span></td></tr>
         <tr><td>Horizontal screen margin</td><td class="spec-value">16px each side</td><td><span class="spec-token">$spacing-05</span></td></tr>
         <tr><td>Bottom offset</td><td class="spec-value">16px from bottom edge</td><td><span class="spec-token">$spacing-05</span></td></tr>
+        <tr><td>Icon size</td><td class="spec-value">16×16px</td><td>—</td></tr>
+        <tr><td>Gap (icon → message → action)</td><td class="spec-value">10px</td><td><span class="spec-token">$spacing-03</span></td></tr>
         <tr><td>Message font</td><td class="spec-value">Sora Regular 14px</td><td><span class="spec-token">$font-body-md</span></td></tr>
         <tr><td>Action font</td><td class="spec-value">Sora Bold 14px</td><td><span class="spec-token">$font-body-md-bold</span></td></tr>
         <tr><td>Close icon size</td><td class="spec-value">16×16px</td><td>—</td></tr>
-        <tr><td>Gap (message → action)</td><td class="spec-value">12px</td><td><span class="spec-token">$spacing-04</span></td></tr>
         <tr><td>Auto-dismiss duration</td><td class="spec-value">3000ms</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
 
   <div class="spec-table-wrap">
-    <div class="spec-table-title">🎨 Color Tokens</div>
+    <div class="spec-table-title">🎨 Color Tokens — All 5 Types</div>
     <table class="spec-table">
-      <thead><tr><th>Element</th><th>Color</th><th>Token</th></tr></thead>
+      <thead><tr><th>Type</th><th>Background</th><th>Icon / Action color</th><th>Message text</th></tr></thead>
       <tbody>
-        <tr><td>Container bg</td><td class="spec-value">#1A1A1A</td><td><span class="spec-token">$snackbar-bg</span></td></tr>
-        <tr><td>Message text</td><td class="spec-value">#FFFFFF</td><td><span class="spec-token">$text-inverse</span></td></tr>
-        <tr><td>Action text</td><td class="spec-value">#87CCA9</td><td><span class="spec-token">$button-primary-default</span></td></tr>
-        <tr><td>Close icon</td><td class="spec-value">#FFFFFF · opacity 0.6</td><td><span class="spec-token">$text-inverse / 0.6</span></td></tr>
+        <tr><td>Default</td><td class="spec-value">#1A1A1A <span class="spec-token">$snackbar-bg-default</span></td><td class="spec-value">#87CCA9 <span class="spec-token">$snackbar-accent-default</span></td><td class="spec-value">#FFFFFF</td></tr>
+        <tr><td>Success</td><td class="spec-value">#1A4D35 <span class="spec-token">$snackbar-bg-success</span></td><td class="spec-value">#87CCA9 <span class="spec-token">$snackbar-accent-success</span></td><td class="spec-value">#FFFFFF</td></tr>
+        <tr><td>Error</td><td class="spec-value">#4D1A1A <span class="spec-token">$snackbar-bg-error</span></td><td class="spec-value">#FC5858 <span class="spec-token">$snackbar-accent-error</span></td><td class="spec-value">#FFFFFF</td></tr>
+        <tr><td>Warning</td><td class="spec-value">#4D3200 <span class="spec-token">$snackbar-bg-warning</span></td><td class="spec-value">#FF9B00 <span class="spec-token">$snackbar-accent-warning</span></td><td class="spec-value">#FFFFFF</td></tr>
+        <tr><td>Info</td><td class="spec-value">#0A2E36 <span class="spec-token">$snackbar-bg-info</span></td><td class="spec-value">#30AEC7 <span class="spec-token">$snackbar-accent-info</span></td><td class="spec-value">#FFFFFF</td></tr>
+        <tr><td>All types — Close icon</td><td>—</td><td class="spec-value">#FFFFFF · opacity 0.6</td><td>—</td></tr>
       </tbody>
     </table>
   </div>
@@ -217,6 +389,47 @@
   </div>
 
   <hr class="section-divider">
+
+  <!-- When to use which type -->
+  <div class="section-label">When to use which type</div>
+  <div class="spec-table-wrap" style="margin-bottom:32px">
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>✅ Use this type</th>
+          <th>When…</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Default</strong></td>
+          <td>Neutral confirmation, no semantic urgency. Outcome is expected and non-critical.</td>
+          <td>"Changes saved", "Item deleted"</td>
+        </tr>
+        <tr>
+          <td><strong>Success</strong></td>
+          <td>A key user action completed successfully. Reassures the user the task is done.</td>
+          <td>"Transfer completed", "KYC verified"</td>
+        </tr>
+        <tr>
+          <td><strong>Error</strong></td>
+          <td>A recoverable failure occurred. User may need to retry or take action — but it's not critical enough for a Dialog.</td>
+          <td>"Payment failed. Try again.", "Upload error"</td>
+        </tr>
+        <tr>
+          <td><strong>Warning</strong></td>
+          <td>A condition requires attention but hasn't failed yet. User should act soon.</td>
+          <td>"Session expires in 5 min", "Low balance"</td>
+        </tr>
+        <tr>
+          <td><strong>Info</strong></td>
+          <td>Contextual information the user might want but doesn't need to act on immediately.</td>
+          <td>"Scheduled maintenance tonight", "New feature available"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- Usage Guidelines -->
   <div class="section-label">Usage Guidelines</div>
@@ -249,7 +462,7 @@
         <div class="usage-icon" style="background:#FEF6F1">⏱️</div>
         <div class="usage-content">
           <strong>Auto-dismiss after 3 seconds</strong>
-          <p>Default dismisses at 3000ms. If the content needs attention, add a close icon for manual dismissal.</p>
+          <p>Default dismisses at 3000ms. If the content needs attention (Warning, Error), add a close icon for manual dismissal.</p>
         </div>
       </div>
       <div class="usage-card">
@@ -263,7 +476,7 @@
         <div class="usage-icon" style="background:#F6F6F6">🔕</div>
         <div class="usage-content">
           <strong>Not for critical errors</strong>
-          <p>Snackbars are low-priority, non-blocking feedback. Use Dialog for required confirmations or critical errors.</p>
+          <p>Snackbars are low-priority, non-blocking feedback. Use Dialog for required confirmations or errors the user must resolve.</p>
         </div>
       </div>
     </div>
@@ -276,34 +489,36 @@
       <div class="do-header">✓ DO</div>
       <div class="do-body">
         <div style="margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+          <div style="display:flex;align-items:center;gap:10px;background:#1A4D35;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Profile updated</span>
             <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer">Undo</span>
           </div>
         </div>
-        <div class="guideline-row"><span class="guideline-icon">✓</span>Short message + one reversible action</div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Match type to outcome — Success for completed actions</div>
         <div style="margin-top:14px;margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
-            <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">File deleted from your drive</span>
+          <div style="display:flex;align-items:center;gap:10px;background:#4D3200;border-radius:20px;padding:13px 12px;box-sizing:border-box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>
+            <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Session expires in 5 min</span>
             <button style="display:flex;align-items:center;justify-content:center;width:22px;height:22px;background:transparent;border:none;cursor:pointer;color:rgba(255,255,255,0.6);flex-shrink:0;padding:0" aria-label="Close">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             </button>
           </div>
         </div>
-        <div class="guideline-row"><span class="guideline-icon">✓</span>Add close icon for persistent or longer messages</div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Add close icon for Warning/Error so users can dismiss manually</div>
         <div style="margin-top:14px;margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+          <div style="display:flex;align-items:center;gap:10px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
             <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Saved</span>
           </div>
         </div>
-        <div class="guideline-row"><span class="guideline-icon">✓</span>Use message-only for simple confirmations</div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use Default message-only for simple neutral confirmations</div>
       </div>
     </div>
     <div class="dont-box">
       <div class="dont-header">✗ DON'T</div>
       <div class="do-body">
         <div style="margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:8px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+          <div style="display:flex;align-items:center;gap:8px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
             <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Something went wrong</span>
             <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer">Retry</span>
             <span style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:#FF8A80;white-space:nowrap;flex-shrink:0;cursor:pointer">Dismiss</span>
@@ -311,17 +526,45 @@
         </div>
         <div class="guideline-row"><span class="guideline-icon">✗</span>Never use two actions — use a Dialog instead</div>
         <div style="margin-top:14px;margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+          <div style="display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:13px 12px;box-sizing:border-box">
             <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">Your payment of Rp 2.500.000 to BCA Virtual Account 8808123456789 has been submitted and is being processed by the system</span>
           </div>
         </div>
-        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't write long messages — users won't finish reading</div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't write long messages — users won't finish reading before dismiss</div>
         <div style="margin-top:14px;margin-bottom:4px">
-          <div style="display:flex;align-items:center;gap:12px;background:#B71C1C;border-radius:20px;padding:14px 12px;box-sizing:border-box">
+          <div style="display:flex;align-items:center;gap:12px;background:#B71C1C;border-radius:20px;padding:13px 12px;box-sizing:border-box">
             <span style="flex:1;font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:#FFFFFF;line-height:1.4">⚠️ Critical: Your account will be deactivated in 24h</span>
           </div>
         </div>
-        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use snackbars for critical or destructive warnings</div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use snackbars for critical or account-level warnings — use Dialog</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Principles -->
+  <div class="section-label">Principles</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:32px">
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F7F3">🎯</div>
+      <div class="usage-content">
+        <strong>Semantic over decoration</strong>
+        <p>Type choice must match outcome severity — never use Success styling on a neutral message, or Warning just to add color. Color carries meaning in banking contexts.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#E9F7FA">⚡</div>
+      <div class="usage-content">
+        <strong>Non-blocking by design</strong>
+        <p>Snackbars should never interrupt user flow. If a user must read and respond before continuing, that's a Dialog — not a Snackbar.</p>
+      </div>
+    </div>
+    <div class="usage-card">
+      <div class="usage-icon" style="background:#FEF6F1">⏱️</div>
+      <div class="usage-content">
+        <strong>Timing as communication</strong>
+        <p>Auto-dismiss speed communicates urgency. 3000ms is the default. Add a close icon — never extend the timer — when the message is important enough to persist.</p>
       </div>
     </div>
   </div>
@@ -331,25 +574,44 @@
   <!-- CSS Custom Properties -->
   <div class="section-label">CSS Custom Properties</div>
   <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
-    <span style="color:#9B9B9B">/* Snackbar tokens */</span><br>
-    <span style="color:#1C95AD">--snackbar-bg</span>: <span style="color:#444">#1A1A1A</span>; <span style="color:#9B9B9B">/* $color-neutral-100 */</span><br>
-    <span style="color:#1C95AD">--snackbar-text</span>: <span style="color:#444">#FFFFFF</span>; <span style="color:#9B9B9B">/* $text-inverse */</span><br>
-    <span style="color:#1C95AD">--snackbar-action-color</span>: <span style="color:#87CCA9">#87CCA9</span>; <span style="color:#9B9B9B">/* $button-primary-default */</span><br>
+    <span style="color:#9B9B9B">/* Snackbar — Base tokens */</span><br>
+    <span style="color:#1C95AD">--snackbar-text</span>: <span style="color:#444">#FFFFFF</span>; <span style="color:#9B9B9B">/* $text-inverse — all types */</span><br>
     <span style="color:#1C95AD">--snackbar-close-opacity</span>: <span style="color:#FE6201">0.6</span>; <span style="color:#9B9B9B">/* close icon opacity */</span><br>
     <span style="color:#1C95AD">--snackbar-radius</span>: <span style="color:#FE6201">20px</span>; <span style="color:#9B9B9B">/* $border-radius-lg */</span><br>
     <span style="color:#1C95AD">--snackbar-padding</span>: <span style="color:#FE6201">16px 12px</span>; <span style="color:#9B9B9B">/* $spacing-05 $spacing-04 */</span><br>
     <span style="color:#1C95AD">--snackbar-margin-h</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* horizontal screen margin */</span><br>
     <span style="color:#1C95AD">--snackbar-bottom</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* bottom offset from viewport */</span><br>
+    <span style="color:#1C95AD">--snackbar-gap</span>: <span style="color:#FE6201">10px</span>; <span style="color:#9B9B9B">/* gap between icon / message / action */</span><br>
     <span style="color:#1C95AD">--snackbar-enter-duration</span>: <span style="color:#FE6201">240ms</span>; <span style="color:#9B9B9B">/* slide-up + fade-in */</span><br>
     <span style="color:#1C95AD">--snackbar-exit-duration</span>: <span style="color:#FE6201">200ms</span>; <span style="color:#9B9B9B">/* fade-out + slide-down */</span><br>
-    <span style="color:#1C95AD">--snackbar-auto-dismiss</span>: <span style="color:#FE6201">3000ms</span>; <span style="color:#9B9B9B">/* auto-close timer */</span>
+    <span style="color:#1C95AD">--snackbar-auto-dismiss</span>: <span style="color:#FE6201">3000ms</span>; <span style="color:#9B9B9B">/* auto-close timer */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* Snackbar — Type: Default */</span><br>
+    <span style="color:#1C95AD">--snackbar-bg-default</span>: <span style="color:#444">#1A1A1A</span>; <span style="color:#9B9B9B">/* $color-neutral-100 */</span><br>
+    <span style="color:#1C95AD">--snackbar-accent-default</span>: <span style="color:#87CCA9">#87CCA9</span>; <span style="color:#9B9B9B">/* $button-primary-default */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* Snackbar — Type: Success */</span><br>
+    <span style="color:#1C95AD">--snackbar-bg-success</span>: <span style="color:#1A4D35">#1A4D35</span>; <span style="color:#9B9B9B">/* $color-green-90 */</span><br>
+    <span style="color:#1C95AD">--snackbar-accent-success</span>: <span style="color:#87CCA9">#87CCA9</span>; <span style="color:#9B9B9B">/* $button-primary-default */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* Snackbar — Type: Error */</span><br>
+    <span style="color:#1C95AD">--snackbar-bg-error</span>: <span style="color:#4D1A1A">#4D1A1A</span>; <span style="color:#9B9B9B">/* $color-red-90 */</span><br>
+    <span style="color:#1C95AD">--snackbar-accent-error</span>: <span style="color:#FC5858">#FC5858</span>; <span style="color:#9B9B9B">/* $color-red-40 */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* Snackbar — Type: Warning */</span><br>
+    <span style="color:#1C95AD">--snackbar-bg-warning</span>: <span style="color:#4D3200">#4D3200</span>; <span style="color:#9B9B9B">/* $color-orange-90 */</span><br>
+    <span style="color:#1C95AD">--snackbar-accent-warning</span>: <span style="color:#FF9B00">#FF9B00</span>; <span style="color:#9B9B9B">/* $color-orange-40 */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* Snackbar — Type: Info */</span><br>
+    <span style="color:#1C95AD">--snackbar-bg-info</span>: <span style="color:#0A2E36">#0A2E36</span>; <span style="color:#9B9B9B">/* $color-teal-90 */</span><br>
+    <span style="color:#1C95AD">--snackbar-accent-info</span>: <span style="color:#30AEC7">#30AEC7</span>; <span style="color:#9B9B9B">/* $color-teal-40 */</span>
   </div>
 
 </div>
 
 <script>
 (function(){
-  /* ── Inject @keyframes via dynamic <style> — bypasses innerHTML stripping ── */
+  /* ── Inject @keyframes ── */
   if (!document.getElementById('snackbar-anim-style')) {
     var s = document.createElement('style');
     s.id = 'snackbar-anim-style';
@@ -358,7 +620,7 @@
   }
 
   /* ── State ── */
-  var sState = { variant: 'message-only', length: 'short' };
+  var sState = { type: 'default', variant: 'message-only', length: 'short' };
 
   window.setSCtrl = function(key, el, val) {
     sState[key] = val;
@@ -370,16 +632,59 @@
     el.classList.add('active');
   };
 
-  /* ── Build snackbar DOM node (fully inline-styled, no CSS class dependency) ── */
+  /* ── Type config ── */
+  var typeConfig = {
+    'default': {
+      bg: '#1A1A1A',
+      accent: '#87CCA9',
+      icon: null,
+      messages: { short: 'Changes saved', long: 'Your changes have been saved to the server' },
+      action: 'Undo'
+    },
+    'success': {
+      bg: '#1A4D35',
+      accent: '#87CCA9',
+      icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#87CCA9" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#87CCA9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      messages: { short: 'Transfer completed', long: 'Your transfer to BCA has been processed successfully' },
+      action: 'View'
+    },
+    'error': {
+      bg: '#4D1A1A',
+      accent: '#FC5858',
+      icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#FC5858" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="#FC5858" stroke-width="2" stroke-linecap="round"/></svg>',
+      messages: { short: 'Transfer failed. Try again.', long: 'Unable to process your payment. Check your connection and retry.' },
+      action: 'Retry'
+    },
+    'warning': {
+      bg: '#4D3200',
+      accent: '#FF9B00',
+      icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" stroke="#FF9B00" stroke-width="1.5"/><path d="M12 9v4M12 17h.01" stroke="#FF9B00" stroke-width="2" stroke-linecap="round"/></svg>',
+      messages: { short: 'Session expires in 5 minutes', long: 'Your session will expire soon. Save your work or extend the session.' },
+      action: 'Extend'
+    },
+    'info': {
+      bg: '#0A2E36',
+      accent: '#30AEC7',
+      icon: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#30AEC7" stroke-width="1.5"/><path d="M12 16v-4M12 8h.01" stroke="#30AEC7" stroke-width="2" stroke-linecap="round"/></svg>',
+      messages: { short: 'New feature available', long: 'Instant transfer is now available for your account. Try it now.' },
+      action: 'Try it'
+    }
+  };
+
+  /* ── Build snackbar DOM node ── */
   function buildSnackbar() {
-    var messages = {
-      short: 'Changes saved',
-      long:  'Your changes have been saved to the server'
-    };
-    var msg = messages[sState.length] || messages.short;
+    var cfg = typeConfig[sState.type];
+    var msg = cfg.messages[sState.length] || cfg.messages.short;
 
     var wrap = document.createElement('div');
-    wrap.style.cssText = 'display:flex;align-items:center;gap:12px;background:#1A1A1A;border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box;animation:snackbar-enter 0.24s ease-out';
+    wrap.style.cssText = 'display:flex;align-items:center;gap:10px;background:' + cfg.bg + ';border-radius:20px;padding:16px 12px;width:100%;box-sizing:border-box;animation:snackbar-enter 0.24s ease-out';
+
+    if (cfg.icon) {
+      var iconWrap = document.createElement('span');
+      iconWrap.style.cssText = 'display:flex;flex-shrink:0';
+      iconWrap.innerHTML = cfg.icon;
+      wrap.appendChild(iconWrap);
+    }
 
     var msgEl = document.createElement('span');
     msgEl.style.cssText = 'flex:1;font-family:Sora,sans-serif;font-size:14px;font-weight:400;color:#FFFFFF;line-height:1.4';
@@ -388,8 +693,8 @@
 
     if (sState.variant === 'with-action') {
       var act = document.createElement('span');
-      act.style.cssText = 'font-family:Sora,sans-serif;font-size:14px;font-weight:700;color:#87CCA9;white-space:nowrap;flex-shrink:0;cursor:pointer';
-      act.textContent = 'Undo';
+      act.style.cssText = 'font-family:Sora,sans-serif;font-size:14px;font-weight:700;color:' + cfg.accent + ';white-space:nowrap;flex-shrink:0;cursor:pointer';
+      act.textContent = cfg.action;
       act.onclick = function(){ dismissEl(wrap); };
       wrap.appendChild(act);
     }
@@ -428,7 +733,29 @@
 
   /* ── Export tokens ── */
   window.exportSnackbarTokens = function() {
-    var t = { snackbar: { bg:'#1A1A1A', text:'#FFFFFF', 'action-color':'#87CCA9', 'close-opacity':'0.6', 'border-radius':'20px', padding:'16px 12px', 'margin-horizontal':'16px', 'bottom-offset':'16px', 'enter-duration':'240ms', 'exit-duration':'200ms', 'auto-dismiss':'3000ms' } };
+    var t = {
+      snackbar: {
+        base: {
+          text: '#FFFFFF',
+          'close-opacity': '0.6',
+          'border-radius': '20px',
+          padding: '16px 12px',
+          'margin-horizontal': '16px',
+          'bottom-offset': '16px',
+          gap: '10px',
+          'enter-duration': '240ms',
+          'exit-duration': '200ms',
+          'auto-dismiss': '3000ms'
+        },
+        types: {
+          default:  { bg: '#1A1A1A', accent: '#87CCA9' },
+          success:  { bg: '#1A4D35', accent: '#87CCA9' },
+          error:    { bg: '#4D1A1A', accent: '#FC5858' },
+          warning:  { bg: '#4D3200', accent: '#FF9B00' },
+          info:     { bg: '#0A2E36', accent: '#30AEC7' }
+        }
+      }
+    };
     var a = document.createElement('a');
     a.href = 'data:application/json,' + encodeURIComponent(JSON.stringify(t, null, 2));
     a.download = 'snackbar-tokens.json';
@@ -437,7 +764,39 @@
 
   /* ── Copy CSS ── */
   window.copySnackbarCSS = function() {
-    var css = '--snackbar-bg: #1A1A1A;\n--snackbar-text: #FFFFFF;\n--snackbar-action-color: #87CCA9;\n--snackbar-close-opacity: 0.6;\n--snackbar-radius: 20px;\n--snackbar-padding: 16px 12px;\n--snackbar-margin-h: 16px;\n--snackbar-bottom: 16px;\n--snackbar-enter-duration: 240ms;\n--snackbar-exit-duration: 200ms;\n--snackbar-auto-dismiss: 3000ms;';
+    var css = [
+      '/* Snackbar — Base tokens */',
+      '--snackbar-text: #FFFFFF;',
+      '--snackbar-close-opacity: 0.6;',
+      '--snackbar-radius: 20px;',
+      '--snackbar-padding: 16px 12px;',
+      '--snackbar-margin-h: 16px;',
+      '--snackbar-bottom: 16px;',
+      '--snackbar-gap: 10px;',
+      '--snackbar-enter-duration: 240ms;',
+      '--snackbar-exit-duration: 200ms;',
+      '--snackbar-auto-dismiss: 3000ms;',
+      '',
+      '/* Snackbar — Type: Default */',
+      '--snackbar-bg-default: #1A1A1A;',
+      '--snackbar-accent-default: #87CCA9;',
+      '',
+      '/* Snackbar — Type: Success */',
+      '--snackbar-bg-success: #1A4D35;',
+      '--snackbar-accent-success: #87CCA9;',
+      '',
+      '/* Snackbar — Type: Error */',
+      '--snackbar-bg-error: #4D1A1A;',
+      '--snackbar-accent-error: #FC5858;',
+      '',
+      '/* Snackbar — Type: Warning */',
+      '--snackbar-bg-warning: #4D3200;',
+      '--snackbar-accent-warning: #FF9B00;',
+      '',
+      '/* Snackbar — Type: Info */',
+      '--snackbar-bg-info: #0A2E36;',
+      '--snackbar-accent-info: #30AEC7;'
+    ].join('\n');
     if (navigator.clipboard) {
       navigator.clipboard.writeText(css).then(function(){
         var b = document.getElementById('snackbar-copy-css-btn');
