@@ -1,0 +1,766 @@
+<div class="topbar">
+  <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>Chips</b></div>
+  <div class="topbar-right">
+    <button class="btn-sm" onclick="exportChipTokens()">tokens.json</button>
+    <button class="btn-sm btn-accent" onclick="copyChipCSS()">Copy CSS</button>
+  </div>
+</div>
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Components / Chips</div>
+    <h1 class="page-title">Chips</h1>
+    <p class="page-desc">Chips are compact, interactive elements that represent an input, attribute, filter, or action. They encapsulate information into pill-shaped containers — providing a scannable and interactive way to manage selections, filters, and suggestions.</p>
+  </div>
+
+  <!-- Hero -->
+  <div class="comp-hero">
+    <div class="comp-hero-preview" style="flex-wrap:wrap;gap:8px;">
+      <button class="chip-atreus chip-default">Chip label</button>
+      <button class="chip-atreus chip-selected">Chip label</button>
+      <button class="chip-atreus chip-default chip-has-leading">
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+        Chip label
+      </button>
+      <button class="chip-atreus chip-default chip-has-trailing">
+        Chip label
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+      </button>
+      <button class="chip-atreus chip-disabled" disabled>Chip label</button>
+    </div>
+    <div class="comp-hero-info">
+      <h2>4 Types · 3 States · Icon Optional</h2>
+      <p>Choice for single-select, Filter for toggling criteria, Suggestion for contextual quick actions. All chips share a fixed 32px height and <code>border-radius: 32px</code>. Icons (leading or trailing) are always 16×16px with a 4px gap to the label.</p>
+      <div class="token-strip" style="margin-top:12px;margin-bottom:0">
+        <span class="token-chip" onclick="copyText('#F3F3F3','Copied #F3F3F3')"><span class="chip-swatch" style="background:#F3F3F3;border:1px solid #ddd"></span>$chip-bg-default</span>
+        <span class="token-chip" onclick="copyText('#CCE9DF','Copied #CCE9DF')"><span class="chip-swatch" style="background:#CCE9DF"></span>$chip-bg-selected</span>
+        <span class="token-chip" onclick="copyText('#238453','Copied #238453')"><span class="chip-swatch" style="background:#238453"></span>$chip-border-selected</span>
+        <span class="token-chip" onclick="copyText('#DADADA','Copied #DADADA')"><span class="chip-swatch" style="background:#DADADA"></span>$chip-bg-disabled</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Preview -->
+  <div class="section-label">Interactive Preview</div>
+  <div class="props-demo">
+    <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Type</div>
+        <div class="ctrl-pills" id="chip-ctrl-type">
+          <span class="ctrl-pill active" onclick="setChipCtrl('type',this,'choice')">Choice</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('type',this,'single-filter')">Single Filter</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('type',this,'multi-filter')">Multiple Filter</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('type',this,'suggestion')">Suggestion</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">State</div>
+        <div class="ctrl-pills" id="chip-ctrl-state">
+          <span class="ctrl-pill active" onclick="setChipCtrl('state',this,'default')">Default</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('state',this,'selected')">Selected</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('state',this,'disabled')">Disabled</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Icon</div>
+        <div class="ctrl-pills" id="chip-ctrl-icon">
+          <span class="ctrl-pill active" onclick="setChipCtrl('icon',this,'none')">None</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('icon',this,'leading')">Leading</span>
+          <span class="ctrl-pill" onclick="setChipCtrl('icon',this,'trailing')">Trailing</span>
+        </div>
+      </div>
+    </div>
+    <div class="props-demo-stage" id="chip-preview-stage">
+      <button class="chip-atreus chip-default">Chip label</button>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Anatomy -->
+  <div class="section-label">Anatomy</div>
+  <div class="anatomy-box">
+    <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:flex-start">
+
+      <!-- Atom: Single Chip -->
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px">Atom — Chip</div>
+        <div style="position:relative;display:inline-flex;align-items:center;padding:28px 36px;">
+          <!-- chip group type marker (outermost) -->
+          <span class="anatomy-number" style="position:absolute;top:4px;left:4px">1</span>
+          <!-- the chip rendered -->
+          <div style="position:relative;display:inline-flex;align-items:center;">
+            <div class="chip-atreus chip-selected" style="pointer-events:none;position:relative;">
+              <!-- leading icon -->
+              <span style="position:relative;display:inline-flex;align-items:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color:#238453;display:block;"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+                <span class="anatomy-number" style="top:-8px;right:-10px">3</span>
+              </span>
+              <!-- label -->
+              <span style="position:relative;">
+                Chip label
+                <span class="anatomy-number" style="top:-8px;right:-10px">4</span>
+              </span>
+              <!-- trailing icon -->
+              <span style="position:relative;display:inline-flex;align-items:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="color:#238453;display:block;"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+                <span class="anatomy-number" style="top:-8px;right:-10px">5</span>
+              </span>
+              <!-- chip container marker -->
+              <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px">2</span>
+            </div>
+          </div>
+        </div>
+        <div class="anatomy-legend">
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Chips Group Type — flex row container, gap: 8px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Chip container — height: 32px, border-radius: 32px, padding: 4px 12px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">3</span>Leading icon (optional) — 16×16px, gap to label: 4px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">4</span>Label — Sora Regular, 14px / lh 20px</div>
+          <div class="anatomy-legend-item"><span class="anatomy-legend-num">5</span>Trailing icon (optional) — 16×16px, gap to label: 4px</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Atom Variants: States -->
+  <div class="section-label">Variants · States</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr">
+
+    <!-- Default -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Default</div>
+        <div class="variant-card-tag">state="Default"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:row;flex-wrap:wrap;gap:8px;">
+        <button class="chip-atreus chip-default">Chip label</button>
+        <button class="chip-atreus chip-default chip-has-leading">
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+          Chip label
+        </button>
+        <button class="chip-atreus chip-default chip-has-trailing">
+          Chip label
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Selected -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Selected</div>
+        <div class="variant-card-tag">state="Selected"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:row;flex-wrap:wrap;gap:8px;">
+        <button class="chip-atreus chip-selected">Chip label</button>
+        <button class="chip-atreus chip-selected chip-has-leading">
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+          Chip label
+        </button>
+        <button class="chip-atreus chip-selected chip-has-trailing">
+          Chip label
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Disabled -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Disabled</div>
+        <div class="variant-card-tag">state="Disabled"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:row;flex-wrap:wrap;gap:8px;">
+        <button class="chip-atreus chip-disabled" disabled>Chip label</button>
+        <button class="chip-atreus chip-disabled chip-has-leading" disabled>
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+          Chip label
+        </button>
+        <button class="chip-atreus chip-disabled chip-has-trailing" disabled>
+          Chip label
+          <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- States Matrix -->
+  <div class="section-label">States · All Variants</div>
+  <div class="states-grid" style="grid-template-columns:repeat(3,1fr);gap:8px;">
+    <div class="state-row-header" style="grid-column:1/-1">All icon configurations</div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-default">Chip label</button>
+      <div class="state-label">Default · No icon</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-selected">Chip label</button>
+      <div class="state-label">Selected · No icon</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-disabled" disabled>Chip label</button>
+      <div class="state-label">Disabled · No icon</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-default chip-has-leading">
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+        Chip label
+      </button>
+      <div class="state-label">Default · Leading</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-selected chip-has-leading">
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+        Chip label
+      </button>
+      <div class="state-label">Selected · Leading</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-disabled chip-has-leading" disabled>
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+        Chip label
+      </button>
+      <div class="state-label">Disabled · Leading</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-default chip-has-trailing">
+        Chip label
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+      </button>
+      <div class="state-label">Default · Trailing</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-selected chip-has-trailing">
+        Chip label
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+      </button>
+      <div class="state-label">Selected · Trailing</div>
+    </div>
+    <div class="state-cell">
+      <button class="chip-atreus chip-disabled chip-has-trailing" disabled>
+        Chip label
+        <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+      </button>
+      <div class="state-label">Disabled · Trailing</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Molecule: Group Types -->
+  <div class="section-label">Chips Group Types</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr">
+
+    <!-- Choice -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Choice</div>
+        <div class="variant-card-tag">variant="Choice"</div>
+      </div>
+      <div class="variant-card-body">
+        <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px 0">Single-select — like radio buttons. One chip selected at a time.</p>
+        <div class="chip-group" id="demo-choice">
+          <button class="chip-atreus chip-selected" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="choice" onclick="selectChip(this,'choice')">Chip label</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Single Filter -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Single Filter</div>
+        <div class="variant-card-tag">variant="Single Filter"</div>
+      </div>
+      <div class="variant-card-body">
+        <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px 0">A row of filter chips with an optional leading Filter button.</p>
+        <div class="chip-group" id="demo-single-filter">
+          <button class="chip-atreus chip-default chip-has-leading" style="flex-shrink:0;">
+            <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor"/></svg>
+            Filter
+          </button>
+          <button class="chip-atreus chip-default" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+          <button class="chip-atreus chip-selected" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+          <button class="chip-atreus chip-default" data-group="single-filter" onclick="selectChip(this,'single-filter')">Chip label</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Multiple Filter -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Multiple Filter</div>
+        <div class="variant-card-tag">variant="Multiple Filter"</div>
+      </div>
+      <div class="variant-card-body">
+        <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px 0">Multi-row chips — filter on multiple dimensions simultaneously. Each chip can be toggled independently.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="chip-group">
+            <button class="chip-atreus chip-selected" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+          </div>
+          <div class="chip-group">
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-selected" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+            <button class="chip-atreus chip-default" onclick="toggleChip(this)">Chip label</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggestion -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Suggestion</div>
+        <div class="variant-card-tag">variant="Suggestion"</div>
+      </div>
+      <div class="variant-card-body">
+        <p style="font-size:12px;color:var(--text-muted);margin:0 0 12px 0">Contextual action chips. No persistent selected state — each tap triggers an action.</p>
+        <div class="chip-group">
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+          <button class="chip-atreus chip-default">Chip label</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Design Specs -->
+  <div class="section-label">Design Specs</div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">📐 Layout &amp; Spacing</div>
+    <table class="spec-table">
+      <thead><tr><th>Property</th><th>Value</th><th>Token</th></tr></thead>
+      <tbody>
+        <tr><td>Height</td><td class="spec-value">32px</td><td><span class="spec-token">$chip-height</span></td></tr>
+        <tr><td>Padding H (left &amp; right)</td><td class="spec-value">12px</td><td><span class="spec-token">$spacing-04</span></td></tr>
+        <tr><td>Padding V (top &amp; bottom)</td><td class="spec-value">4px</td><td><span class="spec-token">$spacing-02</span></td></tr>
+        <tr><td>Border Radius</td><td class="spec-value">32px</td><td><span class="spec-token">$chip-radius</span></td></tr>
+        <tr><td>Border Width</td><td class="spec-value">1px</td><td>Selected state only</td></tr>
+        <tr><td>Icon Size</td><td class="spec-value">16×16px</td><td>—</td></tr>
+        <tr><td>Gap (icon–label)</td><td class="spec-value">4px</td><td><span class="spec-token">$spacing-02</span></td></tr>
+        <tr><td>Gap (chip–chip)</td><td class="spec-value">8px</td><td><span class="spec-token">$spacing-03</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🎨 Color Tokens</div>
+    <table class="spec-table">
+      <thead><tr><th>State</th><th>Background</th><th>Border</th><th>Text / Icon</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Default</td>
+          <td><span class="spec-token">$chip-bg-default</span> <code>#F3F3F3</code></td>
+          <td>none</td>
+          <td><span class="spec-token">$text-secondary</span> <code>#828282</code></td>
+        </tr>
+        <tr>
+          <td>Selected</td>
+          <td><span class="spec-token">$chip-bg-selected</span> <code>#CCE9DF</code></td>
+          <td><span class="spec-token">$chip-border-selected</span> <code>#238453</code></td>
+          <td><span class="spec-token">$text-link</span> <code>#238453</code></td>
+        </tr>
+        <tr>
+          <td>Disabled</td>
+          <td><span class="spec-token">$chip-bg-disabled</span> <code>#DADADA</code></td>
+          <td>none</td>
+          <td><span class="spec-token">$text-disabled</span> <code>#CDCDCD</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">✏️ Typography</div>
+    <table class="spec-table">
+      <thead><tr><th>Element</th><th>Font</th><th>Weight</th><th>Font Size</th><th>Line Height</th></tr></thead>
+      <tbody>
+        <tr><td>Chip Label</td><td>Sora</td><td class="spec-value">Regular / 400</td><td class="spec-value">14px</td><td class="spec-value">20px</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Usage Guidelines -->
+  <div class="section-label">Usage Guidelines</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">🔘</div>
+        <div class="usage-content">
+          <strong>Choice Chips for single selection</strong>
+          <p>Use Choice Chips when a user can pick only one option from a visible set — like a size selector ("S", "M", "L"). They behave like radio buttons with a button-like visual.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7FA">🔍</div>
+        <div class="usage-content">
+          <strong>Filter Chips for content filtering</strong>
+          <p>Use Filter Chips to toggle active criteria. Selecting applies the filter, deselecting removes it. Multiple Filter Chips allow independent multi-axis toggling.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#FEF6F1">⚡</div>
+        <div class="usage-content">
+          <strong>Suggestion Chips for contextual actions</strong>
+          <p>Suggestion Chips are compact, context-aware action triggers — e.g., "Get Directions" on a map card. They carry no persistent selected state.</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">✂️</div>
+        <div class="usage-content">
+          <strong>Keep labels short and concise</strong>
+          <p>Chips are designed for 1–3 word labels. Long labels break the compact format, disrupt the visual rhythm of a group, and create uneven hit targets.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#F6F6F6">🚫</div>
+        <div class="usage-content">
+          <strong>Don't use Chips for primary CTAs</strong>
+          <p>Chips are not substitutes for Buttons. For a primary call-to-action, always use a Button (Filled). Chips are supplementary inputs — not the main driver of screen flow.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7FA">🔗</div>
+        <div class="usage-content">
+          <strong>Chips must be contextually relevant</strong>
+          <p>The information or action in a chip must be directly related to its surrounding content. Disconnected chips create cognitive noise and undermine interface trust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Do / Don't -->
+  <div class="section-label">Do / Don't</div>
+  <div class="do-dont-grid">
+    <div class="do-box">
+      <div class="do-header">✓ DO</div>
+      <div class="do-body">
+        <div class="chip-group" style="margin-bottom:4px">
+          <button class="chip-atreus chip-selected">Small</button>
+          <button class="chip-atreus chip-default">Medium</button>
+          <button class="chip-atreus chip-default">Large</button>
+          <button class="chip-atreus chip-default">XL</button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Short, scannable labels in a grouped row</div>
+        <div class="chip-group" style="margin-top:12px;margin-bottom:4px">
+          <button class="chip-atreus chip-selected chip-has-leading">
+            <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>
+            Active
+          </button>
+          <button class="chip-atreus chip-default">Pending</button>
+          <button class="chip-atreus chip-default">Closed</button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use leading icon to reinforce the selected state meaning</div>
+        <div class="chip-group" style="margin-top:12px;margin-bottom:4px">
+          <button class="chip-atreus chip-default chip-has-trailing">
+            Nike
+            <svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use trailing cancel icon to let users remove an applied filter</div>
+      </div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-header">✗ DON'T</div>
+      <div class="do-body">
+        <div class="chip-group" style="margin-bottom:4px">
+          <button class="chip-atreus chip-default">Very long chip label text here</button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use long multi-word labels — Chips are designed for concise text</div>
+        <div style="margin-top:12px;margin-bottom:4px">
+          <button class="btn-atreus btn-filled btn-md-size" style="font-size:12px">Filter: All</button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't use Buttons for filtering — use Filter Chips</div>
+        <div style="margin-top:12px;margin-bottom:4px;display:flex;gap:8px">
+          <button class="chip-atreus chip-selected">Option A</button>
+          <button class="chip-atreus chip-selected">Option B</button>
+          <button class="chip-atreus chip-selected">Option C</button>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't pre-select all chips in a Choice group — it removes meaningful selection</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+  <div class="section-label">CSS Custom Properties</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
+    <span style="color:#9B9B9B">/* Chip tokens */</span><br>
+    <span style="color:#1C95AD">--chip-bg-default</span>: <span style="color:#F3F3F3">#F3F3F3</span>; <span style="color:#9B9B9B">/* $background/ui/2 — default state */</span><br>
+    <span style="color:#1C95AD">--chip-bg-selected</span>: <span style="color:#CCE9DF">#CCE9DF</span>; <span style="color:#9B9B9B">/* $foreground/harmony-3-(green) — selected bg */</span><br>
+    <span style="color:#1C95AD">--chip-border-selected</span>: <span style="color:#238453">#238453</span>; <span style="color:#9B9B9B">/* $border/harmony-(green) — selected border */</span><br>
+    <span style="color:#1C95AD">--chip-bg-disabled</span>: <span style="color:#DADADA">#DADADA</span>; <span style="color:#9B9B9B">/* $border/button/outlined/disabled */</span><br>
+    <span style="color:#1C95AD">--chip-text-default</span>: <span style="color:#828282">#828282</span>; <span style="color:#9B9B9B">/* $text/secondary */</span><br>
+    <span style="color:#1C95AD">--chip-text-selected</span>: <span style="color:#238453">#238453</span>; <span style="color:#9B9B9B">/* $text/link */</span><br>
+    <span style="color:#1C95AD">--chip-text-disabled</span>: <span style="color:#CDCDCD">#CDCDCD</span>; <span style="color:#9B9B9B">/* $text/disabled */</span><br>
+    <span style="color:#1C95AD">--chip-radius</span>: <span style="color:#FE6201">32px</span>;<br>
+    <span style="color:#1C95AD">--chip-height</span>: <span style="color:#FE6201">32px</span>;<br>
+    <span style="color:#1C95AD">--chip-padding-h</span>: <span style="color:#FE6201">12px</span>;<br>
+    <span style="color:#1C95AD">--chip-padding-v</span>: <span style="color:#FE6201">4px</span>;<br>
+    <span style="color:#1C95AD">--chip-icon-size</span>: <span style="color:#FE6201">16px</span>;<br>
+    <span style="color:#1C95AD">--chip-gap-icon</span>: <span style="color:#FE6201">4px</span>; <span style="color:#9B9B9B">/* gap between icon and label */</span><br>
+    <span style="color:#1C95AD">--chip-group-gap</span>: <span style="color:#FE6201">8px</span>; <span style="color:#9B9B9B">/* gap between chips in a group */</span>
+  </div>
+
+</div>
+
+<style>
+/* ════════════════════════════════════════
+   Chip Base Component
+   ════════════════════════════════════════ */
+.chip-atreus {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 32px;
+  padding: 4px 12px;
+  border-radius: 32px;
+  border: 1px solid transparent;
+  font-family: 'Sora', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Default */
+.chip-atreus.chip-default {
+  background: #F3F3F3;
+  border-color: transparent;
+  color: #828282;
+}
+.chip-atreus.chip-default:hover:not([disabled]) {
+  background: #E8E8E8;
+}
+.chip-atreus.chip-default:focus-visible {
+  box-shadow: 0 0 0 2px #87CCA9;
+}
+
+/* Selected */
+.chip-atreus.chip-selected {
+  background: #CCE9DF;
+  border-color: #238453;
+  color: #238453;
+}
+.chip-atreus.chip-selected:hover:not([disabled]) {
+  background: #B8DDD0;
+}
+
+/* Disabled */
+.chip-atreus.chip-disabled,
+.chip-atreus[disabled] {
+  background: #DADADA;
+  border-color: transparent;
+  color: #CDCDCD;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* SVG icon inside chip inherits color */
+.chip-icon-svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  display: block;
+}
+
+/* ── Chip Group container ── */
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+</style>
+
+<script>
+(function () {
+  /* ── Interactive Preview state ── */
+  var chipCtrl = { type: 'choice', state: 'default', icon: 'none' };
+
+  window.setChipCtrl = function (key, el, val) {
+    chipCtrl[key] = val;
+    var pills = el.closest('.ctrl-pills').querySelectorAll('.ctrl-pill');
+    pills.forEach(function (p) { p.classList.remove('active'); });
+    el.classList.add('active');
+    renderChipPreview();
+  };
+
+  var svgCheck  = '<svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/></svg>';
+  var svgCancel = '<svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" fill="currentColor"/></svg>';
+  var svgFilter = '<svg class="chip-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" fill="currentColor"/></svg>';
+
+  function chipInner() {
+    if (chipCtrl.icon === 'leading')  return svgCheck + 'Chip label';
+    if (chipCtrl.icon === 'trailing') return 'Chip label' + svgCancel;
+    return 'Chip label';
+  }
+
+  function makeChip(stateClass, disabled, inner) {
+    var da = disabled ? ' disabled' : '';
+    return '<button class="chip-atreus ' + stateClass + '"' + da + '>' + inner + '</button>';
+  }
+
+  function renderChipPreview() {
+    var stage = document.getElementById('chip-preview-stage');
+    if (!stage) return;
+
+    var inner = chipInner();
+    var stateClass = chipCtrl.state === 'selected' ? 'chip-selected'
+                   : chipCtrl.state === 'disabled'  ? 'chip-disabled'
+                   : 'chip-default';
+    var isDisabled = chipCtrl.state === 'disabled';
+
+    if (chipCtrl.type === 'choice') {
+      var html = '<div class="chip-group" style="justify-content:center">';
+      for (var i = 0; i < 5; i++) {
+        var sc = (i === 0 && !isDisabled) ? 'chip-selected' : stateClass;
+        html += makeChip(sc, isDisabled, inner);
+      }
+      html += '</div>';
+      stage.innerHTML = html;
+
+    } else if (chipCtrl.type === 'single-filter') {
+      var html = '<div class="chip-group" style="justify-content:center">';
+      html += '<button class="chip-atreus chip-default" style="flex-shrink:0">' + svgFilter + 'Filter</button>';
+      for (var i = 0; i < 4; i++) {
+        var sc = (i === 1 && !isDisabled) ? 'chip-selected' : stateClass;
+        html += makeChip(sc, isDisabled, inner);
+      }
+      html += '</div>';
+      stage.innerHTML = html;
+
+    } else if (chipCtrl.type === 'multi-filter') {
+      var html = '<div style="display:flex;flex-direction:column;gap:8px;align-items:center">';
+      for (var r = 0; r < 2; r++) {
+        html += '<div class="chip-group">';
+        for (var i = 0; i < 4; i++) {
+          var sc = (i === 0 && !isDisabled) ? 'chip-selected' : stateClass;
+          html += makeChip(sc, isDisabled, inner);
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+      stage.innerHTML = html;
+
+    } else {
+      /* suggestion — no selected state */
+      var html = '<div class="chip-group" style="justify-content:center">';
+      for (var i = 0; i < 5; i++) {
+        html += makeChip(isDisabled ? 'chip-disabled' : 'chip-default', isDisabled, inner);
+      }
+      html += '</div>';
+      stage.innerHTML = html;
+    }
+  }
+
+  /* ── Choice: single-select ── */
+  window.selectChip = function (el, group) {
+    document.querySelectorAll('[data-group="' + group + '"]').forEach(function (s) {
+      s.classList.remove('chip-selected');
+      s.classList.add('chip-default');
+    });
+    el.classList.remove('chip-default');
+    el.classList.add('chip-selected');
+  };
+
+  /* ── Multiple Filter: independent toggle ── */
+  window.toggleChip = function (el) {
+    if (el.classList.contains('chip-selected')) {
+      el.classList.replace('chip-selected', 'chip-default');
+    } else {
+      el.classList.replace('chip-default', 'chip-selected');
+    }
+  };
+
+  /* ── Export tokens.json ── */
+  window.exportChipTokens = function () {
+    var tokens = {
+      "chip-bg-default":      "#F3F3F3",
+      "chip-bg-selected":     "#CCE9DF",
+      "chip-border-selected": "#238453",
+      "chip-bg-disabled":     "#DADADA",
+      "chip-text-default":    "#828282",
+      "chip-text-selected":   "#238453",
+      "chip-text-disabled":   "#CDCDCD",
+      "chip-radius":          "32px",
+      "chip-height":          "32px",
+      "chip-padding-h":       "12px",
+      "chip-padding-v":       "4px",
+      "chip-icon-size":       "16px",
+      "chip-gap-icon":        "4px",
+      "chip-group-gap":       "8px"
+    };
+    var blob = new Blob([JSON.stringify(tokens, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'chip-tokens.json';
+    a.click();
+  };
+
+  /* ── Copy CSS ── */
+  window.copyChipCSS = function () {
+    var css = [
+      '.chip-atreus {',
+      '  display: inline-flex;',
+      '  align-items: center;',
+      '  gap: 4px;',
+      '  height: 32px;',
+      '  padding: 4px 12px;',
+      '  border-radius: 32px;',
+      '  border: 1px solid transparent;',
+      '  font-family: \'Sora\', sans-serif;',
+      '  font-weight: 400;',
+      '  font-size: 14px;',
+      '  line-height: 20px;',
+      '  cursor: pointer;',
+      '  transition: background .15s, border-color .15s, color .15s;',
+      '}',
+      '.chip-atreus.chip-default  { background: #F3F3F3; color: #828282; }',
+      '.chip-atreus.chip-selected { background: #CCE9DF; border-color: #238453; color: #238453; }',
+      '.chip-atreus.chip-disabled { background: #DADADA; color: #CDCDCD; cursor: not-allowed; }',
+      '.chip-group { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }'
+    ].join('\n');
+    navigator.clipboard.writeText(css).then(function () {
+      var btn = document.querySelector('.btn-accent[onclick="copyChipCSS()"]');
+      if (btn) {
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = orig; }, 1800);
+      }
+    });
+  };
+}());
+</script>

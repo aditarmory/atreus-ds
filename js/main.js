@@ -64,6 +64,9 @@ function initPage(id) {
     case 'buttons':
       updateBtnPreview();
       break;
+      case 'chips':
+  // JS sudah embedded di chips.html, tidak perlu inisialisasi tambahan
+  break;
     case 'controls':
   updateCtrlPreview();
   break;

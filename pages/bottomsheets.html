@@ -1,10 +1,19 @@
+<div class="topbar">
+  <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>Bottom Sheet</b></div>
+  <div class="topbar-right">
+    <button class="btn-sm" onclick="exportBSTokens()">tokens.json</button>
+    <button class="btn-sm btn-accent" onclick="copyBSTokens()">Copy CSS</button>
+  </div>
+</div>
+
 <div class="content">
+  <div class="page-header">
+    <div class="page-label">Components / Bottom Sheet</div>
+    <h1 class="page-title">Bottom Sheet</h1>
+    <p class="page-desc">Bottom sheets appear from the bottom of the screen to surface additional content, action confirmations, or contextual information — without navigating away from the current page.</p>
+  </div>
 
-  <!-- ═══ HERO ═══ -->
-  <div class="page-label">Components</div>
-  <h1 class="page-title">Bottom Sheet</h1>
-  <p class="page-desc">Bottom sheet muncul dari bawah layar dan digunakan untuk menampilkan konten tambahan, konfirmasi aksi, atau informasi kontekstual tanpa meninggalkan halaman saat ini.</p>
-
+  <!-- Hero -->
   <div class="comp-hero">
     <div class="comp-hero-preview" style="background:#f5f5f5;border-radius:16px;padding:0;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;min-height:280px;position:relative">
       <div style="background:rgba(51,51,51,0.4);position:absolute;inset:0;border-radius:16px"></div>
@@ -27,25 +36,123 @@
       </div>
     </div>
     <div class="comp-hero-info">
-      <h2>3 Tipe Group · 5 Blocker Variants</h2>
-      <p>Building blocks yang bisa dikombinasikan: Plain Bottom Sheet sebagai header, docked buttons sebagai footer, dan content area di tengah.</p>
-      <div class="token-chips">
-        <span class="token-chip"><span class="token-swatch" style="background:#fff;border:1px solid #e0e0e0"></span>bg: White</span>
-        <span class="token-chip"><span class="token-swatch" style="background:#1a1a1a"></span>radius: 20px top</span>
-        <span class="token-chip"><span class="token-swatch" style="background:#87CCA9"></span>btn: Green 40</span>
+      <h2>3 Building Blocks · 5 Blocker Variants</h2>
+      <p>Composable blocks that combine freely: Plain Bottom Sheet as the header layer, Docked Buttons as the footer, and a content area in between. Five ready-to-use Blocker presets handle the most common error flows in hibank.</p>
+      <div class="token-strip" style="margin-top:12px;margin-bottom:0">
+        <span class="token-chip" onclick="copyText('#FFFFFF','Copied #FFFFFF')"><span class="chip-swatch" style="background:#fff;border:1px solid #e0e0e0"></span>$background-ui-1</span>
+        <span class="token-chip" onclick="copyText('20px','Copied border-radius: 20px')"><span class="chip-swatch" style="background:#1a1a1a;border-radius:4px 4px 0 0"></span>$radius-xl · 20px</span>
+        <span class="token-chip" onclick="copyText('#87CCA9','Copied #87CCA9')"><span class="chip-swatch" style="background:#87CCA9"></span>$button-primary-default</span>
+        <span class="token-chip" onclick="copyText('rgba(51,51,51,0.7)','Copied overlay')"><span class="chip-swatch" style="background:rgba(51,51,51,0.7)"></span>$overlay-dark</span>
       </div>
     </div>
   </div>
 
-  <!-- ═══ SECTION 1: PLAIN BOTTOM SHEET (Building Blocks) ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">01 — Building Blocks</div>
-  <h2 class="section-title">Plain Bottom Sheet</h2>
-  <p class="section-desc">Header section dari bottom sheet. Tiga tipe layout tergantung kebutuhan konten dan navigasi.</p>
+  <!-- Interactive Preview -->
+  <div class="section-label">Interactive Preview</div>
+  <div class="props-demo">
+    <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Header Type</div>
+        <div class="ctrl-pills" id="bs-ctrl-header">
+          <span class="ctrl-pill active" onclick="setBSCtrl('header',this,'offcenter')">Off-center</span>
+          <span class="ctrl-pill" onclick="setBSCtrl('header',this,'center')">Center</span>
+          <span class="ctrl-pill" onclick="setBSCtrl('header',this,'image')">With Image</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Button Layout</div>
+        <div class="ctrl-pills" id="bs-ctrl-btn">
+          <span class="ctrl-pill active" onclick="setBSCtrl('btn',this,'sidebyside')">Side-by-side</span>
+          <span class="ctrl-pill" onclick="setBSCtrl('btn',this,'stacked')">Stacked</span>
+          <span class="ctrl-pill" onclick="setBSCtrl('btn',this,'single')">Single</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Drag Indicator</div>
+        <div class="ctrl-pills" id="bs-ctrl-drag">
+          <span class="ctrl-pill active" onclick="setBSCtrl('drag',this,'off')">Off</span>
+          <span class="ctrl-pill" onclick="setBSCtrl('drag',this,'on')">On</span>
+        </div>
+      </div>
+    </div>
+    <div class="props-demo-stage" id="bs-preview-stage" style="background:#e8e8e8;border-radius:12px;min-height:320px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;padding:0">
+      <div style="background:rgba(51,51,51,0.4);position:absolute;inset:0"></div>
+      <div id="bs-preview-inner" style="position:relative;z-index:1;width:100%">
+        <!-- rendered by JS -->
+      </div>
+    </div>
+  </div>
 
+  <hr class="section-divider">
+
+  <!-- Anatomy -->
+  <div class="section-label">Anatomy</div>
+  <div class="anatomy-box">
+    <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap">
+
+      <!-- Annotated sheet preview -->
+      <div style="position:relative;background:#e8e8e8;border-radius:16px;overflow:hidden;flex-shrink:0;width:240px">
+        <!-- Overlay strip -->
+        <div style="background:rgba(51,51,51,0.35);height:60px;display:flex;align-items:center;justify-content:center">
+          <span style="font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:.5px">overlay</span>
+        </div>
+        <!-- Sheet -->
+        <div style="background:#fff;border-radius:16px 16px 0 0;padding:14px;position:relative">
+          <!-- annotation 1 -->
+          <span class="anatomy-number" style="position:absolute;top:14px;left:-10px">1</span>
+          <!-- drag indicator -->
+          <div style="width:48px;height:4px;background:#e6e6e6;border-radius:100px;margin:0 auto 12px"></div>
+          <!-- illus row -->
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+            <div style="width:32px"></div>
+            <div style="width:96px;height:56px;background:#CDCDCD;border-radius:6px"></div>
+            <button style="width:32px;height:32px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <!-- annotation 2 -->
+          <span class="anatomy-number" style="position:absolute;top:90px;left:-10px">2</span>
+          <!-- body -->
+          <div style="text-align:center;margin-bottom:10px">
+            <div style="font-size:13px;font-weight:700;font-family:'Sora',sans-serif;color:#1a1a1a">Title</div>
+            <div style="font-size:10px;font-family:'Sora',sans-serif;color:#828282;margin-top:3px;line-height:1.5">Write some description here. 1–2 sentences max.</div>
+          </div>
+          <!-- annotation 3 -->
+          <span class="anatomy-number" style="position:absolute;bottom:36px;left:-10px">3</span>
+          <!-- docked buttons -->
+          <div style="display:flex;gap:8px;margin-top:12px">
+            <button style="flex:1;border:1.5px solid #1a1a1a;border-radius:100px;padding:8px 4px;background:transparent;font-size:10px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
+            <button style="flex:1;border:none;border-radius:100px;padding:8px 4px;background:#87CCA9;font-size:10px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
+          </div>
+          <div style="height:10px"></div>
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="anatomy-legend" style="flex:1;min-width:200px">
+        <div class="anatomy-legend-item">
+          <span class="anatomy-legend-num">1</span>
+          <div><strong>Plain Bottom Sheet</strong> — Main container with border-radius: 20px on top-left and top-right only. Contains an optional illustration row, title, and description. Width is fixed at 375px (mobile viewport). Drag indicator (72×6px, #E6E6E6) is optionally placed at the very top.</div>
+        </div>
+        <div class="anatomy-legend-item">
+          <span class="anatomy-legend-num">2</span>
+          <div><strong>Content Body</strong> — Title uses Sora Bold 21px / line-height 32px (#1A1A1A). Description uses Sora Regular 14px / line-height 20px (#828282). Text alignment matches the header type: center for Center/Image, left for Off-center.</div>
+        </div>
+        <div class="anatomy-legend-item">
+          <span class="anatomy-legend-num">3</span>
+          <div><strong>Button / Docked</strong> — Footer area with padding-top: 24px, padding-H: 16px, gap between buttons: 12px, and a 24px safe-area spacer at the bottom. Supports Side-by-side (Outline + Filled) or Stacked (Filled → Outline/Ghost) layouts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- Variants: Building Blocks -->
+  <div class="section-label">Variants · Building Blocks</div>
   <div class="variant-grid" style="grid-template-columns:repeat(3,1fr)">
 
-    <!-- Type 1: Without Image / Off-center -->
+    <!-- Off-center -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">Off-center</div>
@@ -60,17 +167,17 @@
             </button>
           </div>
           <div class="bs-body">
-            <p class="bs-desc">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
         </div>
       </div>
       <div class="variant-card-meta">
+        <span>✓ Title left-aligned</span>
         <span>✓ Leading action optional</span>
-        <span>✓ Title kiri</span>
       </div>
     </div>
 
-    <!-- Type 2: With Image -->
+    <!-- With Image -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">With Image</div>
@@ -87,17 +194,17 @@
           </div>
           <div class="bs-body bs-body-center">
             <h3 class="bs-title" style="text-align:center">Title</h3>
-            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
         </div>
       </div>
       <div class="variant-card-meta">
-        <span>✓ Ilustrasi 216×128px</span>
-        <span>✓ Title center</span>
+        <span>✓ Illustration 216×128px</span>
+        <span>✓ Title center-aligned</span>
       </div>
     </div>
 
-    <!-- Type 3: Without Image / Center -->
+    <!-- Center -->
     <div class="variant-card">
       <div class="variant-card-header">
         <div class="variant-card-title">Center</div>
@@ -113,34 +220,32 @@
             </button>
           </div>
           <div class="bs-body">
-            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
         </div>
       </div>
       <div class="variant-card-meta">
-        <span>✓ Title center</span>
-        <span>✓ Tanpa ilustrasi</span>
+        <span>✓ Title center-aligned</span>
+        <span>✓ No illustration</span>
       </div>
     </div>
   </div>
 
-  <!-- Optional: Drag Indicator -->
-  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-top:16px;display:flex;align-items:center;gap:24px">
-    <div>
+  <!-- Drag Indicator callout -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-top:16px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+    <div style="flex:1;min-width:180px">
       <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:4px">isDragIndicator</div>
-      <div style="font-size:12px;color:var(--text-muted)">Tambahkan drag handle di atas sheet saat bottom sheet bisa di-dismiss dengan swipe down</div>
+      <div style="font-size:12px;color:var(--text-muted)">Add a drag handle at the top of the sheet when the bottom sheet can be dismissed via swipe-down. 72×6px, border-radius: 100px, color: #E6E6E6.</div>
     </div>
-    <div style="background:#f2f2f2;border-radius:12px 12px 0 0;padding:10px 40px;flex-shrink:0;text-align:center">
+    <div style="background:#f2f2f2;border-radius:12px 12px 0 0;padding:14px 40px;flex-shrink:0;text-align:center">
       <div style="width:72px;height:6px;background:#e6e6e6;border-radius:100px;margin:0 auto"></div>
     </div>
   </div>
 
-  <!-- ═══ SECTION 2: GROUP BOTTOM SHEET ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">02 — Group Variants</div>
-  <h2 class="section-title">Group Bottom Sheet</h2>
-  <p class="section-desc">Kombinasi Plain Bottom Sheet + Button Docked. Tiga varian tergantung jenis aksi yang ditawarkan.</p>
+  <hr class="section-divider">
 
+  <!-- Variants: Group Bottom Sheet -->
+  <div class="section-label">Variants · Group</div>
   <div class="variant-grid" style="grid-template-columns:repeat(3,1fr)">
 
     <!-- Transactional -->
@@ -158,7 +263,7 @@
           </div>
           <div class="bs-body bs-body-center">
             <h3 class="bs-title" style="text-align:center">Title</h3>
-            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
           <div class="bs-docked bs-docked-sidebyside">
             <button class="btn-atreus btn-outline btn-md-size" style="flex:1">Button</button>
@@ -188,7 +293,7 @@
           </div>
           <div class="bs-body bs-body-center">
             <h3 class="bs-title" style="text-align:center">Title</h3>
-            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
           <div class="bs-docked bs-docked-stacked">
             <button class="btn-atreus btn-filled btn-md-size" style="width:100%">Button</button>
@@ -199,7 +304,7 @@
       </div>
       <div class="variant-card-meta">
         <span>Stacked buttons</span>
-        <span>Primary → Secondary</span>
+        <span>Filled → Outline</span>
       </div>
     </div>
 
@@ -218,7 +323,7 @@
           </div>
           <div class="bs-body bs-body-center">
             <h3 class="bs-title" style="text-align:center">Title</h3>
-            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1-2 sentences maximum.</p>
+            <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
           </div>
           <div class="bs-docked bs-docked-stacked">
             <button class="btn-atreus btn-filled btn-md-size" style="width:100%">Button</button>
@@ -227,24 +332,21 @@
         </div>
       </div>
       <div class="variant-card-meta">
-        <span>Single button</span>
-        <span>Satu keputusan saja</span>
+        <span>Single CTA only</span>
+        <span>One decision, no alternative</span>
       </div>
     </div>
   </div>
 
-  <!-- ═══ SECTION 3: BLOCKER BOTTOM SHEET ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">03 — Ready-to-use</div>
-  <h2 class="section-title">Blocker Bottom Sheet</h2>
-  <p class="section-desc">Komponen siap pakai untuk skenario error dan blocker yang paling sering muncul di hibank. Langsung bisa dipakai tanpa konfigurasi tambahan.</p>
+  <hr class="section-divider">
 
-  <!-- Interactive Demo -->
+  <!-- Blocker Bottom Sheet -->
+  <div class="section-label">Variants · Blocker</div>
   <div class="props-demo">
     <div class="props-demo-controls">
       <div class="ctrl-group">
-        <div class="ctrl-label">Variant</div>
-        <div class="ctrl-pills" style="flex-wrap:wrap;gap:6px">
+        <div class="ctrl-label">Scenario</div>
+        <div class="ctrl-pills" id="bs-ctrl-blocker" style="flex-wrap:wrap;gap:6px">
           <span class="ctrl-pill active" onclick="setBlocker(this,'rekening')">Rekening tidak ditemukan</span>
           <span class="ctrl-pill" onclick="setBlocker(this,'ewallet')">Akun e-wallet tidak ditemukan</span>
           <span class="ctrl-pill" onclick="setBlocker(this,'saldo')">Saldo tidak cukup</span>
@@ -253,19 +355,19 @@
         </div>
       </div>
     </div>
-    <div class="props-demo-stage" style="background:#f2f2f2;border-radius:12px;min-height:320px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative">
+    <div class="props-demo-stage" style="background:#e8e8e8;border-radius:12px;min-height:320px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;position:relative;padding:0">
       <div style="background:rgba(51,51,51,0.4);position:absolute;inset:0"></div>
       <div id="blocker-preview" style="position:relative;z-index:1;width:100%;max-width:360px">
-        <!-- filled by JS -->
+        <!-- rendered by JS -->
       </div>
     </div>
   </div>
 
-  <!-- All 5 blockers grid -->
+  <!-- All 5 blockers overview -->
   <div class="variant-grid" style="grid-template-columns:repeat(5,1fr);gap:12px;margin-top:24px">
     <div class="blocker-card">
       <div class="blocker-thumb">
-        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
         <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">rekening tidak ditemukan</div>
         <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">periksa kembali nomor tujuan transfer</div>
       </div>
@@ -273,7 +375,7 @@
     </div>
     <div class="blocker-card">
       <div class="blocker-thumb">
-        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
         <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">akun e-wallet tidak ditemukan</div>
         <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">pastikan nomor handphone sudah benar</div>
       </div>
@@ -281,7 +383,7 @@
     </div>
     <div class="blocker-card">
       <div class="blocker-thumb">
-        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
         <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">saldo tidak cukup</div>
         <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">silahkan isi kembali dana pada kantong</div>
       </div>
@@ -289,7 +391,7 @@
     </div>
     <div class="blocker-card">
       <div class="blocker-thumb">
-        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
         <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">koneksi bermasalah</div>
         <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">jaringan internet kamu terputus</div>
       </div>
@@ -297,7 +399,7 @@
     </div>
     <div class="blocker-card">
       <div class="blocker-thumb">
-        <div class="bs-illus-placeholder" style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
+        <div style="width:80px;height:48px;background:#e0e0e0;border-radius:6px;margin:0 auto 8px"></div>
         <div style="font-size:11px;font-weight:700;text-align:center;color:#1a1a1a">login terlebih dahulu</div>
         <div style="font-size:10px;text-align:center;color:#828282;margin-top:2px">silakan login untuk melanjutkan</div>
       </div>
@@ -305,94 +407,27 @@
     </div>
   </div>
 
-  <!-- ═══ ANATOMY ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">Anatomy</div>
-  <h2 class="section-title">Struktur Komponen</h2>
+  <hr class="section-divider">
 
-  <div class="anatomy-box" style="position:relative;padding:32px">
-    <div style="display:flex;align-items:flex-start;gap:48px;flex-wrap:wrap">
-      <!-- Annotated Preview -->
-      <div style="position:relative;background:#f2f2f2;border-radius:16px;overflow:hidden;flex-shrink:0;width:280px">
-        <!-- Dim overlay top -->
-        <div style="background:rgba(51,51,51,0.3);height:80px;display:flex;align-items:center;justify-content:center">
-          <span style="font-size:11px;color:rgba(255,255,255,0.7)">overlay</span>
-        </div>
-        <!-- Sheet -->
-        <div style="background:#fff;border-radius:16px 16px 0 0;padding:16px">
-          <!-- Annotation 1 -->
-          <div style="position:absolute;left:-8px;top:95px;display:flex;align-items:center;gap:4px">
-            <span class="anatomy-num">1</span>
-            <div style="width:20px;height:1px;background:#c54600"></div>
-          </div>
-          <!-- Illus row -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-            <div style="width:36px"></div>
-            <div style="width:120px;height:72px;background:#CDCDCD;border-radius:6px"></div>
-            <button style="width:36px;height:36px;border-radius:50%;border:none;background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg>
-            </button>
-          </div>
-          <!-- Body -->
-          <div style="text-align:center;margin-bottom:8px">
-            <div style="font-size:16px;font-weight:700;font-family:'Sora',sans-serif;color:#1a1a1a">Title</div>
-            <div style="font-size:11px;font-family:'Sora',sans-serif;color:#828282;margin-top:4px">Write some description here. This section can only contain 1-2 sentences maximum.</div>
-          </div>
-          <!-- Annotation 2 -->
-          <div style="position:absolute;left:-8px;top:208px;display:flex;align-items:center;gap:4px">
-            <span class="anatomy-num">2</span>
-            <div style="width:20px;height:1px;background:#c54600"></div>
-          </div>
-          <!-- Docked -->
-          <div style="display:flex;gap:8px;margin-top:16px">
-            <button style="flex:1;border:1.5px solid #1a1a1a;border-radius:100px;padding:10px;background:transparent;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
-            <button style="flex:1;border:1.5px solid #1a1a1a;border-radius:100px;padding:10px;background:#87CCA9;font-size:11px;font-weight:700;font-family:'Sora',sans-serif;cursor:pointer">Button</button>
-          </div>
-          <div style="height:12px"></div>
-        </div>
-      </div>
-
-      <!-- Legend -->
-      <div class="anatomy-legend" style="flex:1;min-width:200px">
-        <div class="anatomy-legend-item">
-          <span class="anatomy-legend-num">1</span>
-          <div>
-            <strong>Plain Bottom Sheet</strong>
-            <p>Container utama — border-radius: 20px top-left/top-right. Terdiri dari ilustrasi (opsional), heading, dan deskripsi. Width fixed 375px (mobile).</p>
-          </div>
-        </div>
-        <div class="anatomy-legend-item">
-          <span class="anatomy-legend-num">2</span>
-          <div>
-            <strong>Button / Docked</strong>
-            <p>Footer actions — padding-top: 24px, padding-H: 16px, gap antar button: 12px. Bottom safe area: 24px. Bisa Side-by-side atau Stacked.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══ SPECS TABLE ═══ -->
-  <div class="section-divider"></div>
+  <!-- Specifications -->
   <div class="section-label">Specifications</div>
-  <h2 class="section-title">Layout & Spacing</h2>
 
   <div class="spec-table-wrap">
     <div class="spec-table-title">📐 Dimensions & Spacing</div>
     <table class="spec-table">
       <thead>
-        <tr><th>Property</th><th>Value</th><th>Token</th><th>Keterangan</th></tr>
+        <tr><th>Property</th><th>Value</th><th>Token</th><th>Note</th></tr>
       </thead>
       <tbody>
-        <tr><td>Width</td><td>375px</td><td>—</td><td>Fixed mobile width</td></tr>
-        <tr><td>Border Radius</td><td>20px top-left/right</td><td>$radius-xl</td><td>Hanya sudut atas</td></tr>
-        <tr><td>Sheet Padding</td><td>16px</td><td>$spacing-05</td><td>All sides</td></tr>
-        <tr><td>Gap (ilustrasi↔body)</td><td>16px</td><td>$spacing-05</td><td>Vertikal</td></tr>
-        <tr><td>Ilustrasi size</td><td>216×128px</td><td>—</td><td>Centered dalam row</td></tr>
-        <tr><td>Title font</td><td>Sora Bold 21px / 32px</td><td>$title-2</td><td>#1a1a1a</td></tr>
-        <tr><td>Description font</td><td>Sora Regular 14px / 20px</td><td>$body-2</td><td>#828282</td></tr>
-        <tr><td>Close button size</td><td>44×44px</td><td>$touch-target</td><td>Padding 10px, icon 24px</td></tr>
-        <tr><td>Drag indicator</td><td>72×6px</td><td>—</td><td>Radius 100px, #E6E6E6</td></tr>
+        <tr><td>Width</td><td class="spec-value">375px</td><td>—</td><td>Fixed mobile viewport</td></tr>
+        <tr><td>Border Radius</td><td class="spec-value">20px 20px 0 0</td><td><span class="spec-token">$radius-xl</span></td><td>Top corners only</td></tr>
+        <tr><td>Sheet Padding</td><td class="spec-value">16px</td><td><span class="spec-token">$spacing-05</span></td><td>All sides</td></tr>
+        <tr><td>Gap (illus ↔ body)</td><td class="spec-value">16px</td><td><span class="spec-token">$spacing-05</span></td><td>Vertical spacing</td></tr>
+        <tr><td>Illustration size</td><td class="spec-value">216×128px</td><td>—</td><td>Centered in illus row</td></tr>
+        <tr><td>Title</td><td class="spec-value">Sora Bold · 21px / 32px</td><td><span class="spec-token">$title-2</span></td><td>#1A1A1A</td></tr>
+        <tr><td>Description</td><td class="spec-value">Sora Regular · 14px / 20px</td><td><span class="spec-token">$body-2</span></td><td>#828282</td></tr>
+        <tr><td>Close button</td><td class="spec-value">44×44px</td><td><span class="spec-token">$touch-target</span></td><td>Padding 10px, icon 24px</td></tr>
+        <tr><td>Drag indicator</td><td class="spec-value">72×6px</td><td>—</td><td>Radius 100px, #E6E6E6</td></tr>
       </tbody>
     </table>
   </div>
@@ -401,15 +436,14 @@
     <div class="spec-table-title">🎯 Button Docked Spacing</div>
     <table class="spec-table">
       <thead>
-        <tr><th>Property</th><th>Value</th><th>Keterangan</th></tr>
+        <tr><th>Property</th><th>Value</th><th>Note</th></tr>
       </thead>
       <tbody>
-        <tr><td>Padding Top</td><td>24px</td><td>Jarak dari sheet ke button area</td></tr>
-        <tr><td>Padding H</td><td>16px</td><td>Kiri & kanan</td></tr>
-        <tr><td>Gap (side-by-side)</td><td>12px</td><td>Antara 2 button</td></tr>
-        <tr><td>Gap (stacked)</td><td>12px</td><td>Antara button atas & bawah</td></tr>
-        <tr><td>Bottom Space</td><td>24px</td><td>Safe area untuk home indicator</td></tr>
-        <tr><td>Button Height</td><td>44px</td><td>Medium size (semua Docked)</td></tr>
+        <tr><td>Padding Top</td><td class="spec-value">24px</td><td>Sheet body → button area</td></tr>
+        <tr><td>Padding H</td><td class="spec-value">16px</td><td>Left &amp; right</td></tr>
+        <tr><td>Gap between buttons</td><td class="spec-value">12px</td><td>Both side-by-side &amp; stacked</td></tr>
+        <tr><td>Bottom safe area</td><td class="spec-value">24px</td><td>Home indicator clearance</td></tr>
+        <tr><td>Button height</td><td class="spec-value">44px</td><td>Medium size, all Docked variants</td></tr>
       </tbody>
     </table>
   </div>
@@ -421,73 +455,77 @@
         <tr><th>Element</th><th>Token</th><th>Value</th></tr>
       </thead>
       <tbody>
-        <tr><td>Sheet background</td><td>$background-ui-1</td><td>#FFFFFF</td></tr>
-        <tr><td>Overlay</td><td>$overlay-dark</td><td>rgba(51,51,51,0.7)</td></tr>
-        <tr><td>Title</td><td>$text-primary</td><td>#1A1A1A</td></tr>
-        <tr><td>Description</td><td>$text-secondary</td><td>#828282</td></tr>
-        <tr><td>Button Filled bg</td><td>$button-primary-default</td><td>#87CCA9</td></tr>
-        <tr><td>Button border</td><td>$border-primary</td><td>#1A1A1A</td></tr>
+        <tr><td>Sheet background</td><td><span class="spec-token">$background-ui-1</span></td><td>#FFFFFF</td></tr>
+        <tr><td>Overlay</td><td><span class="spec-token">$overlay-dark</span></td><td>rgba(51,51,51,0.7)</td></tr>
+        <tr><td>Title</td><td><span class="spec-token">$text-primary</span></td><td>#1A1A1A</td></tr>
+        <tr><td>Description</td><td><span class="spec-token">$text-secondary</span></td><td>#828282</td></tr>
+        <tr><td>Button Filled bg</td><td><span class="spec-token">$button-primary-default</span></td><td>#87CCA9</td></tr>
+        <tr><td>Button border</td><td><span class="spec-token">$border-primary</span></td><td>#1A1A1A</td></tr>
         <tr><td>Drag indicator</td><td>—</td><td>#E6E6E6</td></tr>
-        <tr><td>Ilustrasi placeholder</td><td>$icon-neutral-disabled</td><td>#CDCDCD</td></tr>
+        <tr><td>Illustration placeholder</td><td><span class="spec-token">$icon-neutral-disabled</span></td><td>#CDCDCD</td></tr>
       </tbody>
     </table>
   </div>
 
-  <!-- ═══ GUIDELINES ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">Usage Guidelines</div>
-  <h2 class="section-title">Kapan & Bagaimana Menggunakan</h2>
+  <hr class="section-divider">
 
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px">
-    <div class="usage-card">
-      <div class="usage-icon" style="background:#E9F7F3">🎯</div>
-      <div class="usage-content">
-        <strong>Gunakan untuk aksi kontekstual</strong>
-        <p>Bottom sheet cocok untuk konfirmasi, pilihan, atau info tambahan yang berhubungan langsung dengan konten di halaman saat ini — bukan untuk navigasi utama.</p>
+  <!-- Usage Guidelines -->
+  <div class="section-label">Usage Guidelines</div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3">🎯</div>
+        <div class="usage-content">
+          <strong>Use for contextual actions only</strong>
+          <p>Bottom sheets are best for confirmations, choices, or supplementary info directly tied to the current page content. They are not a replacement for primary navigation or full-screen pages.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#FFF3E9">⚡</div>
+        <div class="usage-content">
+          <strong>Blocker for error states</strong>
+          <p>Use Blocker Bottom Sheet for flows that need to interrupt the user: account not found, insufficient balance, lost connection, or login required. Each has a pre-defined layout — don't modify it arbitrarily.</p>
+        </div>
       </div>
     </div>
-    <div class="usage-card">
-      <div class="usage-icon" style="background:#FFF3E9">⚡</div>
-      <div class="usage-content">
-        <strong>Blocker untuk error states</strong>
-        <p>Gunakan Blocker Bottom Sheet untuk skenario yang memblokir user action: rekening tidak ditemukan, saldo kurang, koneksi putus, dan login required.</p>
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F0FF">🔢</div>
+        <div class="usage-content">
+          <strong>Choose the right Group variant</strong>
+          <p>Transactional = two equal choices (side-by-side). Destructive = one primary action + cancel (stacked). Acknowledgement = single CTA only, no alternative path exists.</p>
+        </div>
       </div>
-    </div>
-    <div class="usage-card">
-      <div class="usage-icon" style="background:#E9F0FF">🔢</div>
-      <div class="usage-content">
-        <strong>Pilih variant yang tepat</strong>
-        <p>Transactional = 2 pilihan setara. Destructive = 1 aksi utama + 1 cancel. Acknowledgement = hanya 1 button karena tidak ada alternatif.</p>
-      </div>
-    </div>
-    <div class="usage-card">
-      <div class="usage-icon" style="background:#F3E9FF">✍️</div>
-      <div class="usage-content">
-        <strong>Konten maksimal 1-2 kalimat</strong>
-        <p>Description area hanya untuk 1-2 kalimat ringkas. Jika butuh konten lebih panjang, pertimbangkan halaman terpisah atau modal full-screen.</p>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#F3E9FF">✍️</div>
+        <div class="usage-content">
+          <strong>Keep content to 1–2 sentences</strong>
+          <p>The description area is intentionally constrained. If the content requires more explanation, it belongs on a separate page or full-screen modal — not inside a bottom sheet.</p>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Do/Don't -->
+  <div class="section-label">Do / Don't</div>
   <div class="do-dont-grid">
     <div class="do-box">
       <div class="do-header">✓ DO</div>
       <div class="do-body">
         <div style="margin-bottom:16px">
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Gunakan satu primary action</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Use one primary action</div>
           <div style="background:#f5f5f5;border-radius:10px;padding:12px;display:flex;gap:8px">
             <button class="btn-atreus btn-outline btn-md-size" style="flex:1;font-size:11px">Batal</button>
             <button class="btn-atreus btn-filled btn-md-size" style="flex:1;font-size:11px">Konfirmasi</button>
           </div>
         </div>
         <div style="margin-bottom:16px">
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Deskripsi yang jelas dan singkat</div>
-          <div style="font-size:12px;color:#828282;font-family:'Sora',sans-serif;padding:0 4px">"Hapus akun ini secara permanen?"</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Clear, concise description</div>
+          <div style="font-size:12px;color:#828282;font-family:'Sora',sans-serif;padding:0 4px">"Apakah kamu yakin ingin menghapus akun ini secara permanen?"</div>
         </div>
         <div>
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Overlay gelap untuk fokus user</div>
-          <div style="font-size:12px;color:#828282">rgba(51,51,51,0.7) selalu aktif</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#238453">Dark overlay for focus</div>
+          <div style="font-size:12px;color:#828282">rgba(51,51,51,0.7) is always active when the sheet is open</div>
         </div>
       </div>
     </div>
@@ -495,7 +533,7 @@
       <div class="dont-header">✗ DON'T</div>
       <div class="do-body">
         <div style="margin-bottom:16px">
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan stack 3+ button</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Don't stack 3+ buttons</div>
           <div style="background:#f5f5f5;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:6px">
             <button class="btn-atreus btn-filled btn-md-size" style="width:100%;font-size:11px;opacity:0.5">Opsi A</button>
             <button class="btn-atreus btn-outline btn-md-size" style="width:100%;font-size:11px;opacity:0.5">Opsi B</button>
@@ -503,79 +541,239 @@
           </div>
         </div>
         <div style="margin-bottom:16px">
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan untuk navigasi utama</div>
-          <div style="font-size:12px;color:#828282">Bottom sheet bukan pengganti tab bar atau halaman baru</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Don't use for primary navigation</div>
+          <div style="font-size:12px;color:#828282">Bottom sheets are not a replacement for the tab bar or a new page</div>
         </div>
         <div>
-          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Jangan pakai teks deskripsi terlalu panjang</div>
-          <div style="font-size:12px;color:#828282">Maksimal 2 kalimat — jika lebih, buat halaman terpisah</div>
+          <div style="font-size:12px;font-weight:600;margin-bottom:8px;color:#c54600">Don't write long descriptions</div>
+          <div style="font-size:12px;color:#828282">2 sentences max — if more is needed, create a separate page</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ═══ CSS TOKENS ═══ -->
-  <div class="section-divider"></div>
-  <div class="section-label">Implementation</div>
-  <h2 class="section-title">CSS Custom Properties</h2>
+  <hr class="section-divider">
 
-  <div style="background:#1a1a1a;border-radius:12px;padding:24px;font-family:'DM Mono',monospace;font-size:12px;line-height:1.8;color:#ccc;margin-bottom:12px;overflow-x:auto">
-    <span style="color:#888">/* Bottom Sheet Tokens */</span><br>
-    <span style="color:#87CCA9">--bs-bg</span><span style="color:#fff">:</span> <span style="color:#FE6201">#FFFFFF</span><span style="color:#888">; /* $background-ui-1 */</span><br>
-    <span style="color:#87CCA9">--bs-overlay</span><span style="color:#fff">:</span> <span style="color:#FE6201">rgba(51,51,51,0.7)</span><span style="color:#888">; /* $overlay-dark */</span><br>
-    <span style="color:#87CCA9">--bs-radius</span><span style="color:#fff">:</span> <span style="color:#FE6201">20px</span><span style="color:#888">; /* top-left & top-right */</span><br>
-    <span style="color:#87CCA9">--bs-padding</span><span style="color:#fff">:</span> <span style="color:#FE6201">16px</span><span style="color:#888">; /* $spacing-05 */</span><br>
-    <span style="color:#87CCA9">--bs-gap</span><span style="color:#fff">:</span> <span style="color:#FE6201">16px</span><span style="color:#888">; /* gap between sections */</span><br>
-    <span style="color:#87CCA9">--bs-docked-pt</span><span style="color:#fff">:</span> <span style="color:#FE6201">24px</span><span style="color:#888">; /* docked padding-top */</span><br>
-    <span style="color:#87CCA9">--bs-btn-gap</span><span style="color:#fff">:</span> <span style="color:#FE6201">12px</span><span style="color:#888">; /* gap between buttons */</span><br>
-    <span style="color:#87CCA9">--bs-safe-area</span><span style="color:#fff">:</span> <span style="color:#FE6201">24px</span><span style="color:#888">; /* bottom safe area */</span>
-  </div>
-
-  <div style="display:flex;gap:8px">
-    <button class="export-btn" onclick="copyBSTokens()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" stroke-width="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke="currentColor" stroke-width="2"/></svg>
-      Copy CSS Variables
-    </button>
-    <button class="export-btn" onclick="exportBSTokens()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Export Tokens JSON
-    </button>
+  <!-- CSS Custom Properties -->
+  <div class="section-label">CSS Custom Properties</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
+    <span style="color:#9B9B9B">/* Bottom Sheet tokens */</span><br>
+    <span style="color:#1C95AD">--bs-bg</span>: <span style="color:#FE6201">#FFFFFF</span>; <span style="color:#9B9B9B">/* $background-ui-1 — sheet surface */</span><br>
+    <span style="color:#1C95AD">--bs-overlay</span>: <span style="color:#FE6201">rgba(51,51,51,0.7)</span>; <span style="color:#9B9B9B">/* $overlay-dark — backdrop */</span><br>
+    <span style="color:#1C95AD">--bs-radius</span>: <span style="color:#FE6201">20px</span>; <span style="color:#9B9B9B">/* $radius-xl — top-left & top-right only */</span><br>
+    <span style="color:#1C95AD">--bs-padding</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* $spacing-05 — sheet padding */</span><br>
+    <span style="color:#1C95AD">--bs-gap</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* $spacing-05 — gap between sections */</span><br>
+    <span style="color:#1C95AD">--bs-docked-pt</span>: <span style="color:#FE6201">24px</span>; <span style="color:#9B9B9B">/* $spacing-07 — docked area padding-top */</span><br>
+    <span style="color:#1C95AD">--bs-btn-gap</span>: <span style="color:#FE6201">12px</span>; <span style="color:#9B9B9B">/* $spacing-04 — gap between buttons */</span><br>
+    <span style="color:#1C95AD">--bs-safe-area</span>: <span style="color:#FE6201">24px</span>; <span style="color:#9B9B9B">/* bottom safe area — home indicator clearance */</span><br>
+    <span style="color:#1C95AD">--bs-title-color</span>: <span style="color:#1A1A1A">#1A1A1A</span>; <span style="color:#9B9B9B">/* $text-primary */</span><br>
+    <span style="color:#1C95AD">--bs-desc-color</span>: <span style="color:#828282">#828282</span>; <span style="color:#9B9B9B">/* $text-secondary */</span><br>
+    <span style="color:#1C95AD">--bs-drag-color</span>: <span style="color:#FE6201">#E6E6E6</span>; <span style="color:#9B9B9B">/* drag indicator fill */</span>
   </div>
 
 </div>
 
+<style>
+/* ── Bottom Sheet Base ── */
+.bs-sheet {
+  background: #fff;
+  border-radius: 20px 20px 0 0;
+  padding: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ── Header Layouts ── */
+.bs-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.bs-header-offcenter {
+  justify-content: space-between;
+}
+.bs-header-center {
+  justify-content: space-between;
+}
+.bs-title {
+  font-size: 17px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  color: #1A1A1A;
+  line-height: 1.4;
+}
+.bs-close-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.bs-close-btn:hover {
+  background: #f5f5f5;
+}
+
+/* ── Illustration Row ── */
+.bs-illus-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.bs-illus-placeholder {
+  width: 120px;
+  height: 72px;
+  background: #CDCDCD;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Body ── */
+.bs-body {
+  padding: 0 4px;
+  margin-bottom: 4px;
+}
+.bs-body-center {
+  text-align: center;
+}
+.bs-desc {
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  color: #828282;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Docked Buttons ── */
+.bs-docked {
+  padding-top: 24px;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  gap: 12px;
+}
+.bs-docked-sidebyside {
+  flex-direction: row;
+}
+.bs-docked-stacked {
+  flex-direction: column;
+}
+
+/* ── Blocker Cards (overview) ── */
+.blocker-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.blocker-thumb {
+  width: 100%;
+}
+.blocker-cta-mini {
+  background: #87CCA9;
+  border: none;
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  color: #1A1A1A;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+</style>
+
 <script>
-// ── BLOCKER PREVIEW DATA ────────────────────────────
-const blockerData = {
-  rekening: {
-    title: 'rekening tidak ditemukan',
-    desc: 'periksa kembali nomor tujuan transfer',
-    cta: 'ok'
-  },
-  ewallet: {
-    title: 'akun e-wallet tidak ditemukan',
-    desc: 'pastikan nomor handphone yang kamu masukkan sudah benar',
-    cta: 'coba lagi'
-  },
-  saldo: {
-    title: 'saldo tidak cukup',
-    desc: 'silahkan mengisi kembali dana pada kantong kamu',
-    cta: 'kembali'
-  },
-  koneksi: {
-    title: 'koneksi bermasalah',
-    desc: 'jaringan internet kamu terputus, segera sambungkan kembali perangkat ke dalam jaringan.',
-    cta: 'coba lagi'
-  },
-  login: {
-    title: 'login terlebih dahulu',
-    desc: 'Nomor handphone telah terdaftar sebagai nasabah. Silakan login terlebih dahulu untuk melanjutkan.',
-    cta: 'login'
+/* ─────────────────────────────────────────────────
+   Interactive Preview — Building Blocks
+───────────────────────────────────────────────── */
+const bsState = { header: 'offcenter', btn: 'sidebyside', drag: 'off' };
+
+function setBSCtrl(key, el, val) {
+  document.querySelectorAll('#bs-ctrl-' + key + ' .ctrl-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  bsState[key] = val;
+  renderBSPreview();
+}
+
+function renderBSPreview() {
+  const { header, btn, drag } = bsState;
+  const inner = document.getElementById('bs-preview-inner');
+  if (!inner) return;
+
+  const dragHtml = drag === 'on'
+    ? `<div style="width:72px;height:6px;background:#e6e6e6;border-radius:100px;margin:0 auto 14px"></div>`
+    : '';
+
+  let headerHtml = '';
+  if (header === 'offcenter') {
+    headerHtml = `
+      <div class="bs-header bs-header-offcenter">
+        <span class="bs-title" style="flex:1">Title</span>
+        <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="bs-body"><p class="bs-desc">Write some description here. This section can only contain 1–2 sentences maximum.</p></div>`;
+  } else if (header === 'center') {
+    headerHtml = `
+      <div class="bs-header bs-header-center">
+        <div style="width:44px"></div>
+        <span class="bs-title">Title</span>
+        <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="bs-body"><p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p></div>`;
+  } else {
+    headerHtml = `
+      <div class="bs-illus-row">
+        <div style="width:44px"></div>
+        <div class="bs-illus-placeholder"></div>
+        <button class="bs-close-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/></svg></button>
+      </div>
+      <div class="bs-body bs-body-center">
+        <h3 class="bs-title" style="text-align:center">Title</h3>
+        <p class="bs-desc" style="text-align:center">Write some description here. This section can only contain 1–2 sentences maximum.</p>
+      </div>`;
   }
+
+  let btnHtml = '';
+  if (btn === 'sidebyside') {
+    btnHtml = `<div class="bs-docked bs-docked-sidebyside"><button class="btn-atreus btn-outline btn-md-size" style="flex:1">Cancel</button><button class="btn-atreus btn-filled btn-md-size" style="flex:1">Confirm</button></div>`;
+  } else if (btn === 'stacked') {
+    btnHtml = `<div class="bs-docked bs-docked-stacked"><button class="btn-atreus btn-filled btn-md-size" style="width:100%">Primary</button><button class="btn-atreus btn-outline btn-md-size" style="width:100%">Secondary</button></div>`;
+  } else {
+    btnHtml = `<div class="bs-docked bs-docked-stacked"><button class="btn-atreus btn-filled btn-md-size" style="width:100%">Got it</button></div>`;
+  }
+
+  inner.innerHTML = `
+    <div class="bs-sheet" style="border-radius:20px 20px 0 0">
+      ${dragHtml}
+      ${headerHtml}
+      ${btnHtml}
+      <div style="height:20px;background:#fff"></div>
+    </div>`;
+}
+
+/* ─────────────────────────────────────────────────
+   Blocker Preview
+───────────────────────────────────────────────── */
+const blockerData = {
+  rekening: { title: 'rekening tidak ditemukan', desc: 'periksa kembali nomor tujuan transfer', cta: 'ok' },
+  ewallet:  { title: 'akun e-wallet tidak ditemukan', desc: 'pastikan nomor handphone yang kamu masukkan sudah benar', cta: 'coba lagi' },
+  saldo:    { title: 'saldo tidak cukup', desc: 'silahkan mengisi kembali dana pada kantong kamu', cta: 'kembali' },
+  koneksi:  { title: 'koneksi bermasalah', desc: 'jaringan internet kamu terputus, segera sambungkan kembali perangkat ke dalam jaringan.', cta: 'coba lagi' },
+  login:    { title: 'login terlebih dahulu', desc: 'Nomor handphone telah terdaftar sebagai nasabah. Silakan login terlebih dahulu untuk melanjutkan.', cta: 'login' }
 };
 
 function setBlocker(el, key) {
-  document.querySelectorAll('#page-container .ctrl-pill').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#bs-ctrl-blocker .ctrl-pill').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   renderBlocker(key);
 }
@@ -585,7 +783,7 @@ function renderBlocker(key) {
   const stage = document.getElementById('blocker-preview');
   if (!stage) return;
   stage.innerHTML = `
-    <div class="bs-sheet" style="border-radius:16px 16px 0 0">
+    <div class="bs-sheet" style="border-radius:20px 20px 0 0">
       <div class="bs-illus-row">
         <div style="width:44px"></div>
         <div class="bs-illus-placeholder" style="width:140px;height:84px;border-radius:8px;background:#CDCDCD;flex-shrink:0"></div>
@@ -602,15 +800,11 @@ function renderBlocker(key) {
     </div>`;
 }
 
-// Init on page load
-(function() {
-  renderBlocker('rekening');
-})();
-
-// ── EXPORT FUNCTIONS ────────────────────────────────
+/* ─────────────────────────────────────────────────
+   Export Functions
+───────────────────────────────────────────────── */
 function copyBSTokens() {
-  const css = `/* Bottom Sheet CSS Custom Properties */
-:root {
+  const css = `:root {
   --bs-bg: #FFFFFF;
   --bs-overlay: rgba(51,51,51,0.7);
   --bs-radius: 20px;
@@ -621,8 +815,7 @@ function copyBSTokens() {
   --bs-safe-area: 24px;
   --bs-title-color: #1A1A1A;
   --bs-desc-color: #828282;
-  --bs-illus-size: 216px 128px;
-  --bs-close-size: 44px;
+  --bs-drag-color: #E6E6E6;
 }`;
   navigator.clipboard.writeText(css).then(() => {
     if (typeof showToast === 'function') showToast('Bottom Sheet CSS vars copied!');
@@ -631,26 +824,35 @@ function copyBSTokens() {
 
 function exportBSTokens() {
   const tokens = {
-    "bottomSheet": {
-      "background": { "value": "#FFFFFF", "type": "color", "description": "Sheet background" },
-      "overlay": { "value": "rgba(51,51,51,0.7)", "type": "color", "description": "Backdrop overlay" },
-      "borderRadius": { "value": "20px", "type": "borderRadius", "description": "Top corners only" },
-      "padding": { "value": "16px", "type": "spacing" },
-      "gap": { "value": "16px", "type": "spacing" },
-      "dockedPaddingTop": { "value": "24px", "type": "spacing" },
-      "buttonGap": { "value": "12px", "type": "spacing" },
-      "safeArea": { "value": "24px", "type": "spacing" },
-      "titleColor": { "value": "#1A1A1A", "type": "color" },
-      "descColor": { "value": "#828282", "type": "color" }
+    bottomSheet: {
+      background:         { value: '#FFFFFF',             type: 'color',        description: 'Sheet background — $background-ui-1' },
+      overlay:            { value: 'rgba(51,51,51,0.7)',  type: 'color',        description: 'Backdrop overlay — $overlay-dark' },
+      borderRadius:       { value: '20px',                type: 'borderRadius', description: 'Top corners only — $radius-xl' },
+      padding:            { value: '16px',                type: 'spacing',      description: '$spacing-05' },
+      gap:                { value: '16px',                type: 'spacing',      description: '$spacing-05' },
+      dockedPaddingTop:   { value: '24px',                type: 'spacing',      description: '$spacing-07' },
+      buttonGap:          { value: '12px',                type: 'spacing',      description: '$spacing-04' },
+      safeArea:           { value: '24px',                type: 'spacing',      description: 'Home indicator clearance' },
+      titleColor:         { value: '#1A1A1A',             type: 'color',        description: '$text-primary' },
+      descColor:          { value: '#828282',             type: 'color',        description: '$text-secondary' },
+      dragIndicatorColor: { value: '#E6E6E6',             type: 'color',        description: 'Drag handle fill' }
     }
   };
-  const blob = new Blob([JSON.stringify(tokens, null, 2)], {type:'application/json'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
+  const blob = new Blob([JSON.stringify(tokens, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
   a.download = 'bottomsheet-tokens.json';
   a.click();
   URL.revokeObjectURL(url);
   if (typeof showToast === 'function') showToast('bottomsheet-tokens.json downloaded!');
 }
+
+/* ─────────────────────────────────────────────────
+   Init
+───────────────────────────────────────────────── */
+(function init() {
+  renderBSPreview();
+  renderBlocker('rekening');
+})();
 </script>
