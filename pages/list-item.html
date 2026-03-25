@@ -1,0 +1,1166 @@
+<!-- ═══════════════════════════════════════════════════════
+     Atreus DS — List Item Page
+     pages/list-item.html
+     ═══════════════════════════════════════════════════════ -->
+
+<div class="topbar">
+  <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>List Item</b></div>
+  <div class="topbar-right">
+    <button class="btn-sm" onclick="exportListItemTokens()">tokens.json</button>
+    <button class="btn-sm btn-accent" id="li-copy-css-btn" onclick="copyListItemCSS()">Copy CSS</button>
+  </div>
+</div>
+
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Components / List Item</div>
+    <h1 class="page-title">List Item</h1>
+    <p class="page-desc">List Items are the fundamental building block of any list-based layout in hibank. They present structured content — text, metadata, and actions — in a consistent, touch-friendly row. Each item supports a leading element (icon, avatar, or thumbnail), a label + supporting text, and a trailing element (value, action, or control).</p>
+  </div>
+
+  <!-- ── Hero ── -->
+  <div class="comp-hero">
+    <div class="comp-hero-preview" style="flex-direction:column;gap:0;align-items:stretch;min-width:280px;max-width:360px;border:1px solid #EBEBEB;border-radius:12px;overflow:hidden;background:#FFFFFF;">
+      <!-- 1-line item -->
+      <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+        <div class="li-leading li-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/><path d="M12 8v4l2.5 2.5" stroke="#828282" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="li-body">
+          <span class="li-label">List label</span>
+        </div>
+        <div class="li-trailing">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <!-- 2-line item -->
+      <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+        <div class="li-leading li-icon-wrap">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#828282" stroke-width="1.5"/><path d="M3 10h18" stroke="#828282" stroke-width="1.5"/></svg>
+        </div>
+        <div class="li-body">
+          <span class="li-label">List label</span>
+          <span class="li-support">Supporting text</span>
+        </div>
+        <div class="li-trailing">
+          <span class="li-value">Rp 500.000</span>
+        </div>
+      </div>
+      <!-- 3-line / badge item -->
+      <div class="li-row li-size-lg">
+        <div class="li-leading li-avatar">
+          <span style="font-size:13px;font-weight:700;color:#238453;">HB</span>
+        </div>
+        <div class="li-body">
+          <span class="li-label">List label</span>
+          <span class="li-support">Supporting text that wraps to two lines for longer descriptions</span>
+        </div>
+        <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:6px;">
+          <span class="li-badge li-badge-success">Active</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+    <div class="comp-hero-info">
+      <h2>3 Sizes · 4 Leading Types · 5 Trailing Types · 2 States</h2>
+      <p>A flexible row component for menus, transaction lists, settings, and data displays. Supports icon, avatar, thumbnail, and plain leading elements; value, badge, chevron, action, and control trailers. Height adapts to content — small 48px, medium 56px, large 72px (min).</p>
+      <div class="token-strip" style="margin-top:12px;margin-bottom:0">
+        <span class="token-chip" onclick="copyText('#FFFFFF','Copied #FFFFFF')"><span class="chip-swatch" style="background:#FFFFFF;border:1px solid #EBEBEB"></span>$li-bg-default</span>
+        <span class="token-chip" onclick="copyText('#F8F8F8','Copied #F8F8F8')"><span class="chip-swatch" style="background:#F8F8F8;border:1px solid #ddd"></span>$li-bg-pressed</span>
+        <span class="token-chip" onclick="copyText('#F3F3F3','Copied #F3F3F3')"><span class="chip-swatch" style="background:#F3F3F3;border:1px solid #ddd"></span>$li-divider</span>
+        <span class="token-chip" onclick="copyText('#1A1A1A','Copied #1A1A1A')"><span class="chip-swatch" style="background:#1A1A1A"></span>$text-primary</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Interactive Preview ── -->
+  <div class="section-label">Interactive Preview</div>
+  <div class="props-demo">
+    <div class="props-demo-controls">
+      <div class="ctrl-group">
+        <div class="ctrl-label">Size</div>
+        <div class="ctrl-pills" id="li-ctrl-size">
+          <span class="ctrl-pill" onclick="setLICtrl('size',this,'sm')">Small</span>
+          <span class="ctrl-pill active" onclick="setLICtrl('size',this,'md')">Medium</span>
+          <span class="ctrl-pill" onclick="setLICtrl('size',this,'lg')">Large</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Leading</div>
+        <div class="ctrl-pills" id="li-ctrl-leading">
+          <span class="ctrl-pill active" onclick="setLICtrl('leading',this,'none')">None</span>
+          <span class="ctrl-pill" onclick="setLICtrl('leading',this,'icon')">Icon</span>
+          <span class="ctrl-pill" onclick="setLICtrl('leading',this,'avatar')">Avatar</span>
+          <span class="ctrl-pill" onclick="setLICtrl('leading',this,'thumbnail')">Thumbnail</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Content</div>
+        <div class="ctrl-pills" id="li-ctrl-content">
+          <span class="ctrl-pill active" onclick="setLICtrl('content',this,'1-line')">1 Line</span>
+          <span class="ctrl-pill" onclick="setLICtrl('content',this,'2-line')">2 Line</span>
+          <span class="ctrl-pill" onclick="setLICtrl('content',this,'3-line')">3 Line</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">Trailing</div>
+        <div class="ctrl-pills" id="li-ctrl-trailing">
+          <span class="ctrl-pill active" onclick="setLICtrl('trailing',this,'chevron')">Chevron</span>
+          <span class="ctrl-pill" onclick="setLICtrl('trailing',this,'value')">Value</span>
+          <span class="ctrl-pill" onclick="setLICtrl('trailing',this,'badge')">Badge</span>
+          <span class="ctrl-pill" onclick="setLICtrl('trailing',this,'toggle')">Toggle</span>
+          <span class="ctrl-pill" onclick="setLICtrl('trailing',this,'none')">None</span>
+        </div>
+      </div>
+      <div class="ctrl-group">
+        <div class="ctrl-label">State</div>
+        <div class="ctrl-pills" id="li-ctrl-state">
+          <span class="ctrl-pill active" onclick="setLICtrl('state',this,'default')">Default</span>
+          <span class="ctrl-pill" onclick="setLICtrl('state',this,'pressed')">Pressed</span>
+          <span class="ctrl-pill" onclick="setLICtrl('state',this,'disabled')">Disabled</span>
+        </div>
+      </div>
+    </div>
+    <div class="props-demo-stage" id="li-preview-stage" style="padding:0;overflow:hidden;border-radius:8px;">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── Anatomy ── -->
+  <div class="section-label">Anatomy</div>
+  <div class="anatomy-box">
+    <div style="display:flex;flex-direction:column;gap:24px;width:100%;">
+      <div style="position:relative;max-width:400px;width:100%;">
+        <!-- Anatomy Item -->
+        <div style="display:flex;align-items:center;gap:12px;background:#FFFFFF;border:1px solid #EBEBEB;border-radius:12px;padding:14px 16px;position:relative;">
+          <!-- 1: Container -->
+          <span class="anatomy-number" style="position:absolute;top:-12px;left:-12px;">1</span>
+          <!-- 2: Leading -->
+          <div style="position:relative;width:40px;height:40px;border-radius:40px;background:#CCE9DF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" fill="#238453"/></svg>
+            <span class="anatomy-number" style="position:absolute;top:-8px;right:-8px;">2</span>
+          </div>
+          <!-- 3: Body -->
+          <div style="flex:1;display:flex;flex-direction:column;gap:2px;position:relative;">
+            <span class="anatomy-number" style="position:absolute;top:-10px;right:0;">3</span>
+            <span style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:#1A1A1A;position:relative;">List label<span class="anatomy-number" style="position:absolute;top:-8px;right:-10px;">4</span></span>
+            <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:400;color:#828282;position:relative;">Supporting text<span class="anatomy-number" style="position:absolute;top:-8px;right:-10px;">5</span></span>
+          </div>
+          <!-- 4: Trailing -->
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;position:relative;">
+            <span class="anatomy-number" style="position:absolute;top:-10px;right:-10px;">6</span>
+            <span style="font-family:'Sora',sans-serif;font-size:12px;font-weight:700;color:#1A1A1A;">Rp 500.000</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="anatomy-legend">
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">1</span>Container — full-width row, min-height varies by size, bg: #FFFFFF, divider: 1px #F3F3F3</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">2</span>Leading element (optional) — Icon 40×40px, Avatar 40×40px, or Thumbnail 48×48px; gap to body: 12px</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">3</span>Body — flex column, flex: 1, gap: 2px between label and supporting text</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">4</span>Label — Sora Bold 14px / lh 20px, color: $text-primary #1A1A1A</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">5</span>Supporting text (optional) — Sora Regular 12px / lh 18px, color: $text-secondary #828282</div>
+        <div class="anatomy-legend-item"><span class="anatomy-legend-num">6</span>Trailing element (optional) — Value text, Badge, Chevron 16×16px, Toggle, or Action icon</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── Variants ── -->
+  <div class="section-label">Variants · Size</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr;">
+
+    <!-- Small -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Small</div>
+        <div class="variant-card-tag">size="Small" · 48px</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-sm" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-icon-wrap li-icon-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="#828282" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label li-label-sm">List label</span></div>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-sm" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-icon-wrap li-icon-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#828282" stroke-width="1.5"/><path d="M3 10h18" stroke="#828282" stroke-width="1.5"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label li-label-sm">List label</span><span class="li-support li-support-sm">Supporting text</span></div>
+          <span class="li-value li-value-sm">Rp 100.000</span>
+        </div>
+        <div class="li-row li-size-sm">
+          <div class="li-body"><span class="li-label li-label-sm">List label only</span></div>
+          <div class="li-trailing"><span class="li-badge li-badge-success">Active</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medium -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Medium</div>
+        <div class="variant-card-tag">size="Medium" · 56px</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/><path d="M12 8v4l2.5 2.5" stroke="#828282" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#828282" stroke-width="1.5"/><path d="M3 10h18" stroke="#828282" stroke-width="1.5"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <span class="li-value">Rp 500.000</span>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-leading li-avatar"><span style="font-size:12px;font-weight:700;color:#238453;">AB</span></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <div class="li-trailing"><span class="li-badge li-badge-warning">Pending</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Large</div>
+        <div class="variant-card-tag">size="Large" · 72px min</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-lg" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-thumbnail"></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text that can wrap to two lines when the content requires more space</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-lg">
+          <div class="li-leading li-avatar li-avatar-lg"><span style="font-size:14px;font-weight:700;color:#238453;">HB</span></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text that can wrap to two lines for longer descriptions</span></div>
+          <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:6px;">
+            <span class="li-badge li-badge-success">Active</span>
+            <span class="li-value" style="font-size:11px;color:#828282;">12 Mar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── Leading Variants ── -->
+  <div class="section-label">Leading Element Variants</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;">
+
+    <!-- None -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">No Leading</div>
+        <div class="variant-card-tag">leading="None"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Icon -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Icon</div>
+        <div class="variant-card-tag">leading="Icon"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-icon-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" stroke="#828282" stroke-width="1.5"/><path d="M9 22V12h6v10" stroke="#828282" stroke-width="1.5"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-leading li-icon-wrap li-icon-colored">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#238453" stroke-width="1.5"/><path d="M3 10h18" stroke="#238453" stroke-width="1.5"/></svg>
+          </div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avatar -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Avatar</div>
+        <div class="variant-card-tag">leading="Avatar"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-avatar"><span style="font-size:12px;font-weight:700;color:#238453;">AB</span></div>
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-leading li-avatar" style="background:#E8F4FF;"><span style="font-size:12px;font-weight:700;color:#007E99;">CD</span></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thumbnail -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Thumbnail</div>
+        <div class="variant-card-tag">leading="Thumbnail"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-lg" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-leading li-thumbnail"></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="li-row li-size-lg">
+          <div class="li-leading li-thumbnail" style="background:#E9F7F3;"></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Trailing Variants ── -->
+  <div class="section-label">Trailing Element Variants</div>
+  <div class="variant-grid" style="grid-template-columns:1fr 1fr 1fr;">
+
+    <!-- Value + Chevron -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Value + Chevron</div>
+        <div class="variant-card-tag">trailing="Value"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">Balance</span><span class="li-support">Tabungan Utama</span></div>
+          <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:2px;">
+            <span class="li-value">Rp 12.500.000</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-body"><span class="li-label">Last transaction</span></div>
+          <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:2px;">
+            <span class="li-value li-value-negative">-Rp 200.000</span>
+            <span style="font-size:11px;color:#828282;font-family:'Sora',sans-serif;">12 Mar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badge -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Badge</div>
+        <div class="variant-card-tag">trailing="Badge"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">Account status</span><span class="li-support">Verified</span></div>
+          <span class="li-badge li-badge-success">Active</span>
+        </div>
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">Transfer status</span><span class="li-support">24 Mar 2025</span></div>
+          <span class="li-badge li-badge-warning">Pending</span>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-body"><span class="li-label">Payment status</span><span class="li-support">Overdue</span></div>
+          <span class="li-badge li-badge-error">Failed</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toggle & Action -->
+    <div class="variant-card">
+      <div class="variant-card-header">
+        <div class="variant-card-title">Toggle & Action</div>
+        <div class="variant-card-tag">trailing="Toggle" / "Action"</div>
+      </div>
+      <div class="variant-card-body" style="flex-direction:column;gap:0;padding:0;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">Notifikasi</span><span class="li-support">Push notification</span></div>
+          <div class="li-toggle li-toggle-on" onclick="toggleSwitch(this)"></div>
+        </div>
+        <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+          <div class="li-body"><span class="li-label">Biometrics</span><span class="li-support">Face ID / Fingerprint</span></div>
+          <div class="li-toggle li-toggle-off" onclick="toggleSwitch(this)"></div>
+        </div>
+        <div class="li-row li-size-md">
+          <div class="li-body"><span class="li-label">Delete item</span></div>
+          <button class="li-action-btn" onclick="this.style.opacity='0.5'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6" stroke="#CE0101" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── States ── -->
+  <div class="section-label">States · All Configurations</div>
+  <div class="states-grid" style="grid-template-columns:repeat(3,1fr);gap:12px;">
+    <div class="state-row-header" style="grid-column:1/-1;">Default · Pressed · Disabled — Medium size</div>
+
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md">
+          <div class="li-leading li-icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/></svg></div>
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="state-label">Default</div>
+    </div>
+
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md li-pressed">
+          <div class="li-leading li-icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/></svg></div>
+          <div class="li-body"><span class="li-label">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="state-label">Pressed</div>
+    </div>
+
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md li-disabled">
+          <div class="li-leading li-icon-wrap"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#CDCDCD" stroke-width="1.5"/></svg></div>
+          <div class="li-body"><span class="li-label" style="color:#CDCDCD;">List label</span></div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#EBEBEB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="state-label">Disabled</div>
+    </div>
+
+    <!-- 2-line states -->
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md">
+          <div class="li-leading li-avatar"><span style="font-size:11px;font-weight:700;color:#238453;">AB</span></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <span class="li-badge li-badge-success">Active</span>
+        </div>
+      </div>
+      <div class="state-label">Default · Badge</div>
+    </div>
+
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md li-pressed">
+          <div class="li-leading li-avatar"><span style="font-size:11px;font-weight:700;color:#238453;">AB</span></div>
+          <div class="li-body"><span class="li-label">List label</span><span class="li-support">Supporting text</span></div>
+          <span class="li-badge li-badge-success">Active</span>
+        </div>
+      </div>
+      <div class="state-label">Pressed · Badge</div>
+    </div>
+
+    <div class="state-cell">
+      <div style="width:100%;border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;">
+        <div class="li-row li-size-md li-disabled">
+          <div class="li-leading li-avatar" style="background:#F3F3F3;"><span style="font-size:11px;font-weight:700;color:#CDCDCD;">AB</span></div>
+          <div class="li-body"><span class="li-label" style="color:#CDCDCD;">List label</span><span class="li-support" style="color:#DADADA;">Supporting text</span></div>
+          <span class="li-badge" style="background:#F3F3F3;color:#CDCDCD;border-color:#DADADA;">Active</span>
+        </div>
+      </div>
+      <div class="state-label">Disabled · Badge</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── Design Specs ── -->
+  <div class="section-label">Design Specs</div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">📐 Layout & Spacing</div>
+    <table class="spec-table">
+      <thead><tr><th>Property</th><th>Small</th><th>Medium</th><th>Large</th><th>Token</th></tr></thead>
+      <tbody>
+        <tr><td>Min Height</td><td class="spec-value">48px</td><td class="spec-value">56px</td><td class="spec-value">72px</td><td><span class="spec-token">auto via padding</span></td></tr>
+        <tr><td>Padding H</td><td class="spec-value">12px</td><td class="spec-value">16px</td><td class="spec-value">16px</td><td><span class="spec-token">$spacing-04 · $spacing-05</span></td></tr>
+        <tr><td>Padding V</td><td class="spec-value">8px</td><td class="spec-value">12px</td><td class="spec-value">14px</td><td><span class="spec-token">$spacing-03 · $spacing-04</span></td></tr>
+        <tr><td>Gap (leading → body)</td><td class="spec-value">8px</td><td class="spec-value">12px</td><td class="spec-value">12px</td><td><span class="spec-token">$spacing-03 · $spacing-04</span></td></tr>
+        <tr><td>Gap (body → trailing)</td><td class="spec-value">8px</td><td class="spec-value">8px</td><td class="spec-value">8px</td><td><span class="spec-token">$spacing-03</span></td></tr>
+        <tr><td>Gap (label → support)</td><td class="spec-value">2px</td><td class="spec-value">2px</td><td class="spec-value">4px</td><td><span class="spec-token">$spacing-01</span></td></tr>
+        <tr><td>Divider height</td><td class="spec-value">1px</td><td class="spec-value">1px</td><td class="spec-value">1px</td><td><span class="spec-token">$li-divider</span></td></tr>
+        <tr><td>Icon size (leading)</td><td class="spec-value">16×16px</td><td class="spec-value">20×20px</td><td class="spec-value">20×20px</td><td>—</td></tr>
+        <tr><td>Avatar size</td><td class="spec-value">32×32px</td><td class="spec-value">40×40px</td><td class="spec-value">48×48px</td><td>—</td></tr>
+        <tr><td>Thumbnail size</td><td class="spec-value">—</td><td class="spec-value">—</td><td class="spec-value">48×48px</td><td>—</td></tr>
+        <tr><td>Chevron size (trailing)</td><td class="spec-value">14×14px</td><td class="spec-value">16×16px</td><td class="spec-value">16×16px</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🎨 Color Tokens</div>
+    <table class="spec-table">
+      <thead><tr><th>Element · State</th><th>Color</th><th>Token</th></tr></thead>
+      <tbody>
+        <tr><td>Container · Default</td><td class="spec-value">#FFFFFF</td><td><span class="spec-token">$li-bg-default</span></td></tr>
+        <tr><td>Container · Pressed</td><td class="spec-value">#F8F8F8</td><td><span class="spec-token">$li-bg-pressed</span></td></tr>
+        <tr><td>Container · Disabled</td><td class="spec-value">#FFFFFF · opacity 0.5</td><td><span class="spec-token">$li-bg-disabled</span></td></tr>
+        <tr><td>Divider</td><td class="spec-value">#F3F3F3</td><td><span class="spec-token">$li-divider</span></td></tr>
+        <tr><td>Label · Default</td><td class="spec-value">#1A1A1A</td><td><span class="spec-token">$text-primary</span></td></tr>
+        <tr><td>Label · Disabled</td><td class="spec-value">#CDCDCD</td><td><span class="spec-token">$text-disabled</span></td></tr>
+        <tr><td>Supporting text</td><td class="spec-value">#828282</td><td><span class="spec-token">$text-secondary</span></td></tr>
+        <tr><td>Value text (positive)</td><td class="spec-value">#1A1A1A</td><td><span class="spec-token">$text-primary</span></td></tr>
+        <tr><td>Value text (negative)</td><td class="spec-value">#CE0101</td><td><span class="spec-token">$semantic-error</span></td></tr>
+        <tr><td>Icon · Default (leading)</td><td class="spec-value">#828282</td><td><span class="spec-token">$text-secondary</span></td></tr>
+        <tr><td>Icon · Colored (leading)</td><td class="spec-value">#238453</td><td><span class="spec-token">$text-harmony</span></td></tr>
+        <tr><td>Chevron (trailing)</td><td class="spec-value">#CDCDCD</td><td><span class="spec-token">$icon-tertiary</span></td></tr>
+        <tr><td>Avatar background</td><td class="spec-value">#CCE9DF</td><td><span class="spec-token">$chip-bg-selected</span></td></tr>
+        <tr><td>Thumbnail background</td><td class="spec-value">#F3F3F3</td><td><span class="spec-token">$background/ui/2</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">🏷 Badge Tokens</div>
+    <table class="spec-table">
+      <thead><tr><th>Variant</th><th>Background</th><th>Border</th><th>Text</th></tr></thead>
+      <tbody>
+        <tr><td>Success</td><td><span class="spec-token">$chip-bg-selected</span> <code>#CCE9DF</code></td><td><code>#238453</code></td><td><span class="spec-token">$text-harmony</span> <code>#238453</code></td></tr>
+        <tr><td>Warning</td><td><code>#FFF3D6</code></td><td><code>#FF9B00</code></td><td><code>#B06E00</code></td></tr>
+        <tr><td>Error</td><td><code>#FFE5E5</code></td><td><code>#CE0101</code></td><td><code>#CE0101</code></td></tr>
+        <tr><td>Info</td><td><code>#E0F4F8</code></td><td><code>#007E99</code></td><td><code>#007E99</code></td></tr>
+        <tr><td>Neutral</td><td><code>#F3F3F3</code></td><td><code>#DADADA</code></td><td><span class="spec-token">$text-secondary</span> <code>#828282</code></td></tr>
+        <tr><td>Height</td><td class="spec-value">20px</td><td colspan="2"><span class="spec-token">padding: 2px 8px · border-radius: 20px</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="spec-table-wrap">
+    <div class="spec-table-title">✏️ Typography</div>
+    <table class="spec-table">
+      <thead><tr><th>Element</th><th>Font</th><th>Weight</th><th>Font Size</th><th>Line Height</th></tr></thead>
+      <tbody>
+        <tr><td>Label (md / lg)</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">14px</td><td class="spec-value">20px</td></tr>
+        <tr><td>Label (sm)</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">12px</td><td class="spec-value">18px</td></tr>
+        <tr><td>Supporting text</td><td>Sora</td><td class="spec-value">Regular / 400</td><td class="spec-value">12px</td><td class="spec-value">18px</td></tr>
+        <tr><td>Value</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">12px</td><td class="spec-value">18px</td></tr>
+        <tr><td>Badge label</td><td>Sora</td><td class="spec-value">Bold / 700</td><td class="spec-value">10px</td><td class="spec-value">14px</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── Usage Guidelines ── -->
+  <div class="section-label">Usage Guidelines</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3;">📋</div>
+        <div class="usage-content">
+          <strong>Use the right size for context</strong>
+          <p>Small for dense lists (settings, menus), Medium for standard content (accounts, transactions), Large for rich content with thumbnails or long descriptions.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7FA;">🏷️</div>
+        <div class="usage-content">
+          <strong>Match badge variant to status severity</strong>
+          <p>Always use Success/Warning/Error/Info badges consistently to match the Snackbar semantic color system — users build pattern recognition across the product.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#FEF6F1;">💰</div>
+        <div class="usage-content">
+          <strong>Use negative color for debit amounts</strong>
+          <p>Value text showing deductions or debits should use <code>$semantic-error</code> (#CE0101). Credits and balances use <code>$text-primary</code> (#1A1A1A).</p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#E9F7F3;">📱</div>
+        <div class="usage-content">
+          <strong>Always use dividers between items</strong>
+          <p>Use 1px #F3F3F3 dividers between list items — never rely on spacing alone for list separation. The bottom item in a group omits its divider.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#FEF6F1;">🔀</div>
+        <div class="usage-content">
+          <strong>Keep trailing elements consistent within a list</strong>
+          <p>Within a single list group, all items should share the same trailing type — all chevrons, all badges, or all values. Mixing trailing types creates visual noise.</p>
+        </div>
+      </div>
+      <div class="usage-card">
+        <div class="usage-icon" style="background:#F6F6F6;">🔢</div>
+        <div class="usage-content">
+          <strong>Limit label to 1 line, support to 2 lines</strong>
+          <p>Labels should never wrap. Supporting text may wrap to 2 lines max in Large size — if more is needed, reconsider the information architecture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Do / Don't ── -->
+  <div class="section-label">Do / Don't</div>
+  <div class="do-dont-grid">
+    <div class="do-box">
+      <div class="do-header">✓ DO</div>
+      <div class="do-body">
+        <!-- DO: consistent trailing -->
+        <div style="border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;margin-bottom:4px;">
+          <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+            <div class="li-body"><span class="li-label">Transfer BCA</span><span class="li-support">24 Mar 2025</span></div>
+            <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:2px;"><span class="li-value li-value-negative">-Rp 200.000</span></div>
+          </div>
+          <div class="li-row li-size-md">
+            <div class="li-body"><span class="li-label">Top Up e-Wallet</span><span class="li-support">24 Mar 2025</span></div>
+            <div class="li-trailing" style="flex-direction:column;align-items:flex-end;gap:2px;"><span class="li-value li-value-negative">-Rp 100.000</span></div>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Consistent trailing element type across a list group</div>
+
+        <div style="border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;margin-top:12px;margin-bottom:4px;">
+          <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+            <div class="li-leading li-avatar"><span style="font-size:11px;font-weight:700;color:#238453;">HB</span></div>
+            <div class="li-body"><span class="li-label">Tabungan Utama</span><span class="li-support">•••• 1234</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="li-row li-size-md">
+            <div class="li-leading li-avatar" style="background:#E8F4FF;"><span style="font-size:11px;font-weight:700;color:#007E99;">TB</span></div>
+            <div class="li-body"><span class="li-label">Tabungan Berjangka</span><span class="li-support">•••• 5678</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✓</span>Use avatars consistently to group similar entity types</div>
+      </div>
+    </div>
+    <div class="dont-box">
+      <div class="dont-header">✗ DON'T</div>
+      <div class="do-body">
+        <!-- DON'T: mixed trailing -->
+        <div style="border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;margin-bottom:4px;">
+          <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+            <div class="li-body"><span class="li-label">Transfer BCA</span></div>
+            <span class="li-badge li-badge-success">Done</span>
+          </div>
+          <div class="li-row li-size-md">
+            <div class="li-body"><span class="li-label">Top Up e-Wallet</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't mix trailing element types (badge + chevron) in one list</div>
+
+        <div style="border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;margin-top:12px;margin-bottom:4px;">
+          <div class="li-row li-size-md" style="border-bottom:1px solid #F3F3F3;">
+            <div class="li-body"><span class="li-label" style="white-space:normal;line-height:1.4;">Transfer ke BCA Virtual Account 8808123456789 atas nama PT XYZ Indonesia</span></div>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't put long text in the label — it should never wrap. Use supporting text or truncate.</div>
+
+        <div style="border:1px solid #EBEBEB;border-radius:8px;overflow:hidden;margin-top:12px;margin-bottom:4px;">
+          <div class="li-row li-size-md" style="border-bottom:none;">
+            <div class="li-body"><span class="li-label">Settings</span></div>
+          </div>
+          <div class="li-row li-size-md" style="border-bottom:none;margin-top:12px;">
+            <div class="li-body"><span class="li-label">Profile</span></div>
+          </div>
+        </div>
+        <div class="guideline-row"><span class="guideline-icon">✗</span>Don't rely on spacing alone to separate items — always use 1px dividers</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ── CSS Custom Properties ── -->
+  <div class="section-label">CSS Custom Properties</div>
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:22px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);line-height:2;overflow-x:auto">
+    <span style="color:#9B9B9B">/* List Item — Container tokens */</span><br>
+    <span style="color:#1C95AD">--li-bg-default</span>: <span style="color:#FFFFFF">#FFFFFF</span>; <span style="color:#9B9B9B">/* $background/ui/default */</span><br>
+    <span style="color:#1C95AD">--li-bg-pressed</span>: <span style="color:#F8F8F8">#F8F8F8</span>; <span style="color:#9B9B9B">/* $background/ui/pressed */</span><br>
+    <span style="color:#1C95AD">--li-divider</span>: <span style="color:#F3F3F3">#F3F3F3</span>; <span style="color:#9B9B9B">/* $border/subtle */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* List Item — Size: Small */</span><br>
+    <span style="color:#1C95AD">--li-min-h-sm</span>: <span style="color:#FE6201">48px</span>;<br>
+    <span style="color:#1C95AD">--li-padding-h-sm</span>: <span style="color:#FE6201">12px</span>; <span style="color:#9B9B9B">/* $spacing-04 */</span><br>
+    <span style="color:#1C95AD">--li-padding-v-sm</span>: <span style="color:#FE6201">8px</span>; <span style="color:#9B9B9B">/* $spacing-03 */</span><br>
+    <span style="color:#1C95AD">--li-gap-sm</span>: <span style="color:#FE6201">8px</span>; <span style="color:#9B9B9B">/* $spacing-03 */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* List Item — Size: Medium */</span><br>
+    <span style="color:#1C95AD">--li-min-h-md</span>: <span style="color:#FE6201">56px</span>;<br>
+    <span style="color:#1C95AD">--li-padding-h-md</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* $spacing-05 */</span><br>
+    <span style="color:#1C95AD">--li-padding-v-md</span>: <span style="color:#FE6201">12px</span>; <span style="color:#9B9B9B">/* $spacing-04 */</span><br>
+    <span style="color:#1C95AD">--li-gap-md</span>: <span style="color:#FE6201">12px</span>; <span style="color:#9B9B9B">/* $spacing-04 */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* List Item — Size: Large */</span><br>
+    <span style="color:#1C95AD">--li-min-h-lg</span>: <span style="color:#FE6201">72px</span>;<br>
+    <span style="color:#1C95AD">--li-padding-h-lg</span>: <span style="color:#FE6201">16px</span>; <span style="color:#9B9B9B">/* $spacing-05 */</span><br>
+    <span style="color:#1C95AD">--li-padding-v-lg</span>: <span style="color:#FE6201">14px</span>;<br>
+    <span style="color:#1C95AD">--li-gap-lg</span>: <span style="color:#FE6201">12px</span>; <span style="color:#9B9B9B">/* $spacing-04 */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* List Item — Text tokens */</span><br>
+    <span style="color:#1C95AD">--li-label-color</span>: <span style="color:#1A1A1A">#1A1A1A</span>; <span style="color:#9B9B9B">/* $text-primary */</span><br>
+    <span style="color:#1C95AD">--li-support-color</span>: <span style="color:#828282">#828282</span>; <span style="color:#9B9B9B">/* $text-secondary */</span><br>
+    <span style="color:#1C95AD">--li-value-color</span>: <span style="color:#1A1A1A">#1A1A1A</span>; <span style="color:#9B9B9B">/* $text-primary */</span><br>
+    <span style="color:#1C95AD">--li-value-negative</span>: <span style="color:#CE0101">#CE0101</span>; <span style="color:#9B9B9B">/* $semantic-error */</span><br>
+    <span style="color:#1C95AD">--li-label-disabled</span>: <span style="color:#CDCDCD">#CDCDCD</span>; <span style="color:#9B9B9B">/* $text-disabled */</span><br>
+    <span style="color:#1C95AD">--li-chevron-color</span>: <span style="color:#CDCDCD">#CDCDCD</span>; <span style="color:#9B9B9B">/* $icon-tertiary */</span><br>
+    <br>
+    <span style="color:#9B9B9B">/* List Item — Toggle */</span><br>
+    <span style="color:#1C95AD">--li-toggle-on</span>: <span style="color:#87CCA9">#87CCA9</span>; <span style="color:#9B9B9B">/* $button-primary-default */</span><br>
+    <span style="color:#1C95AD">--li-toggle-off</span>: <span style="color:#DADADA">#DADADA</span>; <span style="color:#9B9B9B">/* $border/ui/disabled */</span><br>
+    <span style="color:#1C95AD">--li-toggle-thumb</span>: <span style="color:#FFFFFF">#FFFFFF</span>;<br>
+    <span style="color:#1C95AD">--li-toggle-border-on</span>: <span style="color:#1A1A1A">#1A1A1A</span>; <span style="color:#9B9B9B">/* $border-primary */</span>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════
+     List Item Styles — scoped to .li-* classes
+     ════════════════════════════════════════════════ -->
+<style>
+/* ── Row base ── */
+.li-row {
+  display: flex;
+  align-items: center;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: background 0.1s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+.li-row:hover:not(.li-disabled) { background: #F8F8F8; }
+.li-row:active:not(.li-disabled) { background: #F3F3F3; }
+
+/* ── Sizes ── */
+.li-size-sm {
+  min-height: 48px;
+  padding: 8px 12px;
+  gap: 8px;
+}
+.li-size-md {
+  min-height: 56px;
+  padding: 12px 16px;
+  gap: 12px;
+}
+.li-size-lg {
+  min-height: 72px;
+  padding: 14px 16px;
+  gap: 12px;
+  align-items: flex-start;
+}
+.li-size-lg .li-body { padding-top: 2px; }
+
+/* ── States ── */
+.li-pressed { background: #F8F8F8 !important; }
+.li-disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* ── Body ── */
+.li-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+/* ── Label ── */
+.li-label {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  color: #1A1A1A;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+.li-label-sm {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* ── Supporting text ── */
+.li-support {
+  font-family: 'Sora', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #828282;
+  display: block;
+}
+.li-size-lg .li-support {
+  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Leading: Icon wrap ── */
+.li-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #F3F3F3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.li-icon-sm {
+  width: 32px;
+  height: 32px;
+}
+.li-icon-colored { background: #E9F7F3; }
+
+/* ── Leading: Avatar ── */
+.li-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  background: #CCE9DF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.li-avatar-lg {
+  width: 48px;
+  height: 48px;
+}
+
+/* ── Leading: Thumbnail ── */
+.li-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #F3F3F3;
+  flex-shrink: 0;
+}
+
+/* ── Trailing ── */
+.li-trailing {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 4px;
+}
+
+/* ── Value text ── */
+.li-value {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: #1A1A1A;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.li-value-sm { font-size: 11px; }
+.li-value-negative { color: #CE0101; }
+
+/* ── Badge ── */
+.li-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.li-badge-success {
+  background: #CCE9DF;
+  border-color: #238453;
+  color: #238453;
+}
+.li-badge-warning {
+  background: #FFF3D6;
+  border-color: #FF9B00;
+  color: #B06E00;
+}
+.li-badge-error {
+  background: #FFE5E5;
+  border-color: #CE0101;
+  color: #CE0101;
+}
+.li-badge-info {
+  background: #E0F4F8;
+  border-color: #007E99;
+  color: #007E99;
+}
+.li-badge-neutral {
+  background: #F3F3F3;
+  border-color: #DADADA;
+  color: #828282;
+}
+
+/* ── Toggle ── */
+.li-toggle {
+  width: 44px;
+  height: 24px;
+  border-radius: 24px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+  border: 1px solid transparent;
+}
+.li-toggle::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  top: 2px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.li-toggle-on {
+  background: #87CCA9;
+  border-color: #1A1A1A;
+}
+.li-toggle-on::after {
+  left: auto;
+  transform: translateX(21px);
+}
+.li-toggle-off {
+  background: #DADADA;
+  border-color: transparent;
+}
+.li-toggle-off::after {
+  left: 3px;
+}
+
+/* ── Action button (trailing) ── */
+.li-action-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: #FFE5E5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.li-action-btn:hover { background: #FFCECE; }
+</style>
+
+<script>
+(function () {
+
+  /* ── Interactive Preview state ── */
+  var liCtrl = { size: 'md', leading: 'none', content: '1-line', trailing: 'chevron', state: 'default' };
+
+  window.setLICtrl = function (key, el, val) {
+    liCtrl[key] = val;
+    var pills = el.closest('.ctrl-pills').querySelectorAll('.ctrl-pill');
+    pills.forEach(function (p) { p.classList.remove('active'); });
+    el.classList.add('active');
+    renderLIPreview();
+  };
+
+  var svgChevron = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#CDCDCD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  var svgIconDefault = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/><path d="M12 8v4l2.5 2.5" stroke="#828282" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  var svgIconSm = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#828282" stroke-width="1.5"/><path d="M12 8v4l2 2" stroke="#828282" stroke-width="1.5" stroke-linecap="round"/></svg>';
+
+  function buildLeading(size) {
+    var lead = liCtrl.leading;
+    if (lead === 'none') return '';
+    if (lead === 'icon') {
+      var iconSize = size === 'sm' ? 32 : 40;
+      var svgContent = size === 'sm' ? svgIconSm : svgIconDefault;
+      return '<div class="li-leading li-icon-wrap' + (size === 'sm' ? ' li-icon-sm' : '') + '">' + svgContent + '</div>';
+    }
+    if (lead === 'avatar') {
+      var sz = size === 'lg' ? 48 : size === 'sm' ? 32 : 40;
+      var fs = size === 'sm' ? '10px' : size === 'lg' ? '14px' : '12px';
+      return '<div class="li-leading li-avatar' + (size === 'lg' ? ' li-avatar-lg' : '') + '" style="width:' + sz + 'px;height:' + sz + 'px;"><span style="font-size:' + fs + ';font-weight:700;color:#238453;">AB</span></div>';
+    }
+    if (lead === 'thumbnail') {
+      return '<div class="li-leading li-thumbnail"></div>';
+    }
+    return '';
+  }
+
+  function buildBody(size) {
+    var lines = liCtrl.content;
+    var labelClass = 'li-label' + (size === 'sm' ? ' li-label-sm' : '');
+    var body = '<div class="li-body"><span class="' + labelClass + '">List label</span>';
+    if (lines === '2-line' || lines === '3-line') {
+      body += '<span class="li-support">Supporting text</span>';
+    }
+    if (lines === '3-line') {
+      body += '<span class="li-support" style="font-size:11px;color:#CDCDCD;">Secondary detail text</span>';
+    }
+    body += '</div>';
+    return body;
+  }
+
+  function buildTrailing() {
+    var t = liCtrl.trailing;
+    if (t === 'chevron') return svgChevron;
+    if (t === 'value') return '<span class="li-value">Rp 500.000</span>';
+    if (t === 'badge') return '<span class="li-badge li-badge-success">Active</span>';
+    if (t === 'toggle') return '<div class="li-toggle li-toggle-on" onclick="toggleSwitch(this)"></div>';
+    return '';
+  }
+
+  function renderLIPreview() {
+    var stage = document.getElementById('li-preview-stage');
+    if (!stage) return;
+
+    var size = liCtrl.size;
+    var state = liCtrl.state;
+    var sizeClass = 'li-size-' + size;
+    var stateClass = state === 'pressed' ? ' li-pressed' : state === 'disabled' ? ' li-disabled' : '';
+
+    var html = '<div style="background:#FFFFFF;">';
+    // render 3 sample rows
+    for (var i = 0; i < 3; i++) {
+      var border = i < 2 ? 'border-bottom:1px solid #F3F3F3;' : '';
+      html += '<div class="li-row ' + sizeClass + stateClass + '" style="' + border + '">';
+      html += buildLeading(size);
+      html += buildBody(size);
+      html += buildTrailing();
+      html += '</div>';
+    }
+    html += '</div>';
+    stage.innerHTML = html;
+  }
+
+  /* ── Toggle switch ── */
+  window.toggleSwitch = function (el) {
+    if (el.classList.contains('li-toggle-on')) {
+      el.classList.replace('li-toggle-on', 'li-toggle-off');
+    } else {
+      el.classList.replace('li-toggle-off', 'li-toggle-on');
+    }
+  };
+
+  /* ── Export tokens.json ── */
+  window.exportListItemTokens = function () {
+    var tokens = {
+      "li-bg-default":      "#FFFFFF",
+      "li-bg-pressed":      "#F8F8F8",
+      "li-divider":         "#F3F3F3",
+      "li-min-h-sm":        "48px",
+      "li-min-h-md":        "56px",
+      "li-min-h-lg":        "72px",
+      "li-padding-h-sm":    "12px",
+      "li-padding-h-md":    "16px",
+      "li-padding-h-lg":    "16px",
+      "li-padding-v-sm":    "8px",
+      "li-padding-v-md":    "12px",
+      "li-padding-v-lg":    "14px",
+      "li-gap-sm":          "8px",
+      "li-gap-md":          "12px",
+      "li-gap-lg":          "12px",
+      "li-label-color":     "#1A1A1A",
+      "li-support-color":   "#828282",
+      "li-value-color":     "#1A1A1A",
+      "li-value-negative":  "#CE0101",
+      "li-label-disabled":  "#CDCDCD",
+      "li-chevron-color":   "#CDCDCD",
+      "li-toggle-on":       "#87CCA9",
+      "li-toggle-off":      "#DADADA",
+      "li-toggle-thumb":    "#FFFFFF",
+      "li-toggle-border-on":"#1A1A1A",
+      "badge-success-bg":   "#CCE9DF",
+      "badge-success-border":"#238453",
+      "badge-success-text": "#238453",
+      "badge-warning-bg":   "#FFF3D6",
+      "badge-warning-border":"#FF9B00",
+      "badge-warning-text": "#B06E00",
+      "badge-error-bg":     "#FFE5E5",
+      "badge-error-border": "#CE0101",
+      "badge-error-text":   "#CE0101"
+    };
+    var blob = new Blob([JSON.stringify(tokens, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'list-item-tokens.json';
+    a.click();
+  };
+
+  /* ── Copy CSS ── */
+  window.copyListItemCSS = function () {
+    var css = [
+      '.li-row { display: flex; align-items: center; background: #FFFFFF; cursor: pointer; transition: background 0.1s ease; box-sizing: border-box; width: 100%; }',
+      '.li-row:hover:not(.li-disabled) { background: #F8F8F8; }',
+      '.li-size-sm { min-height: 48px; padding: 8px 12px; gap: 8px; }',
+      '.li-size-md { min-height: 56px; padding: 12px 16px; gap: 12px; }',
+      '.li-size-lg { min-height: 72px; padding: 14px 16px; gap: 12px; align-items: flex-start; }',
+      '.li-body { flex: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0; }',
+      '.li-label { font-family: \'Sora\', sans-serif; font-weight: 700; font-size: 14px; line-height: 20px; color: #1A1A1A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }',
+      '.li-support { font-family: \'Sora\', sans-serif; font-weight: 400; font-size: 12px; line-height: 18px; color: #828282; }',
+      '.li-value { font-family: \'Sora\', sans-serif; font-weight: 700; font-size: 12px; color: #1A1A1A; }',
+      '.li-value-negative { color: #CE0101; }',
+      '.li-badge { display: inline-flex; align-items: center; height: 20px; padding: 2px 8px; border-radius: 20px; border: 1px solid transparent; font-family: \'Sora\', sans-serif; font-weight: 700; font-size: 10px; }',
+      '.li-badge-success { background: #CCE9DF; border-color: #238453; color: #238453; }',
+      '.li-badge-warning { background: #FFF3D6; border-color: #FF9B00; color: #B06E00; }',
+      '.li-badge-error   { background: #FFE5E5; border-color: #CE0101; color: #CE0101; }',
+      '.li-toggle { width: 44px; height: 24px; border-radius: 24px; position: relative; cursor: pointer; transition: background .2s, border-color .2s; border: 1px solid transparent; }',
+      '.li-toggle::after { content: \'\'; position: absolute; width: 18px; height: 18px; border-radius: 50%; background: #FFF; top: 2px; transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }',
+      '.li-toggle-on  { background: #87CCA9; border-color: #1A1A1A; }',
+      '.li-toggle-on::after { transform: translateX(21px); }',
+      '.li-toggle-off { background: #DADADA; }',
+      '.li-toggle-off::after { left: 3px; }'
+    ].join('\n');
+    navigator.clipboard.writeText(css).then(function () {
+      var btn = document.getElementById('li-copy-css-btn');
+      if (btn) {
+        var orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(function () { btn.textContent = orig; }, 1800);
+      }
+    });
+  };
+
+  /* ── Init ── */
+  renderLIPreview();
+
+}());
+</script>

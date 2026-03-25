@@ -73,6 +73,9 @@ function initPage(id) {
     case 'bottomsheets':
       if (typeof renderBlocker === 'function') renderBlocker('rekening');
       break;
+    case 'list-item':
+  // JS already embedded in list-item.html
+  break;
   }
 }
 
