@@ -92,6 +92,9 @@ const COLORS = {
   green:  [{step:0,hex:'#E9F7F3'},{step:10,hex:'#CCE9DF'},{step:20,hex:'#CBFEEC'},{step:30,hex:'#85CCB3'},{step:40,hex:'#87CCA9'},{step:50,hex:'#5DBF96'},{step:60,hex:'#3BAF78'},{step:70,hex:'#2C9A65'},{step:80,hex:'#1E8550'},{step:90,hex:'#238453'}]
 };
 
+// ─────────────────────────────────────────────
+// ADAPTIVE — synced to Figma (node 111-7571)
+// ─────────────────────────────────────────────
 const ADAPTIVE = {
   background:{label:'Background',sub:'UI-1, UI-2, UI-3 — Base surface and container layers',tokens:[
     {token:'$background-ui-1',usage:'Default application surface',hex:'#FFFFFF',ref:'Gray 0'},
@@ -100,34 +103,38 @@ const ADAPTIVE = {
   ]},
   button_primary:{label:'Button / Primary',sub:'Background tokens for primary CTA button states',tokens:[
     {token:'$button-primary-default',usage:'Default background color of Primary Button',hex:'#87CCA9',ref:'Green 40'},
-    {token:'$button-primary-disabled',usage:'Background color of Disabled Button',hex:'#F3F3F3',ref:'Gray 10'},
-  ]},
-  button_outlined:{label:'Button / Outlined',sub:'Border token for outlined button variant',tokens:[
-    {token:'$button-outlined-default',usage:'Default border color of Outlined Button',hex:'#238453',ref:'Green 90'},
-    {token:'$button-outlined-disabled',usage:'Disabled border of Outlined Button',hex:'#CBFEEC',ref:'Green 20'},
+    {token:'$button-primary-disabled',usage:'Default background color of Disabled Button',hex:'#F3F3F3',ref:'Gray 10'},
   ]},
   border:{label:'Border',sub:'Dividers, outlines, focus rings, separators',tokens:[
     {token:'$border-vibrant',usage:'Default primary color of Outlined Component',hex:'#FE6201',ref:'Orange 70'},
-    {token:'$border-soft',usage:'Default secondary color of Outlined Component',hex:'#007E99',ref:'Teal 70'},
-    {token:'$border-harmony',usage:'Default tertiary color of Outlined Component',hex:'#238453',ref:'Green 90'},
-    {token:'$border-primary',usage:'Decorative primary border',hex:'#1A1A1A',ref:'Gray 90'},
-    {token:'$border-decorative-1',usage:'Decorative border level 1',hex:'#CDCDCD',ref:'Gray 30'},
-    {token:'$border-decorative-2',usage:'Decorative border level 2',hex:'#DADADA',ref:'Gray 20'},
-    {token:'$border-decorative-3',usage:'Decorative border level 3',hex:'#F3F3F3',ref:'Gray 10'},
-    {token:'$border-decorative-4',usage:'Decorative border level 4',hex:'#F6F6F6',ref:'Gray 5'},
-    {token:'$border-decorative-adaptive',usage:'Adaptive neutral border for Outlined/Border components',hex:'rgba(26,26,26,0.08)',ref:'Gray 90 · 8%'},
+    {token:'$border-soft',usage:'Default primary color of Outlined Component',hex:'#007E99',ref:'Teal 70'},
+    {token:'$border-harmony',usage:'Default primary color of Outlined Component',hex:'#238453',ref:'Green 90'},
+    {token:'#border-primary',usage:'Decorative color of Outlined Component',hex:'#1A1A1A',ref:'Gray 90'},
+    {token:'#border-decorative-1',usage:'Decorative color of Outlined Component',hex:'#CDCDCD',ref:'Gray 30'},
+    {token:'#border-decorative-2',usage:'Decorative color of Outlined Component',hex:'#DADADA',ref:'Gray 20'},
+    {token:'#border-decorative 3',usage:'Decorative color of Outlined Component',hex:'#F3F3F3',ref:'Gray 10'},
+    {token:'#border-decorative 4',usage:'Decorative color of Outlined Component',hex:'#F6F6F6',ref:'Gray 5'},
+    {token:'#border-decorative-adaptive',usage:'Decorative adaptive neutral color of Outlined/Border Component',hex:'rgba(26,26,26,0.08)',ref:'Gray 90 · 8%'},
+  ]},
+  border_button_outlined:{label:'Border / Button / Outlined',sub:'Border tokens for outlined button variant',tokens:[
+    {token:'$border-button-outlined-primary',usage:'Default button border color of Outlined Button',hex:'#1A1A1A',ref:'Gray 90'},
+    {token:'$border-button-outlined-disabled',usage:'Default disabled button border color of Outlined Button',hex:'#DADADA',ref:'Gray 20'},
+  ]},
+  border_button_primary:{label:'Border / Button / Primary',sub:'Border tokens for primary button variant',tokens:[
+    {token:'$border-button-primary',usage:'Default button border color of Outlined Button',hex:'#1A1A1A',ref:'Gray 90'},
+    {token:'$border-button-primary-disabled',usage:'Default disabled button border color of Outlined Button',hex:'#DADADA',ref:'Gray 20'},
   ]},
   foreground:{label:'Foreground',sub:'Vibrant (Orange), Soft (Teal), and Harmony (Green) surface colors',tokens:[
     {token:'$foreground-vibrant-1',usage:'Default orange surface',hex:'#FE6201',ref:'Orange 70'},
-    {token:'$foreground-vibrant-2',usage:'Soft orange surface',hex:'#FF9B00',ref:'Orange 50'},
-    {token:'$foreground-vibrant-3',usage:'Softer orange surface',hex:'#FEDFCB',ref:'Orange 20'},
-    {token:'$foreground-vibrant-4',usage:'Lightest orange surface',hex:'#FEEDDF',ref:'Orange 10'},
+    {token:'$foreground-vibrant-2',usage:'Default soft orange surface',hex:'#FF9B00',ref:'Orange 50'},
+    {token:'$foreground-vibrant-3',usage:'Default soft orange surface',hex:'#FEDFCB',ref:'Orange 20'},
+    {token:'$foreground-vibrant-4',usage:'Default soft orange surface',hex:'#FEEDDF',ref:'Orange 10'},
     {token:'$foreground-soft-1',usage:'Default teal surface',hex:'#007E99',ref:'Teal 70'},
-    {token:'$foreground-soft-2',usage:'Soft teal surface',hex:'#77C8D9',ref:'Teal 20'},
-    {token:'$foreground-soft-3',usage:'Lightest teal surface',hex:'#D8ECED',ref:'Teal 10'},
-    {token:'$foreground-harmony-1',usage:'Default green surface',hex:'#85CCB3',ref:'Green 30'},
-    {token:'$foreground-harmony-2',usage:'Soft green surface',hex:'#CBFEEC',ref:'Green 20'},
-    {token:'$foreground-harmony-3',usage:'Lightest green surface',hex:'#CCE9DF',ref:'Green 10'},
+    {token:'$foreground-soft-2',usage:'Default soft teal surface',hex:'#77CBD9',ref:'Teal 20'},
+    {token:'$foreground-soft-3',usage:'Default soft teal surface',hex:'#D8ECED',ref:'Teal 10'},
+    {token:'$foreground-harmony-1',usage:'Default teal surface',hex:'#85CCB3',ref:'Green 30'},
+    {token:'$foreground-harmony-2',usage:'Default soft teal surface',hex:'#C8FEEC',ref:'Green 20'},
+    {token:'$foreground-harmony-3',usage:'Default soft teal surface',hex:'#CCE9DF',ref:'Green 10'},
   ]},
   foreground_icon:{label:'Foreground / Icon',sub:'Clickable and decorative icon colors',tokens:[
     {token:'$foreground-icon-primary',usage:'Default clickable icon',hex:'#238453',ref:'Green 90'},
@@ -136,32 +143,32 @@ const ADAPTIVE = {
   foreground_icon_neutral:{label:'Foreground / Icon / Neutral',sub:'Neutral icon colors across all states',tokens:[
     {token:'$foreground-icon-neutral-primary',usage:'Default primary icon color',hex:'#1A1A1A',ref:'Gray 90'},
     {token:'$foreground-icon-neutral-secondary',usage:'Default secondary icon color',hex:'#828282',ref:'Gray 60'},
-    {token:'$foreground-icon-neutral-disabled',usage:'Disabled icon',hex:'#CDCDCD',ref:'Gray 30'},
-    {token:'$foreground-icon-neutral-inverse',usage:'Primary icon on dark background',hex:'#FFFFFF',ref:'Gray 0'},
+    {token:'$foreground-icon-neutral-disabled',usage:'Disabled icon',hex:'#CDCDCD',ref:'gray 30'},
+    {token:'$foreground-icon-neutral-inverse',usage:'Default primary icon color in dark background',hex:'#FFFFFF',ref:'Gray 0'},
   ]},
   text_primary:{label:'Text / Primary',sub:'Primary text color tokens',tokens:[
-    {token:'$text-primary',usage:'Default primary text',hex:'#1A1A1A',ref:'Gray 90'},
-    {token:'$text-secondary',usage:'Default secondary text',hex:'#828282',ref:'Gray 60'},
+    {token:'$text-primary',usage:'Default primary text on white/bright background',hex:'#1A1A1A',ref:'Gray 90'},
+    {token:'$text-primary-inverse',usage:'Default primary text on black/dark background',hex:'#FFFFFF',ref:'Gray 0'},
   ]},
   text:{label:'Text',sub:'Full branded and neutral text token set',tokens:[
-    {token:'$text-vibrant',usage:'Orange branded text',hex:'#FE6201',ref:'Orange 70'},
-    {token:'$text-vibrant-alt',usage:'Secondary orange text',hex:'#FF9B00',ref:'Orange 50'},
-    {token:'$text-soft',usage:'Teal branded text',hex:'#007E99',ref:'Teal 70'},
-    {token:'$text-soft-alt',usage:'Secondary teal text',hex:'#77C8D9',ref:'Teal 20'},
-    {token:'$text-harmony',usage:'Green branded text',hex:'#238453',ref:'Green 90'},
-    {token:'$text-harmony-alt',usage:'Secondary green text',hex:'#85CCB3',ref:'Green 30'},
-    {token:'$text-neutral',usage:'Neutral body text',hex:'#1A1A1A',ref:'Gray 90'},
-    {token:'$text-neutral-secondary',usage:'Neutral secondary body text',hex:'#828282',ref:'Gray 60'},
+    {token:'$text-secondary',usage:'Default secondary text',hex:'#828282',ref:'Gray 60'},
+    {token:'$text-placeholder',usage:'placeholder text',hex:'#B4B4B4',ref:'Green 40'},
+    {token:'$text-link',usage:'Default hyperlink text',hex:'#238453',ref:'Green 90'},
+    {token:'$ttext-title',usage:'Default Title text for better highlight',hex:'#FE6201',ref:'Orange 70'},
+    {token:'$text-helper',usage:'Helper text on function as a caption or help text',hex:'#B4B4B4',ref:'Gray 40'},
+    {token:'$text-disabled',usage:'Disabled text',hex:'#CDCDCD',ref:'Gray 30'},
+    {token:'$text-success',usage:'Success message text',hex:'#01B274',ref:'Green 80'},
+    {token:'$text-error',usage:'Error message text',hex:'#CE0101',ref:'Red 70'},
   ]},
   overlay:{label:'Overlay',sub:'Scrim and overlay surface tokens',tokens:[
-    {token:'$overlay-primary',usage:'Default overlay scrim',hex:'rgba(26,26,26,0.32)',ref:'Gray 90 · 32%'},
-    {token:'$overlay-secondary',usage:'Secondary lighter overlay',hex:'rgba(26,26,26,0.16)',ref:'Gray 90 · 16%'},
+    {token:'$overlay-primary',usage:'for overlay content need to focus example; bottom sheets',hex:'rgba(51,51,51,0.7)',ref:'Gray 80 · 70%'},
+    {token:'$overlay-decorative',usage:'for overlay content need to focus example; bottom sheets',hex:'rgba(133,204,179,0.5)',ref:'Green 30 · 50%'},
   ]},
   semantic:{label:'Semantic',sub:'Feedback and status state colors',tokens:[
-    {token:'$semantic-error',usage:'Error state color',hex:'#CE0101',ref:'Red 70'},
-    {token:'$semantic-warning',usage:'Warning state color',hex:'#FF9B00',ref:'Orange 50'},
-    {token:'$semantic-success',usage:'Success state color',hex:'#238453',ref:'Green 90'},
-    {token:'$semantic-info',usage:'Info / informational state',hex:'#007E99',ref:'Teal 70'},
+    {token:'$semantic-warning',usage:'Semantic color for warning indicator include background, text, etc',hex:'#FBD330',ref:'Warning'},
+    {token:'$semantic-informative',usage:'Semantic color for informative indicator include background, text, etc',hex:'#FBD330',ref:'Informative'},
+    {token:'$semantic-success',usage:'Semantic color for success indicator include background, text, etc',hex:'#01B274',ref:'Green 80'},
+    {token:'$semantic-error',usage:'Semantic color for negative indicator include background, text, etc',hex:'#CE0101',ref:'Red 70'},
   ]},
 };
 
