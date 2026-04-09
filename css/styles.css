@@ -336,6 +336,11 @@ code{font-family:'DM Mono',monospace;font-size:.88em;background:var(--surface);p
 .icon-group-meta{font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace}
 .icon-group-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .icon-item-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;box-shadow:0 1px 3px var(--shadow)}
+.icon-item-preview{width:56px;height:56px;border-radius:14px;background:var(--surface);display:flex;align-items:center;justify-content:center;margin-bottom:12px}
+.icon-item-preview svg{width:24px;height:24px;display:block}
+.icon-item-actions{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.icon-action-btn{padding:6px 10px;border:1px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text-primary);font-size:10px;font-family:'DM Mono',monospace;cursor:pointer;transition:all .15s}
+.icon-action-btn:hover{border-color:var(--gray-40);background:#fff}
 .icon-item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:8px}
 .icon-item-head h3{font-size:14px;line-height:1.4;color:var(--text-primary)}
 .icon-item-count{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 8px;border-radius:999px;background:var(--surface);border:1px solid var(--border);font-size:11px;color:var(--text-primary);font-family:'DM Mono',monospace}
