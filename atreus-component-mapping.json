@@ -1,0 +1,381 @@
+{
+  "_meta": {
+    "project": "Atreus Design System — hibank",
+    "figma_file": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank",
+    "figma_file_key": "cUFFDWUwJO40a6UCkAoLCg",
+    "code_base_url": "pages/",
+    "style_base_url": "css/styles.css",
+    "last_updated": "2025-03-26",
+    "note": "Manual mapping — Code Connect requires Figma Organization/Enterprise plan. Update this file whenever Figma components or code files change."
+  },
+
+  "foundation": {
+    "colors": {
+      "figma_page": "Foundation",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_files": [
+        "css/styles.css → :root { --gray-*, --orange-*, --teal-*, --red-* }",
+        "js/main.js → const COLORS = { gray, orange, teal, red, green }",
+        "pages/colors.html → Color page UI"
+      ],
+      "tokens_exported_as": "atreus-color-tokens.json",
+      "css_vars_prefix": "--gray-, --orange-, --teal-, --red-",
+      "figma_variable_group": "Base Colors / Adaptive Colors"
+    },
+    "typography": {
+      "figma_page": "Foundation",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_files": [
+        "js/main.js → const TYPO = { title, body, smallTitle, caption }",
+        "pages/typography.html → Typography page UI"
+      ],
+      "tokens_exported_as": "atreus-typography-tokens.json",
+      "css_vars_prefix": "--typo-",
+      "type_scale": {
+        "Title 1": { "size": "24px", "weight": 700, "lineHeight": "36px" },
+        "Title 2": { "size": "21px", "weight": 700, "lineHeight": "32px" },
+        "Title 3": { "size": "18px", "weight": 700, "lineHeight": "28px" },
+        "Title 4": { "size": "16px", "weight": 700, "lineHeight": "24px" },
+        "Body 1":  { "size": "16px", "weight": 400, "lineHeight": "24px" },
+        "Body 2":  { "size": "14px", "weight": 400, "lineHeight": "20px" },
+        "Small Title 1": { "size": "14px", "weight": 700, "lineHeight": "20px" },
+        "Small Title 2": { "size": "12px", "weight": 700, "lineHeight": "18px" },
+        "Small Title 3": { "size": "10px", "weight": 700, "lineHeight": "15px" },
+        "Caption 1": { "size": "12px", "weight": 400, "lineHeight": "18px" },
+        "Caption 2": { "size": "10px", "weight": 400, "lineHeight": "15px" }
+      }
+    },
+    "spacing": {
+      "figma_page": "Foundation",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_files": [
+        "js/main.js → const SPACING = [...]",
+        "pages/spacing.html → Spacing page UI"
+      ],
+      "tokens_exported_as": "atreus-spacing-tokens.json",
+      "scale": {
+        "$spacing-01": "2px",
+        "$spacing-02": "4px",
+        "$spacing-03": "8px",
+        "$spacing-04": "12px",
+        "$spacing-05": "16px",
+        "$spacing-06": "20px",
+        "$spacing-07": "24px",
+        "$spacing-08": "32px",
+        "$spacing-09": "40px",
+        "$spacing-10": "48px",
+        "$spacing-11": "64px",
+        "$spacing-12": "80px"
+      }
+    },
+    "icons": {
+      "figma_page": "Foundation",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=15-3794",
+      "code_files": [
+        "pages/icons.html → Iconography page UI",
+        "js/main.js → const ICONOGRAPHY_STYLE_COUNTS, ICONOGRAPHY_GROUP_LINES, ICONOGRAPHY_HERO_ICONS",
+        "css/styles.css → .icon-* page styling"
+      ],
+      "tokens_exported_as": "atreus-iconography-tokens.json",
+      "inventory_summary": {
+        "icon_groups": 104,
+        "variants": 226,
+        "base_size": "24px"
+      }
+    }
+  },
+
+  "components": {
+    "Button": {
+      "figma_component_name": "Button",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/buttons.html",
+      "css_classes": {
+        "base": ".btn-atreus",
+        "types": {
+          "filled": ".btn-filled",
+          "outline": ".btn-outline",
+          "ghost": ".btn-ghost"
+        },
+        "sizes": {
+          "small": ".btn-sm-size",
+          "medium": ".btn-md-size",
+          "large": ".btn-lg-size"
+        },
+        "states": {
+          "disabled": ".disabled (class on element)"
+        }
+      },
+      "figma_props_to_css": {
+        "Type=Filled":  "class: btn-filled",
+        "Type=Outline": "class: btn-outline",
+        "Type=Ghost":   "class: btn-ghost",
+        "Size=Small":   "class: btn-sm-size",
+        "Size=Medium":  "class: btn-md-size",
+        "Size=Large":   "class: btn-lg-size",
+        "State=Disabled": "class: disabled",
+        "Icon=Leading":   "prepend SVG inside button",
+        "Icon=Trailing":  "append SVG inside button"
+      },
+      "tokens_used": [
+        "$button-primary-default → #87CCA9",
+        "$button-primary-disabled → #F3F3F3",
+        "$border-primary → #1A1A1A",
+        "$text-harmony → #238453",
+        "$text-disabled → #CDCDCD",
+        "$border-radius-full → 100px"
+      ],
+      "tokens_exported_as": "atreus-button-tokens.json"
+    },
+
+    "ButtonIcon": {
+      "figma_component_name": "Button Icon",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/buttons.html",
+      "css_classes": {
+        "base": ".btn-icon",
+        "variants": {
+          "plain": ".btn-icon-plain",
+          "green": ".btn-icon-filled",
+          "floating": ".btn-icon-floating",
+          "floating_green": ".btn-icon-floating-green"
+        },
+        "states": {
+          "disabled": ".disabled"
+        }
+      },
+      "figma_props_to_css": {
+        "Variant=Plain":           "class: btn-icon-plain",
+        "Variant=Green":           "class: btn-icon-filled",
+        "Variant=Floating":        "class: btn-icon-floating",
+        "Variant=Floating Green":  "class: btn-icon-floating-green",
+        "State=Disabled":          "class: disabled"
+      }
+    },
+
+    "BottomSheet": {
+      "figma_component_name": "Bottom Sheet",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/bottomsheets.html",
+      "css_classes": {
+        "container": ".bs-sheet",
+        "header_offcenter": ".bs-header.bs-header-offcenter",
+        "header_center": ".bs-header.bs-header-center",
+        "illus_row": ".bs-illus-row",
+        "body": ".bs-body",
+        "body_center": ".bs-body.bs-body-center",
+        "docked_sidebyside": ".bs-docked.bs-docked-sidebyside",
+        "docked_stacked": ".bs-docked.bs-docked-stacked",
+        "title": ".bs-title",
+        "description": ".bs-desc",
+        "close_button": ".bs-close-btn"
+      },
+      "figma_props_to_css": {
+        "type=Off-center":         "class: bs-header-offcenter",
+        "type=Center":             "class: bs-header-center",
+        "type=With Image":         "class: bs-illus-row (add illus row before body)",
+        "isDragIndicator=true":    "add div 72x6px #E6E6E6 at top of sheet",
+        "buttons=Side-by-side":    "class: bs-docked-sidebyside",
+        "buttons=Stacked":         "class: bs-docked-stacked",
+        "buttons=Single":          "class: bs-docked-stacked (single button only)"
+      },
+      "variants": {
+        "Transactional":   "With Image + Side-by-side buttons",
+        "Destructive":     "With Image + Stacked buttons (Primary → Outline)",
+        "Acknowledgement": "With Image + Single button",
+        "Blocker": {
+          "rekening":  "title: rekening tidak ditemukan / cta: ok",
+          "ewallet":   "title: akun e-wallet tidak ditemukan / cta: coba lagi",
+          "saldo":     "title: saldo tidak cukup / cta: kembali",
+          "koneksi":   "title: koneksi bermasalah / cta: coba lagi",
+          "login":     "title: login terlebih dahulu / cta: login"
+        }
+      },
+      "tokens_exported_as": "bottomsheet-tokens.json"
+    },
+
+    "Chips": {
+      "figma_component_name": "Chips",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/chips.html",
+      "css_classes": {
+        "base": ".chip-atreus",
+        "states": {
+          "default":  ".chip-default",
+          "selected": ".chip-selected",
+          "disabled": ".chip-disabled"
+        },
+        "icon_modifiers": {
+          "leading":  ".chip-has-leading",
+          "trailing": ".chip-has-trailing"
+        },
+        "group": ".chip-group"
+      },
+      "figma_props_to_css": {
+        "State=Default":   "class: chip-default",
+        "State=Selected":  "class: chip-selected",
+        "State=Disabled":  "class: chip-disabled, attr: disabled",
+        "Icon=Leading":    "class: chip-has-leading + prepend SVG.chip-icon-svg",
+        "Icon=Trailing":   "class: chip-has-trailing + append SVG.chip-icon-svg"
+      },
+      "group_types": {
+        "Choice":          "single-select via selectChip()",
+        "Single Filter":   "single-select with leading Filter button",
+        "Multiple Filter": "multi-toggle via toggleChip()",
+        "Suggestion":      "stateless, triggers action"
+      },
+      "tokens_exported_as": "chip-tokens.json"
+    },
+
+    "Controls": {
+      "figma_component_name": "Control",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/controls.html",
+      "css_classes": {
+        "radio": {
+          "base": ".ctrl-radio",
+          "default": ".ctrl-default",
+          "active": ".ctrl-active",
+          "disabled": ".ctrl-disabled",
+          "disabled_on": ".ctrl-disabled.ctrl-disabled-on"
+        },
+        "checkbox": {
+          "base": ".ctrl-checkbox",
+          "default": ".ctrl-cb-default",
+          "checked": ".ctrl-cb-checked",
+          "disabled": ".ctrl-cb-disabled",
+          "disabled_on": ".ctrl-cb-disabled.ctrl-cb-disabled-on"
+        },
+        "switch": {
+          "base": ".ctrl-switch",
+          "off": ".ctrl-sw-off",
+          "on": ".ctrl-sw-on",
+          "disabled": ".ctrl-sw-disabled",
+          "disabled_on": ".ctrl-sw-disabled.ctrl-sw-disabled-on"
+        },
+        "tap_target": ".ctrl-tap-target"
+      },
+      "figma_props_to_css": {
+        "type=Radio, State=Default, Selected=Off":     "ctrl-radio ctrl-default",
+        "type=Radio, State=Active, Selected=On":       "ctrl-radio ctrl-active",
+        "type=Radio, State=Disabled, Selected=Off":    "ctrl-radio ctrl-disabled",
+        "type=Radio, State=Disabled, Selected=On":     "ctrl-radio ctrl-disabled ctrl-disabled-on",
+        "type=Checkbox, State=Default":                "ctrl-checkbox ctrl-cb-default",
+        "type=Checkbox, State=Checked":                "ctrl-checkbox ctrl-cb-checked",
+        "type=Checkbox, State=Disabled":               "ctrl-checkbox ctrl-cb-disabled",
+        "type=Switch, State=Off":                      "ctrl-switch ctrl-sw-off",
+        "type=Switch, State=On":                       "ctrl-switch ctrl-sw-on",
+        "type=Switch, State=Disabled":                 "ctrl-switch ctrl-sw-disabled"
+      },
+      "tokens_exported_as": "atreus-control-tokens.json"
+    },
+
+    "Snackbar": {
+      "figma_component_name": "Snackbar",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/snackbar.html",
+      "figma_props_to_css": {
+        "Type=Default":    "background: #828282, no icon",
+        "Type=Success":    "background: #238453, icon: circle-check",
+        "Type=Error":      "background: #CE0101, icon: circle-x",
+        "Type=Warning":    "background: #FF9B00, icon: triangle-warning",
+        "Type=Info":       "background: #007E99, icon: circle-info",
+        "Variant=Message Only":  "message text only",
+        "Variant=With Action":   "message + action span Bold",
+        "Variant=With Close":    "message + close button"
+      },
+      "motion": {
+        "enter": "translateY(20px)→0, opacity 0→1, 240ms ease-out",
+        "exit":  "opacity 1→0, translateY 0→20px, 200ms ease-in",
+        "auto_dismiss": "3000ms"
+      },
+      "tokens_exported_as": "snackbar-tokens.json"
+    },
+
+    "ListItem": {
+      "figma_component_name": "List Item",
+      "figma_node_url": "https://www.figma.com/design/cUFFDWUwJO40a6UCkAoLCg/Atreus-Design-System-by-hibank?node-id=0-1",
+      "code_file": "pages/list-item.html",
+      "css_classes": {
+        "row": ".li-row",
+        "sizes": {
+          "small":  ".li-size-sm  (48px min-height)",
+          "medium": ".li-size-md  (56px min-height)",
+          "large":  ".li-size-lg  (72px min-height)"
+        },
+        "states": {
+          "default":  "(no modifier)",
+          "pressed":  ".li-pressed",
+          "disabled": ".li-disabled"
+        },
+        "leading": {
+          "icon":      ".li-leading.li-icon-wrap  (40x40, gray bg)",
+          "icon_sm":   ".li-leading.li-icon-wrap.li-icon-sm  (32x32)",
+          "icon_colored": ".li-leading.li-icon-wrap.li-icon-colored  (green bg)",
+          "avatar":    ".li-leading.li-avatar  (40x40, circle)",
+          "avatar_lg": ".li-leading.li-avatar.li-avatar-lg  (48x48)",
+          "thumbnail": ".li-leading.li-thumbnail  (48x48, rounded rect)"
+        },
+        "body": {
+          "wrapper":    ".li-body",
+          "label":      ".li-label  (Bold 14px)",
+          "label_sm":   ".li-label.li-label-sm  (Bold 12px)",
+          "support":    ".li-support  (Regular 12px)"
+        },
+        "trailing": {
+          "wrapper":       ".li-trailing",
+          "value":         ".li-value  (Bold 12px, dark)",
+          "value_sm":      ".li-value.li-value-sm",
+          "value_negative":".li-value.li-value-negative  (#CE0101)",
+          "badge_success": ".li-badge.li-badge-success",
+          "badge_warning": ".li-badge.li-badge-warning",
+          "badge_error":   ".li-badge.li-badge-error",
+          "badge_info":    ".li-badge.li-badge-info",
+          "badge_neutral": ".li-badge.li-badge-neutral",
+          "toggle_on":     ".li-toggle.li-toggle-on",
+          "toggle_off":    ".li-toggle.li-toggle-off",
+          "action_btn":    ".li-action-btn"
+        }
+      },
+      "figma_props_to_css": {
+        "Size=Small":           "li-row li-size-sm",
+        "Size=Medium":          "li-row li-size-md",
+        "Size=Large":           "li-row li-size-lg",
+        "State=Default":        "(no state class)",
+        "State=Pressed":        "li-pressed",
+        "State=Disabled":       "li-disabled",
+        "Leading=None":         "(omit leading div)",
+        "Leading=Icon":         "li-leading li-icon-wrap + SVG",
+        "Leading=Avatar":       "li-leading li-avatar + initials span",
+        "Leading=Thumbnail":    "li-leading li-thumbnail",
+        "Trailing=Chevron":     "SVG chevron #CDCDCD",
+        "Trailing=Value":       "li-value text",
+        "Trailing=Badge":       "li-badge li-badge-{type}",
+        "Trailing=Toggle":      "li-toggle li-toggle-{on|off}",
+        "Trailing=None":        "(omit trailing div)",
+        "Content=1 Line":       "li-label only",
+        "Content=2 Line":       "li-label + li-support",
+        "Content=3 Line":       "li-label + li-support + li-support (smaller)"
+      },
+      "tokens_exported_as": "list-item-tokens.json"
+    }
+  },
+
+  "how_to_update": {
+    "when_figma_changes": [
+      "1. Open the updated Figma component",
+      "2. Note which properties changed (color, size, spacing, new variant)",
+      "3. Update the corresponding entry in this JSON",
+      "4. Update css/styles.css for token/CSS changes",
+      "5. Update pages/{component}.html for structural/variant changes",
+      "6. Update js/main.js if data objects (COLORS, TYPO, SPACING) changed",
+      "7. Re-export tokens JSON if needed (use Export button in DS site)"
+    ],
+    "when_code_changes": [
+      "1. Update code_file path if file moved/renamed",
+      "2. Update css_classes if class names changed",
+      "3. Update figma_props_to_css if prop mapping changed"
+    ],
+    "automation_note": "This file is manually maintained. For automated sync, upgrade to Figma Organization plan and use the figma-code-connect-components skill with send_code_connect_mappings()."
+  }
+}
