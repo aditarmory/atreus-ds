@@ -1,7 +1,7 @@
 <div class="topbar">
   <div class="breadcrumb">Foundation <span class="breadcrumb-sep">›</span> <b>Icons</b></div>
   <div class="topbar-right">
-    <button class="btn-sm" onclick="exportIconTokens()">tokens.json</button>
+    <button class="btn-sm" onclick="exportIconTokens()">manifest.json</button>
     <button class="btn-sm btn-accent" onclick="copyIconInventory()">Copy Inventory</button>
   </div>
 </div>
@@ -9,13 +9,13 @@
   <div class="page-header">
     <div class="page-label">Foundation / Iconography</div>
     <h1 class="page-title">Iconography</h1>
-    <p class="page-desc">Atreus iconography uses a 24px canvas and references the hibank Figma source directly. This page documents the current inventory, dominant styles, and naming taxonomy used across the design system.</p>
+    <p class="page-desc">Atreus iconography uses a 24px canvas and references the hibank Figma source directly. This page now renders from reusable SVG assets and a generated manifest so Foundation consumers can preview, inspect, and copy the current icon set from a single source of truth.</p>
   </div>
 
   <div class="export-bar">
     <div class="export-bar-info" id="iconography-totals">
-      <strong>104 icon groups · 226 variants</strong>
-      <span>Inventory is synced from the Figma node provided for Atreus DS iconography.</span>
+      <strong>Loading icon inventory…</strong>
+      <span>Preparing the generated iconography manifest.</span>
     </div>
   </div>
 
@@ -23,8 +23,8 @@
     <div class="comp-hero-preview iconography-hero-preview" id="iconography-hero-preview"></div>
     <div class="comp-hero-info">
       <h2>24px Canvas · Multi-style System</h2>
-      <p>Most Atreus icons live in neutral black on a <code>24 × 24px</code> bounding box. Figma currently leans on <code>Outlined</code>, <code>Filled</code>, and <code>Round</code> treatments, with a smaller set of contextual variants for utility actions and product-specific flows.</p>
-      <div class="token-strip" id="iconography-style-strip" style="margin-top:12px;margin-bottom:0"></div>
+      <p>Most Atreus icons live in neutral black on a <code>24 × 24px</code> bounding box. The generated asset set keeps the existing Foundation presentation, while surfacing which icon groups are already exported locally and which still exist only in the upstream Figma library.</p>
+      <div class="token-strip" id="iconography-style-strip"></div>
     </div>
   </div>
 
@@ -34,40 +34,40 @@
       <div class="usage-icon icon-usage-icon">24</div>
       <div class="usage-content">
         <strong>Base Size</strong>
-        <p>All representative source icons in this page use the 24px grid from Figma. That keeps alignment predictable when icons sit beside labels, chips, controls, and list items.</p>
+        <p>Every exported icon asset is normalized for Foundation usage on a 24px canvas so the previews, copied SVG, and downstream implementation all align to the same sizing rule.</p>
       </div>
     </div>
     <div class="usage-card">
       <div class="usage-icon icon-usage-icon">Aa</div>
       <div class="usage-content">
         <strong>Naming</strong>
-        <p>Group names and counts follow the exact labels found in the <code>Iconography</code> frame, including product-specific entries like <code>BI Fast</code>, <code>Mobile-Pembelian</code>, and <code>Customer service</code>.</p>
+        <p>Asset filenames use the Figma labels converted to kebab-case, such as <code>icon-transfer.svg</code> and <code>icon-customer-service.svg</code>, while the cards keep the original display names.</p>
       </div>
     </div>
     <div class="usage-card">
       <div class="usage-icon icon-usage-icon">#</div>
       <div class="usage-content">
         <strong>Color</strong>
-        <p>Primary icon fill maps visually to neutral text color <code>#1A1A1A</code>. Accent or semantic color should be applied only by component context, not by redefining the source glyph.</p>
+        <p>Primary icon fill maps visually to neutral text color <code>#1A1A1A</code>. Accent or semantic color should be applied by component context, not by redefining the exported glyph.</p>
       </div>
     </div>
     <div class="usage-card">
       <div class="usage-icon icon-usage-icon">UI</div>
       <div class="usage-content">
-        <strong>Usage</strong>
-        <p>Use the source variant that already exists in Figma instead of mixing styles ad hoc. For example, prefer documented round, filled, or outlined states rather than inventing a new treatment.</p>
+        <strong>Asset Status</strong>
+        <p>Cards with a live preview are backed by a local SVG file and support direct SVG copy. Cards without a preview remain documented so the Foundation inventory still reflects the full Figma source.</p>
       </div>
     </div>
   </div>
 
   <hr class="section-divider">
 
-  <div class="section-label">Inventory</div>
+  <div class="section-label">Library</div>
   <div class="adaptive-intro">
     <div class="ai-icon">⌘</div>
     <div class="ai-text">
-      <strong>Alphabetized Figma Inventory</strong>
-      <p>Each section below lists the icon groups available per alphabet heading and how many variants are already defined in Figma. This is intended as a documentation view, so the naming remains the source of truth.</p>
+      <strong>Alphabetized Icon Library</strong>
+      <p>Each section below lists the icon groups available per alphabet heading, the number of Figma variants documented for each group, and whether a reusable local SVG asset is currently available for copy and download.</p>
     </div>
   </div>
   <div id="iconography-groups"></div>

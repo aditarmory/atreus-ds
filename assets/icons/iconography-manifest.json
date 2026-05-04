@@ -1,0 +1,761 @@
+{
+  "generatedAt": "2026-05-04T01:19:34.017Z",
+  "totals": {
+    "groups": 104,
+    "variants": 226,
+    "available": 68,
+    "missing": 36
+  },
+  "hero": [
+    {
+      "label": "Calculator / Outline",
+      "file": "/assets/icons/icon-hero-1.svg"
+    },
+    {
+      "label": "Calculator / Filled",
+      "file": "/assets/icons/icon-hero-2.svg"
+    },
+    {
+      "label": "Chevron / Outlined",
+      "file": "/assets/icons/icon-hero-3.svg"
+    },
+    {
+      "label": "Chevron / Round Filled",
+      "file": "/assets/icons/icon-hero-4.svg"
+    },
+    {
+      "label": "Setting / Outlined",
+      "file": "/assets/icons/icon-hero-5.svg"
+    },
+    {
+      "label": "Setting / Filled",
+      "file": "/assets/icons/icon-hero-6.svg"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "C",
+      "icons": [
+        {
+          "name": "Calculator",
+          "slug": "calculator",
+          "variants": 2,
+          "file": "/assets/icons/icon-calculator.svg"
+        },
+        {
+          "name": "Card",
+          "slug": "card",
+          "variants": 6,
+          "file": "/assets/icons/icon-card.svg"
+        },
+        {
+          "name": "Calendar",
+          "slug": "calendar",
+          "variants": 2,
+          "file": "/assets/icons/icon-calendar.svg"
+        },
+        {
+          "name": "Camera",
+          "slug": "camera",
+          "variants": 2,
+          "file": "/assets/icons/icon-camera.svg"
+        },
+        {
+          "name": "Cancel",
+          "slug": "cancel",
+          "variants": 1,
+          "file": "/assets/icons/icon-cancel.svg"
+        },
+        {
+          "name": "Check",
+          "slug": "check",
+          "variants": 1,
+          "file": "/assets/icons/icon-check.svg"
+        },
+        {
+          "name": "Contact",
+          "slug": "contact",
+          "variants": 2,
+          "file": "/assets/icons/icon-contact.svg"
+        },
+        {
+          "name": "Contact photo",
+          "slug": "contact-photo",
+          "variants": 1,
+          "file": "/assets/icons/icon-contact-photo.svg"
+        },
+        {
+          "name": "Copy",
+          "slug": "copy",
+          "variants": 2,
+          "file": "/assets/icons/icon-copy.svg"
+        },
+        {
+          "name": "Chevron",
+          "slug": "chevron",
+          "variants": 12,
+          "file": "/assets/icons/icon-chevron.svg"
+        },
+        {
+          "name": "Customer service",
+          "slug": "customer-service",
+          "variants": 2,
+          "file": "/assets/icons/icon-customer-service.svg"
+        },
+        {
+          "name": "Cart",
+          "slug": "cart",
+          "variants": 2,
+          "file": "/assets/icons/icon-cart.svg"
+        },
+        {
+          "name": "Coins",
+          "slug": "coins",
+          "variants": 2,
+          "file": "/assets/icons/icon-coins.svg"
+        },
+        {
+          "name": "Currency",
+          "slug": "currency",
+          "variants": 1,
+          "file": "/assets/icons/icon-currency.svg"
+        },
+        {
+          "name": "Celengan",
+          "slug": "celengan",
+          "variants": 1,
+          "file": "/assets/icons/icon-celengan.svg"
+        },
+        {
+          "name": "Chart",
+          "slug": "chart",
+          "variants": 1,
+          "file": "/assets/icons/icon-chart.svg"
+        }
+      ]
+    },
+    {
+      "heading": "S",
+      "icons": [
+        {
+          "name": "Search",
+          "slug": "search",
+          "variants": 1,
+          "file": "/assets/icons/icon-search.svg"
+        },
+        {
+          "name": "Sender",
+          "slug": "sender",
+          "variants": 1,
+          "file": "/assets/icons/icon-sender.svg"
+        },
+        {
+          "name": "Scan",
+          "slug": "scan",
+          "variants": 1,
+          "file": "/assets/icons/icon-scan.svg"
+        },
+        {
+          "name": "School",
+          "slug": "school",
+          "variants": 1,
+          "file": "/assets/icons/icon-school.svg"
+        },
+        {
+          "name": "Setting",
+          "slug": "setting",
+          "variants": 2,
+          "file": "/assets/icons/icon-setting.svg"
+        },
+        {
+          "name": "Sell",
+          "slug": "sell",
+          "variants": 1,
+          "file": "/assets/icons/icon-sell.svg"
+        },
+        {
+          "name": "Share",
+          "slug": "share",
+          "variants": 2,
+          "file": "/assets/icons/icon-share.svg"
+        },
+        {
+          "name": "Shop",
+          "slug": "shop",
+          "variants": 2,
+          "file": "/assets/icons/icon-shop.svg"
+        },
+        {
+          "name": "Star",
+          "slug": "star",
+          "variants": 3,
+          "file": "/assets/icons/icon-star.svg"
+        },
+        {
+          "name": "Success",
+          "slug": "success",
+          "variants": 2,
+          "file": "/assets/icons/icon-success.svg"
+        },
+        {
+          "name": "Speaker",
+          "slug": "speaker",
+          "variants": 2,
+          "file": "/assets/icons/icon-speaker.svg"
+        },
+        {
+          "name": "Sound",
+          "slug": "sound",
+          "variants": 1,
+          "file": "/assets/icons/icon-sound.svg"
+        },
+        {
+          "name": "Storefront",
+          "slug": "storefront",
+          "variants": 1,
+          "file": "/assets/icons/icon-storefront.svg"
+        },
+        {
+          "name": "Shield",
+          "slug": "shield",
+          "variants": 1,
+          "file": "/assets/icons/icon-shield.svg"
+        }
+      ]
+    },
+    {
+      "heading": "A",
+      "icons": [
+        {
+          "name": "Arrow",
+          "slug": "arrow",
+          "variants": 1,
+          "file": "/assets/icons/icon-arrow.svg"
+        },
+        {
+          "name": "Add",
+          "slug": "add",
+          "variants": 5,
+          "file": "/assets/icons/icon-add.svg"
+        },
+        {
+          "name": "Account",
+          "slug": "account",
+          "variants": 4,
+          "file": "/assets/icons/icon-account.svg"
+        },
+        {
+          "name": "Account Virtual",
+          "slug": "account-virtual",
+          "variants": 2,
+          "file": "/assets/icons/icon-account-virtual.svg"
+        }
+      ]
+    },
+    {
+      "heading": "F",
+      "icons": [
+        {
+          "name": "Favorite",
+          "slug": "favorite",
+          "variants": 2,
+          "file": "/assets/icons/icon-favorite.svg"
+        },
+        {
+          "name": "Failed",
+          "slug": "failed",
+          "variants": 1,
+          "file": "/assets/icons/icon-failed.svg"
+        },
+        {
+          "name": "Fingerprint",
+          "slug": "fingerprint",
+          "variants": 2,
+          "file": "/assets/icons/icon-fingerprint.svg"
+        },
+        {
+          "name": "Flag",
+          "slug": "flag",
+          "variants": 9,
+          "file": null
+        },
+        {
+          "name": "Flash",
+          "slug": "flash",
+          "variants": 4,
+          "file": null
+        },
+        {
+          "name": "Flip Camera",
+          "slug": "flip-camera",
+          "variants": 3,
+          "file": null
+        },
+        {
+          "name": "Filter",
+          "slug": "filter",
+          "variants": 1,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "H",
+      "icons": [
+        {
+          "name": "Help",
+          "slug": "help",
+          "variants": 3,
+          "file": null
+        },
+        {
+          "name": "Hibank",
+          "slug": "hibank",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "History",
+          "slug": "history",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Headset",
+          "slug": "headset",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Home",
+          "slug": "home",
+          "variants": 2,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "I",
+      "icons": [
+        {
+          "name": "Information",
+          "slug": "information",
+          "variants": 3,
+          "file": null
+        },
+        {
+          "name": "Invoice",
+          "slug": "invoice",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Internet",
+          "slug": "internet",
+          "variants": 1,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "N",
+      "icons": [
+        {
+          "name": "NFC",
+          "slug": "nfc",
+          "variants": 1,
+          "file": "/assets/icons/icon-nfc.svg"
+        },
+        {
+          "name": "Notification",
+          "slug": "notification",
+          "variants": 4,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "V",
+      "icons": [
+        {
+          "name": "Visibility",
+          "slug": "visibility",
+          "variants": 4,
+          "file": null
+        },
+        {
+          "name": "Video",
+          "slug": "video",
+          "variants": 8,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "W",
+      "icons": [
+        {
+          "name": "Warning",
+          "slug": "warning",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Water",
+          "slug": "water",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Wallet",
+          "slug": "wallet",
+          "variants": 1,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "Z",
+      "icons": [
+        {
+          "name": "Zoom",
+          "slug": "zoom",
+          "variants": 2,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "D",
+      "icons": [
+        {
+          "name": "Delete",
+          "slug": "delete",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Docs",
+          "slug": "docs",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Download",
+          "slug": "download",
+          "variants": 3,
+          "file": null
+        },
+        {
+          "name": "Deposito",
+          "slug": "deposito",
+          "variants": 1,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "L",
+      "icons": [
+        {
+          "name": "Language",
+          "slug": "language",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Link",
+          "slug": "link",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Lock",
+          "slug": "lock",
+          "variants": 4,
+          "file": null
+        },
+        {
+          "name": "Location",
+          "slug": "location",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Log",
+          "slug": "log",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "page navigation",
+          "slug": "page-navigation",
+          "variants": 2,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "U",
+      "icons": [
+        {
+          "name": "Upload",
+          "slug": "upload",
+          "variants": 1,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "P",
+      "icons": [
+        {
+          "name": "Payment",
+          "slug": "payment",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Password",
+          "slug": "password",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Phonebook",
+          "slug": "phonebook",
+          "variants": 1,
+          "file": null
+        },
+        {
+          "name": "Phone",
+          "slug": "phone",
+          "variants": 3,
+          "file": null
+        },
+        {
+          "name": "PIN",
+          "slug": "pin",
+          "variants": 2,
+          "file": null
+        },
+        {
+          "name": "Proxy",
+          "slug": "proxy",
+          "variants": 2,
+          "file": null
+        }
+      ]
+    },
+    {
+      "heading": "B",
+      "icons": [
+        {
+          "name": "Bank",
+          "slug": "bank",
+          "variants": 2,
+          "file": "/assets/icons/icon-bank.svg"
+        },
+        {
+          "name": "Bookmark",
+          "slug": "bookmark",
+          "variants": 2,
+          "file": "/assets/icons/icon-bookmark.svg"
+        },
+        {
+          "name": "BI Fast",
+          "slug": "bi-fast",
+          "variants": 1,
+          "file": "/assets/icons/icon-bi-fast.svg"
+        },
+        {
+          "name": "Biometric",
+          "slug": "biometric",
+          "variants": 3,
+          "file": "/assets/icons/icon-biometric.svg"
+        },
+        {
+          "name": "Business",
+          "slug": "business",
+          "variants": 2,
+          "file": "/assets/icons/icon-business.svg"
+        },
+        {
+          "name": "Beranda",
+          "slug": "beranda",
+          "variants": 2,
+          "file": "/assets/icons/icon-beranda.svg"
+        },
+        {
+          "name": "Bluetooth",
+          "slug": "bluetooth",
+          "variants": 1,
+          "file": "/assets/icons/icon-bluetooth.svg"
+        }
+      ]
+    },
+    {
+      "heading": "E",
+      "icons": [
+        {
+          "name": "Edit",
+          "slug": "edit",
+          "variants": 4,
+          "file": "/assets/icons/icon-edit.svg"
+        },
+        {
+          "name": "E-Wallet",
+          "slug": "e-wallet",
+          "variants": 2,
+          "file": "/assets/icons/icon-e-wallet.svg"
+        },
+        {
+          "name": "Email",
+          "slug": "email",
+          "variants": 2,
+          "file": "/assets/icons/icon-email.svg"
+        },
+        {
+          "name": "Electronic",
+          "slug": "electronic",
+          "variants": 2,
+          "file": "/assets/icons/icon-electronic.svg"
+        }
+      ]
+    },
+    {
+      "heading": "M",
+      "icons": [
+        {
+          "name": "Money",
+          "slug": "money",
+          "variants": 2,
+          "file": "/assets/icons/icon-money.svg"
+        },
+        {
+          "name": "Menu",
+          "slug": "menu",
+          "variants": 1,
+          "file": "/assets/icons/icon-menu.svg"
+        },
+        {
+          "name": "Mute",
+          "slug": "mute",
+          "variants": 2,
+          "file": "/assets/icons/icon-mute.svg"
+        },
+        {
+          "name": "More",
+          "slug": "more",
+          "variants": 2,
+          "file": "/assets/icons/icon-more.svg"
+        },
+        {
+          "name": "Minimize",
+          "slug": "minimize",
+          "variants": 2,
+          "file": "/assets/icons/icon-minimize.svg"
+        },
+        {
+          "name": "Minus",
+          "slug": "minus",
+          "variants": 1,
+          "file": "/assets/icons/icon-minus.svg"
+        },
+        {
+          "name": "Mobile",
+          "slug": "mobile",
+          "variants": 3,
+          "file": "/assets/icons/icon-mobile.svg"
+        },
+        {
+          "name": "Mobile-Pembelian",
+          "slug": "mobile-pembelian",
+          "variants": 3,
+          "file": "/assets/icons/icon-mobile-pembelian.svg"
+        },
+        {
+          "name": "Medical",
+          "slug": "medical",
+          "variants": 2,
+          "file": "/assets/icons/icon-medical.svg"
+        }
+      ]
+    },
+    {
+      "heading": "T",
+      "icons": [
+        {
+          "name": "Transfer",
+          "slug": "transfer",
+          "variants": 6,
+          "file": "/assets/icons/icon-transfer.svg"
+        },
+        {
+          "name": "Top up",
+          "slug": "top-up",
+          "variants": 1,
+          "file": "/assets/icons/icon-top-up.svg"
+        },
+        {
+          "name": "Trash",
+          "slug": "trash",
+          "variants": 2,
+          "file": "/assets/icons/icon-trash.svg"
+        },
+        {
+          "name": "Thumb",
+          "slug": "thumb",
+          "variants": 4,
+          "file": "/assets/icons/icon-thumb.svg"
+        },
+        {
+          "name": "Theme",
+          "slug": "theme",
+          "variants": 1,
+          "file": "/assets/icons/icon-theme.svg"
+        }
+      ]
+    },
+    {
+      "heading": "R",
+      "icons": [
+        {
+          "name": "Recipient",
+          "slug": "recipient",
+          "variants": 1,
+          "file": "/assets/icons/icon-recipient.svg"
+        },
+        {
+          "name": "Reload",
+          "slug": "reload",
+          "variants": 1,
+          "file": "/assets/icons/icon-reload.svg"
+        }
+      ]
+    },
+    {
+      "heading": "G",
+      "icons": [
+        {
+          "name": "Gallery",
+          "slug": "gallery",
+          "variants": 2,
+          "file": "/assets/icons/icon-gallery.svg"
+        },
+        {
+          "name": "Gas",
+          "slug": "gas",
+          "variants": 2,
+          "file": "/assets/icons/icon-gas.svg"
+        },
+        {
+          "name": "Gift",
+          "slug": "gift",
+          "variants": 1,
+          "file": "/assets/icons/icon-gift.svg"
+        }
+      ]
+    }
+  ]
+}

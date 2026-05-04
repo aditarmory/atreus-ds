@@ -499,84 +499,135 @@ function buildSpacing(){
   });
 }
 
-function parseIconographyGroups() {
-  return ICONOGRAPHY_GROUP_LINES.map(line => {
-    const [heading, rawEntries] = line.split(': ');
-    const entries = rawEntries.split(', ').map(item => {
-      const match = item.match(/^(.*)\s\((\d+)\)$/);
-      return {
-        name: match ? match[1] : item,
-        count: match ? Number(match[2]) : 0
-      };
+const ICONOGRAPHY_MANIFEST_PATH = 'assets/icons/iconography-manifest.json';
+let iconographyManifestPromise = null;
+const iconographySvgCache = new Map();
+
+function escapeAttr(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+}
+
+function escapeJsString(value) {
+  return String(value).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+}
+
+async function loadIconographyManifest() {
+  if (!iconographyManifestPromise) {
+    iconographyManifestPromise = fetch(ICONOGRAPHY_MANIFEST_PATH).then(res => {
+      if (!res.ok) throw new Error('Failed to load iconography manifest');
+      return res.json();
     });
-    return { heading, entries };
-  });
+  }
+  return iconographyManifestPromise;
 }
 
-function getIconographySvg(name) {
-  return ICONOGRAPHY_ICON_MAP[name.toLowerCase()] || '';
+async function loadIconAsset(file) {
+  if (!file) return '';
+  if (!iconographySvgCache.has(file)) {
+    iconographySvgCache.set(file, fetch(file).then(res => {
+      if (!res.ok) throw new Error(`Failed to load ${file}`);
+      return res.text();
+    }));
+  }
+  return iconographySvgCache.get(file);
 }
 
-function buildIconography() {
-  const groups = parseIconographyGroups();
+async function buildIconography() {
   const hero = document.getElementById('iconography-hero-preview');
   const styles = document.getElementById('iconography-style-strip');
   const inventory = document.getElementById('iconography-groups');
-  const totalGroups = groups.reduce((sum, group) => sum + group.entries.length, 0);
-  const totalSymbols = groups.reduce((sum, group) => sum + group.entries.reduce((acc, entry) => acc + entry.count, 0), 0);
+  const totals = document.getElementById('iconography-totals');
 
-  if (hero) {
-    hero.innerHTML = ICONOGRAPHY_HERO_ICONS.map(icon => `
-      <div class="icon-hero-card">
-        <div class="icon-hero-glyph">${icon.svg}</div>
-        <div class="icon-hero-label">${icon.label}</div>
-      </div>
-    `).join('');
-  }
+  try {
+    const manifest = await loadIconographyManifest();
 
-  if (styles) {
-    styles.innerHTML = ICONOGRAPHY_STYLE_COUNTS.map(([label, count]) => `
-      <span class="token-chip"><span class="chip-swatch icon-chip-swatch"></span>${label} · ${count}</span>
-    `).join('');
-  }
+    if (hero) {
+      hero.innerHTML = manifest.hero.map(icon => `
+        <div class="icon-hero-card">
+          <div class="icon-hero-glyph">
+            <img src="${escapeAttr(icon.file)}" alt="${escapeAttr(icon.label)}">
+          </div>
+          <div class="icon-hero-label">${icon.label}</div>
+        </div>
+      `).join('');
+    }
 
-  if (inventory) {
-    inventory.innerHTML = groups.map(group => `
-      <section class="icon-group-section">
-        <div class="icon-group-header">
-          <div>
-            <div class="icon-group-letter">${group.heading}</div>
-            <div class="icon-group-meta">${group.entries.length} icon groups · ${group.entries.reduce((sum, entry) => sum + entry.count, 0)} variants</div>
+    if (styles) {
+      styles.innerHTML = [
+        ['Available', manifest.totals.available],
+        ['Missing', manifest.totals.missing],
+        ['Variants', manifest.totals.variants]
+      ].map(([label, count]) => `
+        <span class="token-chip"><span class="chip-swatch icon-chip-swatch"></span>${label} · ${count}</span>
+      `).join('');
+    }
+
+    if (inventory) {
+      inventory.innerHTML = manifest.groups.map(group => {
+        const readyCount = group.icons.filter(icon => icon.file).length;
+        const variantCount = group.icons.reduce((sum, icon) => sum + icon.variants, 0);
+        return `
+          <section class="icon-group-section">
+            <div class="icon-group-header">
+              <div>
+                <div class="icon-group-letter">${group.heading}</div>
+                <div class="icon-group-meta">${group.icons.length} icon groups · ${variantCount} variants · ${readyCount} exported</div>
+              </div>
+            </div>
+            <div class="icon-group-grid">
+              ${group.icons.map(icon => {
+                const hasFile = Boolean(icon.file);
+                const statusLabel = hasFile ? 'SVG ready' : 'Figma only';
+                return `
+                  <article class="icon-item-card ${hasFile ? '' : 'is-missing'}">
+                    <div class="icon-item-preview ${hasFile ? '' : 'is-missing'}">
+                      ${hasFile ? `<img src="${escapeAttr(icon.file)}" alt="${escapeAttr(icon.name)}">` : 'Figma'}
+                    </div>
+                    <div class="icon-item-actions">
+                      <button class="icon-action-btn" ${hasFile ? `onclick="copyIconAsset('${escapeJsString(icon.file)}','${escapeJsString(icon.name)}')"` : 'disabled'}>Copy SVG</button>
+                      <button class="icon-action-btn" ${hasFile ? `onclick="downloadIconAsset('${escapeJsString(icon.file)}','${escapeJsString(icon.slug)}')"` : 'disabled'}>Download SVG</button>
+                    </div>
+                    <div class="icon-item-head">
+                      <h3>${icon.name}</h3>
+                      <span class="icon-item-count">${icon.variants}</span>
+                    </div>
+                    <p>${icon.variants === 1 ? 'Single documented Figma variant' : `${icon.variants} documented Figma variants`}</p>
+                    <div class="icon-status">
+                      <span class="icon-status-dot ${hasFile ? 'ready' : ''}"></span>${statusLabel}
+                    </div>
+                  </article>
+                `;
+              }).join('')}
+            </div>
+          </section>
+        `;
+      }).join('');
+    }
+
+    if (totals) {
+      totals.innerHTML = `
+        <strong>${manifest.totals.groups} icon groups · ${manifest.totals.variants} variants</strong>
+        <span>${manifest.totals.available} local SVG assets available now · ${manifest.totals.missing} groups still documented from Figma only.</span>
+      `;
+    }
+  } catch (error) {
+    if (totals) {
+      totals.innerHTML = `
+        <strong>Icon manifest unavailable</strong>
+        <span>Could not load the generated iconography asset inventory.</span>
+      `;
+    }
+    if (inventory) {
+      inventory.innerHTML = `
+        <div class="usage-card">
+          <div class="usage-icon icon-usage-icon">!</div>
+          <div class="usage-content">
+            <strong>Unable to load iconography manifest</strong>
+            <p>Make sure the generated asset files in <code>assets/icons</code> are available from the current local server.</p>
           </div>
         </div>
-        <div class="icon-group-grid">
-          ${group.entries.map(entry => `
-            <article class="icon-item-card">
-              ${getIconographySvg(entry.name) ? `
-                <div class="icon-item-preview">${getIconographySvg(entry.name)}</div>
-                <div class="icon-item-actions">
-                  <button class="icon-action-btn" onclick="copyIconSvg('${entry.name.replace(/'/g, "\\'")}')">Copy SVG</button>
-                  <button class="icon-action-btn" onclick="downloadIconSvg('${entry.name.replace(/'/g, "\\'")}')">Download SVG</button>
-                </div>
-              ` : ''}
-              <div class="icon-item-head">
-                <h3>${entry.name}</h3>
-                <span class="icon-item-count">${entry.count}</span>
-              </div>
-              <p>${entry.count === 1 ? 'Single source variant in Figma' : `${entry.count} source variants in Figma`}</p>
-            </article>
-          `).join('')}
-        </div>
-      </section>
-    `).join('');
-  }
-
-  const totals = document.getElementById('iconography-totals');
-  if (totals) {
-    totals.innerHTML = `
-      <strong>${totalGroups} icon groups · ${totalSymbols} variants pulled from Figma</strong>
-      <span>Names and counts follow the <code>Iconography</code> foundation page in Figma.</span>
-    `;
+      `;
+    }
   }
 }
 
@@ -660,56 +711,43 @@ function exportSpacingCSS(){
   copyText(out,'Spacing CSS vars copied!');
 }
 
-function exportIconTokens() {
+async function exportIconTokens() {
+  const manifest = await loadIconographyManifest();
   const payload = {
-    iconography: {
-      totalGroups: 104,
-      totalVariants: 226,
-      sizes: ['24px'],
-      styleCounts: Object.fromEntries(ICONOGRAPHY_STYLE_COUNTS),
-      groups: parseIconographyGroups().map(group => ({
-        heading: group.heading,
-        icons: group.entries.map(entry => ({
-          name: entry.name,
-          variants: entry.count
-        }))
-      }))
-    }
+    iconography: manifest
   };
   const b = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(b);
-  a.download = 'atreus-iconography-tokens.json';
+  a.download = 'atreus-iconography-manifest.json';
   a.click();
 }
 
-function copyIconInventory() {
+async function copyIconInventory() {
+  const manifest = await loadIconographyManifest();
   const payload = JSON.stringify({
-    styles: Object.fromEntries(ICONOGRAPHY_STYLE_COUNTS),
-    groups: parseIconographyGroups()
+    totals: manifest.totals,
+    groups: manifest.groups
   }, null, 2);
   copyText(payload, 'Icon inventory copied!');
 }
 
-function copyIconSvg(name) {
-  const svg = getIconographySvg(name);
+async function copyIconAsset(file, label) {
+  const svg = await loadIconAsset(file);
   if (!svg) {
-    copyText(name, `No embedded SVG yet for ${name}`);
+    copyText(label, `No SVG asset available for ${label}`);
     return;
   }
-  copyText(svg, `${name} SVG copied!`);
+  copyText(svg, `${label} SVG copied!`);
 }
 
-function downloadIconSvg(name) {
-  const svg = getIconographySvg(name);
-  if (!svg) {
-    copyText(name, `No embedded SVG yet for ${name}`);
-    return;
-  }
+async function downloadIconAsset(file, slug) {
+  const svg = await loadIconAsset(file);
+  if (!svg) return;
   const blob = new Blob([svg], { type: 'image/svg+xml' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.svg`;
+  a.download = `icon-${slug}.svg`;
   a.click();
 }
 
