@@ -79,6 +79,9 @@ function initPage(id) {
     case 'list-item':
   // JS already embedded in list-item.html
   break;
+    case 'text-input':
+      renderTextInputPage();
+      break;
   }
 }
 
@@ -1097,4 +1100,176 @@ function copyControlCSS() {
 .ctrl-switch.ctrl-sw-disabled { background: var(--ctrl-color-disabled); cursor: not-allowed; }
 .ctrl-switch.ctrl-sw-disabled.ctrl-sw-disabled-on::after { transform: translateX(16px); }`;
   copyText(css, 'Control CSS vars copied!');
+}
+
+function renderTextInputPage() {
+  const textFieldTarget = document.getElementById('ti-text-field-showcase');
+  const descriptiveTarget = document.getElementById('ti-descriptive-showcase');
+  const pinTarget = document.getElementById('ti-pin-showcase');
+  const nominalTarget = document.getElementById('ti-nominal-showcase');
+
+  if (!textFieldTarget || !descriptiveTarget || !pinTarget || !nominalTarget) return;
+  try {
+    const textFieldStates = ['enable', 'focus', 'disabled', 'completed', 'negative'];
+    const textFieldSizes = ['small', 'medium', 'large'];
+    const descriptiveStates = ['Enable', 'Focus', 'Disabled', 'Completed', 'Negative'];
+    const pinStates = ['Enable', 'Focused', 'Disabled', 'Completed', 'Negative'];
+    const pinSizes = ['small', 'medium', 'large'];
+    const nominalStates = ['Enable', 'Completed', 'Focus', 'Error'];
+
+    textFieldTarget.innerHTML = `
+      <div class="ti-grid-3">
+        ${textFieldStates.map(state => textFieldSizes.map(size => renderTextFieldVariant(size, state)).join('')).join('')}
+      </div>
+    `;
+
+    descriptiveTarget.innerHTML = `
+      <div class="ti-grid-1">
+        ${descriptiveStates.map(state => renderDescriptiveVariant(state)).join('')}
+      </div>
+    `;
+
+    pinTarget.innerHTML = `
+      <div class="ti-pin-grid">
+        ${pinStates.map(state => pinSizes.map(size => renderPinVariant(size, state)).join('')).join('')}
+      </div>
+    `;
+
+    nominalTarget.innerHTML = `
+      <div class="ti-nominal-grid">
+        ${nominalStates.map(state => `${renderNominalVariant(state, false)}${renderNominalVariant(state, true)}`).join('')}
+      </div>
+    `;
+  } catch (err) {
+    textFieldTarget.textContent = `render-error: ${err.message}`;
+  }
+}
+
+function renderTextFieldTitle(size) {
+  return `
+    <div class="ti-field-title">
+      <div class="ti-field-title-text ${size}">Title</div>
+    </div>
+  `;
+}
+
+function renderTextFieldHelper() {
+  return `
+    <div class="ti-field-helper">
+      <div class="ti-field-helper-copy">Put some helper text here</div>
+    </div>
+  `;
+}
+
+function renderTextFieldVariant(size, state) {
+  const cursor = state === 'focus' ? `<span class="ti-field-cursor ${size}"></span>` : '';
+  return `
+    <div class="ti-field textfield ${size} is-${state}">
+      ${renderTextFieldTitle(size)}
+      <div class="ti-field-child">
+        <div class="ti-field-gap"></div>
+        <div class="ti-field-row">
+          <div class="ti-field-control">
+            <div class="ti-field-copy ${size} textfield">Placeholder${cursor}</div>
+          </div>
+        </div>
+        <div class="ti-field-gap"></div>
+      </div>
+      ${renderTextFieldHelper()}
+    </div>
+  `;
+}
+
+function renderDescriptiveVariant(state) {
+  const cursor = state === 'Focus' ? '<span class="ti-field-cursor descriptive"></span>' : '';
+  return `
+    <div class="ti-field descriptive medium is-${state.toLowerCase()}">
+      ${renderTextFieldTitle('medium')}
+      <div class="ti-field-child">
+        <div class="ti-field-gap"></div>
+        <div class="ti-field-row">
+          <div class="ti-field-control">
+            <div class="ti-field-copy descriptive">Placeholder${cursor}</div>
+          </div>
+        </div>
+        <div class="ti-field-gap"></div>
+      </div>
+      ${renderTextFieldHelper()}
+    </div>
+  `;
+}
+
+function renderPinSlot(size, content, slotClass, filled) {
+  return `
+    <div class="ti-pin-slot ${size}${slotClass ? ` ${slotClass}` : ''}${filled ? ' filled' : ''}">
+      <div class="ti-pin-value ${size}">${content}</div>
+    </div>
+  `;
+}
+
+function renderPinVariant(size, state) {
+  const digitsByState = {
+    Enable: ['•', '•', '•', '•', '•', '•'],
+    Focused: ['1', '2', `•<span class="ti-pin-cursor ${size}"></span>`, '•', '•', '•'],
+    Disabled: ['1', '2', '3', '4', '5', '6'],
+    Completed: ['1', '2', '3', '4', '5', '6'],
+    Negative: ['1', '2', '3', '4', '5', '6']
+  };
+
+  const slots = digitsByState[state].map((digit, index) => {
+    const focused = state === 'Focused' && index === 2;
+    const filled = state !== 'Enable' && !(state === 'Focused' && index >= 2);
+    return renderPinSlot(size, digit, focused ? 'focused' : '', filled);
+  }).join('');
+
+  return `
+    <div class="ti-pin-field ${size} ${state.toLowerCase()}">
+      <div class="ti-pin-top-space"></div>
+      <div class="ti-pin-title">
+        <div class="ti-pin-title-text ${size}">Title</div>
+      </div>
+      <div class="ti-pin-mid-gap"></div>
+      <div class="ti-pin-row">${slots}</div>
+      <div class="ti-pin-mid-gap"></div>
+      <div class="ti-pin-helper">Put some helper text here</div>
+      <div class="ti-pin-bottom-space"></div>
+      <div class="ti-pin-timer">
+        <div class="ti-pin-time ${size}">00:00</div>
+        <div class="ti-pin-cta ${size}">Kirim Ulang</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCurrencyIcon() {
+  return `
+    <span class="ti-currency-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M6.2 7.6h8.6M6.2 12h8.6M9.2 7.6v8.8M15.6 7.6c1.7 0 3 1.3 3 3s-1.3 3-3 3H9.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  `;
+}
+
+function renderNominalVariant(state, isNew) {
+  const cursor = state === 'Focus' ? '<span class="ti-field-cursor ti-field-cursor-nominal"></span>' : '';
+  const value = state === 'Enable' ? '<span style="color:#B4B4B4">0</span>' : '0';
+
+  return `
+    <div class="ti-nominal-field ${state.toLowerCase()} ${isNew ? 'new-on' : 'new-off'}">
+      <div class="ti-nominal-title">
+        <div class="ti-nominal-title-text">masukkan nominal</div>
+      </div>
+      <div class="ti-nominal-inner">
+        <div class="ti-nominal-container">
+          <div class="ti-nominal-control">
+            ${isNew ? renderCurrencyIcon() : '<div class="ti-nominal-rp-prefix">Rp</div>'}
+            <div class="ti-nominal-value">${value}${cursor}</div>
+          </div>
+          ${isNew ? '' : '<div class="ti-nominal-separator"></div>'}
+          <div class="ti-nominal-helper">Put some helper text here</div>
+        </div>
+      </div>
+    </div>
+  `;
 }

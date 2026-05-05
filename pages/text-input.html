@@ -1,0 +1,585 @@
+<div class="topbar">
+  <div class="breadcrumb">Components <span class="breadcrumb-sep">›</span> <b>Text Input</b></div>
+  <div class="topbar-right"></div>
+</div>
+<div class="content">
+  <div class="page-header">
+    <div class="page-label">Components / Text Input</div>
+    <h1 class="page-title">Text Input</h1>
+    <p class="page-desc">Text Input components for text field, descriptive field, PIN, and nominal entry.</p>
+  </div>
+
+  <div class="section-label">Text Field</div>
+  <div class="ti-showcase ti-showcase-wide" id="ti-text-field-showcase"></div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Deskriptif</div>
+  <div class="ti-showcase ti-showcase-narrow" id="ti-descriptive-showcase"></div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">PIN</div>
+  <div class="ti-showcase ti-showcase-wide" id="ti-pin-showcase"></div>
+
+  <hr class="section-divider">
+
+  <div class="section-label">Nominal</div>
+  <div class="ti-showcase ti-showcase-medium" id="ti-nominal-showcase"></div>
+</div>
+
+<style>
+.ti-showcase{
+  background:#e4e4e4;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:20px;
+  overflow:auto;
+}
+
+.ti-showcase-wide{padding:20px 18px}
+.ti-showcase-medium{padding:20px}
+.ti-showcase-narrow{padding:18px}
+
+.ti-grid-3{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(300px, 1fr));
+  gap:28px 36px;
+}
+
+.ti-grid-1{
+  display:grid;
+  grid-template-columns:minmax(360px, 360px);
+  justify-content:center;
+  gap:28px;
+}
+
+.ti-grid-2{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(343px, 343px));
+  justify-content:center;
+  gap:36px 42px;
+}
+
+.ti-field,
+.ti-pin-field,
+.ti-nominal-field{
+  font-family:'Sora',sans-serif;
+  color:#1A1A1A;
+}
+
+.ti-field{
+  width:360px;
+}
+
+.ti-field-title,
+.ti-pin-title,
+.ti-nominal-title{
+  display:flex;
+  align-items:center;
+  gap:4px;
+  padding:0 12px;
+}
+
+.ti-field-title-text,
+.ti-pin-title-text,
+.ti-nominal-title-text{
+  font-weight:700;
+  color:#1A1A1A;
+}
+
+.ti-field-title-text.small,
+.ti-field-title-text.medium,
+.ti-pin-title-text.small,
+.ti-pin-title-text.medium,
+.ti-nominal-title-text{
+  font-size:14px;
+  line-height:20px;
+}
+
+.ti-field-title-text.large,
+.ti-pin-title-text.large{
+  font-size:16px;
+  line-height:24px;
+}
+
+.ti-field-optional,
+.ti-pin-optional,
+.ti-nominal-optional{
+  color:#686868;
+  font-weight:400;
+}
+
+.ti-field-optional.small,
+.ti-field-optional.medium,
+.ti-pin-optional.small,
+.ti-pin-optional.medium,
+.ti-nominal-optional{
+  font-size:12px;
+  line-height:18px;
+}
+
+.ti-field-optional.large,
+.ti-pin-optional.large{
+  font-size:14px;
+  line-height:20px;
+}
+
+.ti-field-child{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+
+.ti-field-gap{height:4px}
+
+.ti-field-row{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.ti-field-control{
+  display:flex;
+  align-items:center;
+  width:100%;
+  background:#fff;
+  color:#B4B4B4;
+  border-radius:40px;
+  border:1.5px solid #1A1A1A;
+}
+
+.ti-field.textfield.small .ti-field-control{
+  min-height:40px;
+  padding:10px 12px;
+}
+
+.ti-field.textfield.medium .ti-field-control{
+  min-height:48px;
+  padding:10px 16px;
+}
+
+.ti-field.textfield.large .ti-field-control{
+  min-height:54px;
+  padding:10px 20px;
+}
+
+.ti-field.descriptive .ti-field-control{
+  min-height:150px;
+  padding:10px 16px;
+  border-radius:24px;
+  align-items:flex-start;
+}
+
+.ti-field.is-focused .ti-field-control{
+  border-color:#238453;
+}
+
+.ti-field.is-disabled .ti-field-control{
+  background:#F3F3F3;
+  border-color:#F3F3F3;
+  color:#CDCDCD;
+}
+
+.ti-field.is-completed .ti-field-control,
+.ti-field.is-negative .ti-field-control{
+  color:#1A1A1A;
+}
+
+.ti-field.is-negative .ti-field-control{
+  border-color:#CE0101;
+}
+
+.ti-field-copy{
+  flex:1 1 auto;
+  min-width:0;
+  font-weight:400;
+  color:inherit;
+}
+
+.ti-field-copy.small,
+.ti-field-copy.medium,
+.ti-field-copy.descriptive{
+  font-size:14px;
+  line-height:20px;
+}
+
+.ti-field-copy.large{
+  font-size:16px;
+  line-height:24px;
+}
+
+.ti-field-copy.small.textfield{
+  display:flex;
+  align-items:flex-end;
+}
+
+.ti-field.is-focused .ti-field-copy{
+  color:#1A1A1A;
+}
+
+.ti-field-cursor{
+  display:inline-block;
+  width:1px;
+  border-radius:1px;
+  background:#FE6201;
+  vertical-align:top;
+  margin-left:1px;
+}
+
+.ti-field-cursor.small,
+.ti-field-cursor.medium,
+.ti-field-cursor.descriptive{
+  height:20px;
+}
+
+.ti-field-cursor.large{
+  height:24px;
+}
+
+.ti-field-cursor-nominal{
+  height:42px;
+  margin-left:2px;
+}
+
+.ti-field-helper{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding-left:12px;
+  color:#828282;
+}
+
+.ti-field-helper-copy{
+  flex:1 1 auto;
+  min-width:0;
+  font-size:12px;
+  line-height:18px;
+  font-weight:400;
+}
+
+.ti-field-helper-counter{
+  flex:0 0 auto;
+  font-size:10px;
+  line-height:15px;
+  font-weight:400;
+}
+
+.ti-field.is-negative .ti-field-helper{
+  color:#CE0101;
+}
+
+.ti-pin-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(300px, 1fr));
+  gap:38px 46px;
+}
+
+.ti-pin-field.small{width:300px}
+.ti-pin-field.medium{width:366px}
+.ti-pin-field.large{width:492px}
+
+.ti-pin-top-space{height:12px}
+.ti-pin-bottom-space{height:12px}
+.ti-pin-mid-gap{height:8px}
+
+.ti-pin-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.ti-pin-slot{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:40px;
+  background:#fff;
+  border:1px solid #DADADA;
+  color:#B4B4B4;
+}
+
+.ti-pin-slot.small{
+  width:38px;
+  height:56px;
+}
+
+.ti-pin-slot.medium{
+  width:49px;
+  height:68px;
+}
+
+.ti-pin-slot.large{
+  width:70px;
+  height:102px;
+}
+
+.ti-pin-slot.focused{
+  border-width:2px;
+  border-color:#1A1A1A;
+}
+
+.ti-pin-field.negative .ti-pin-slot{
+  border-width:1.5px;
+  border-color:#CE0101;
+  color:#1A1A1A;
+}
+
+.ti-pin-field.disabled .ti-pin-slot{
+  background:#F3F3F3;
+  border-color:#F3F3F3;
+  color:#CDCDCD;
+}
+
+.ti-pin-field.completed .ti-pin-slot,
+.ti-pin-field.focused .ti-pin-slot.filled{
+  color:#1A1A1A;
+}
+
+.ti-pin-value{
+  font-weight:700;
+  text-align:center;
+}
+
+.ti-pin-value.small{
+  width:10px;
+  font-size:16px;
+  line-height:24px;
+}
+
+.ti-pin-value.medium{
+  width:17px;
+  font-size:24px;
+  line-height:36px;
+}
+
+.ti-pin-value.large{
+  width:22px;
+  font-size:36px;
+  line-height:54px;
+}
+
+.ti-pin-helper{
+  padding:0 12px;
+  text-align:center;
+  font-size:12px;
+  line-height:18px;
+  color:#828282;
+}
+
+.ti-pin-field.large .ti-pin-helper{
+  font-size:14px;
+  line-height:20px;
+}
+
+.ti-pin-field.negative .ti-pin-helper{
+  color:#CE0101;
+}
+
+.ti-pin-timer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:8px 0;
+}
+
+.ti-pin-time{
+  color:#1A1A1A;
+  text-align:center;
+}
+
+.ti-pin-time.small,
+.ti-pin-cta.small{
+  font-size:12px;
+  line-height:18px;
+}
+
+.ti-pin-time.medium,
+.ti-pin-cta.medium,
+.ti-pin-time.large,
+.ti-pin-cta.large{
+  font-size:14px;
+  line-height:20px;
+}
+
+.ti-pin-cta{
+  color:#238453;
+  font-weight:700;
+  text-align:center;
+}
+
+.ti-nominal-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(343px, 343px));
+  justify-content:center;
+  gap:26px 42px;
+}
+
+.ti-nominal-field{
+  width:343px;
+}
+
+.ti-nominal-inner{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  width:100%;
+}
+
+.ti-nominal-container{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  width:100%;
+  padding-bottom:8px;
+}
+
+.ti-nominal-control{
+  display:flex;
+  align-items:center;
+  width:100%;
+  padding:8px 16px 8px 8px;
+}
+
+.ti-nominal-field.new-on .ti-nominal-control{
+  gap:4px;
+  padding:8px 16px;
+  border:1px solid #1A1A1A;
+  border-radius:16px;
+}
+
+.ti-nominal-field.new-off .ti-nominal-control{
+  gap:8px;
+  min-height:44px;
+}
+
+.ti-nominal-field.error.new-on .ti-nominal-control{
+  border-color:#1A1A1A;
+}
+
+.ti-nominal-rp{
+  color:#238453;
+  font-size:28px;
+  line-height:42px;
+  font-weight:700;
+}
+
+.ti-nominal-rp-prefix{
+  color:#238453;
+  font-size:14px;
+  line-height:20px;
+  font-weight:700;
+}
+
+.ti-nominal-value{
+  display:flex;
+  align-items:center;
+  min-width:0;
+  color:#B4B4B4;
+  font-size:28px;
+  line-height:42px;
+  font-weight:700;
+}
+
+.ti-nominal-field.completed .ti-nominal-value,
+.ti-nominal-field.focus .ti-nominal-value,
+.ti-nominal-field.error .ti-nominal-value{
+  color:#1A1A1A;
+}
+
+.ti-nominal-separator{
+  width:100%;
+  height:1px;
+  background:#1A1A1A;
+}
+
+.ti-nominal-field.focus.new-off .ti-nominal-separator{
+  background:#87CCA9;
+}
+
+.ti-nominal-field.error.new-off .ti-nominal-separator{
+  background:#FC5858;
+}
+
+.ti-nominal-helper{
+  padding:0 36px;
+  color:#238453;
+  font-size:12px;
+  line-height:18px;
+}
+
+.ti-nominal-field.new-on .ti-nominal-helper{
+  padding:0 8px;
+}
+
+.ti-nominal-field.error .ti-nominal-helper{
+  color:#FF0000;
+}
+
+.ti-currency-icon{
+  flex:0 0 auto;
+  width:20px;
+  height:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ti-currency-icon svg,
+.ti-chevron-icon svg{
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.ti-currency-icon svg{
+  color:#238453;
+}
+
+.ti-chevron-icon{
+  flex:0 0 auto;
+  width:24px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.ti-chevron-icon svg{
+  color:#1A1A1A;
+}
+
+.ti-pin-cursor{
+  display:inline-block;
+  width:1px;
+  background:#FE6201;
+  border-radius:1px;
+  margin-left:1px;
+}
+
+.ti-pin-cursor.small{height:24px}
+.ti-pin-cursor.medium{height:36px}
+.ti-pin-cursor.large{height:54px}
+
+@media (max-width: 1280px){
+  .ti-grid-3,
+  .ti-pin-grid{
+    grid-template-columns:repeat(2, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 980px){
+  .ti-grid-3,
+  .ti-pin-grid,
+  .ti-nominal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .ti-grid-2,
+  .ti-grid-1,
+  .ti-nominal-grid{
+    justify-content:stretch;
+  }
+}
+</style>
