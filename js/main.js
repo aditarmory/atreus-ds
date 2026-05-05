@@ -500,6 +500,7 @@ function buildSpacing(){
 }
 
 const ICONOGRAPHY_MANIFEST_PATH = 'assets/icons/iconography-manifest.json';
+const ICONOGRAPHY_MANIFEST_URL = new URL(ICONOGRAPHY_MANIFEST_PATH, document.baseURI).href;
 let iconographyManifestPromise = null;
 const iconographySvgCache = new Map();
 
@@ -513,7 +514,7 @@ function escapeJsString(value) {
 
 async function loadIconographyManifest() {
   if (!iconographyManifestPromise) {
-    iconographyManifestPromise = fetch(ICONOGRAPHY_MANIFEST_PATH).then(res => {
+    iconographyManifestPromise = fetch(ICONOGRAPHY_MANIFEST_URL).then(res => {
       if (!res.ok) throw new Error('Failed to load iconography manifest');
       return res.json();
     });
@@ -521,15 +522,99 @@ async function loadIconographyManifest() {
   return iconographyManifestPromise;
 }
 
+function resolveIconAssetUrl(file) {
+  if (!file) return '';
+  const normalizedPath = String(file).replace(/^\/+/, '');
+  return new URL(normalizedPath, document.baseURI).href;
+}
+
+function scrubSvgNode(node) {
+  if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+  if (node.hasAttribute('fill') && !node.getAttribute('fill').trim()) {
+    node.removeAttribute('fill');
+  }
+
+  if (node.hasAttribute('stroke') && !node.getAttribute('stroke').trim()) {
+    node.removeAttribute('stroke');
+  }
+
+  Array.from(node.children).forEach(scrubSvgNode);
+}
+
+function sanitizeInlineSvg(svgMarkup, label) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(svgMarkup, 'image/svg+xml');
+  const parserError = doc.querySelector('parsererror');
+  const svg = doc.documentElement;
+
+  if (parserError || !svg || svg.nodeName.toLowerCase() !== 'svg') {
+    throw new Error(`Invalid SVG markup for ${label}`);
+  }
+
+  const width = Number.parseFloat(svg.getAttribute('width')) || 24;
+  const height = Number.parseFloat(svg.getAttribute('height')) || 24;
+  const viewBox = svg.getAttribute('viewBox') || `0 0 ${width} ${height}`;
+
+  svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  svg.setAttribute('width', '24');
+  svg.setAttribute('height', '24');
+  svg.setAttribute('viewBox', viewBox);
+  svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+  svg.setAttribute('focusable', 'false');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.classList.add('icon-svg-inline');
+  svg.removeAttribute('overflow');
+  svg.removeAttribute('style');
+
+  scrubSvgNode(svg);
+  return new XMLSerializer().serializeToString(svg);
+}
+
 async function loadIconAsset(file) {
   if (!file) return '';
-  if (!iconographySvgCache.has(file)) {
-    iconographySvgCache.set(file, fetch(file).then(res => {
-      if (!res.ok) throw new Error(`Failed to load ${file}`);
+  const url = resolveIconAssetUrl(file);
+  if (!iconographySvgCache.has(url)) {
+    iconographySvgCache.set(url, fetch(url).then(async res => {
+      if (!res.ok) throw new Error(`Failed to load ${file}: ${res.status}`);
+      const contentType = res.headers.get('content-type') || '';
+      if (!contentType.includes('image/svg+xml')) {
+        throw new Error(`Unexpected MIME type for ${file}: ${contentType || 'unknown'}`);
+      }
       return res.text();
     }));
   }
-  return iconographySvgCache.get(file);
+  return iconographySvgCache.get(url);
+}
+
+function buildIconFallbackMarkup(label) {
+  return `
+    <svg class="icon-svg-inline icon-svg-fallback" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.5"></rect>
+      <path d="M8 16L16 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+    </svg>
+    <span class="icon-fallback-label">${label ? 'Preview unavailable' : 'Asset unavailable'}</span>
+  `;
+}
+
+function logIconAssetError(file, label, error) {
+  console.error(`[iconography] Failed to render "${label}" from ${file}`, error);
+}
+
+async function renderInlineIconPreview(container, file, label) {
+  if (!container || !file) return;
+
+  try {
+    const svgMarkup = await loadIconAsset(file);
+    container.innerHTML = sanitizeInlineSvg(svgMarkup, label);
+    container.classList.remove('is-error');
+    container.setAttribute('data-icon-ready', 'true');
+  } catch (error) {
+    container.innerHTML = buildIconFallbackMarkup(label);
+    container.classList.add('is-error');
+    container.setAttribute('data-icon-ready', 'false');
+    logIconAssetError(file, label, error);
+  }
 }
 
 async function buildIconography() {
@@ -544,9 +629,7 @@ async function buildIconography() {
     if (hero) {
       hero.innerHTML = manifest.hero.map(icon => `
         <div class="icon-hero-card">
-          <div class="icon-hero-glyph">
-            <img src="${escapeAttr(icon.file)}" alt="${escapeAttr(icon.label)}">
-          </div>
+          <div class="icon-hero-glyph" data-icon-file="${escapeAttr(icon.file)}" data-icon-label="${escapeAttr(icon.label)}"></div>
           <div class="icon-hero-label">${icon.label}</div>
         </div>
       `).join('');
@@ -580,8 +663,8 @@ async function buildIconography() {
                 const statusLabel = hasFile ? 'SVG ready' : 'Figma only';
                 return `
                   <article class="icon-item-card ${hasFile ? '' : 'is-missing'}">
-                    <div class="icon-item-preview ${hasFile ? '' : 'is-missing'}">
-                      ${hasFile ? `<img src="${escapeAttr(icon.file)}" alt="${escapeAttr(icon.name)}">` : 'Figma'}
+                    <div class="icon-item-preview ${hasFile ? '' : 'is-missing'}" ${hasFile ? `data-icon-file="${escapeAttr(icon.file)}" data-icon-label="${escapeAttr(icon.name)}"` : ''}>
+                      ${hasFile ? '<span class="icon-preview-loading">Loading</span>' : 'Figma'}
                     </div>
                     <div class="icon-item-actions">
                       <button class="icon-action-btn" ${hasFile ? `onclick="copyIconAsset('${escapeJsString(icon.file)}','${escapeJsString(icon.name)}')"` : 'disabled'}>Copy SVG</button>
@@ -610,6 +693,15 @@ async function buildIconography() {
         <span>${manifest.totals.available} local SVG assets available now · ${manifest.totals.missing} groups still documented from Figma only.</span>
       `;
     }
+
+    const previewTargets = [
+      ...document.querySelectorAll('[data-icon-file]')
+    ];
+    await Promise.allSettled(previewTargets.map(node => renderInlineIconPreview(
+      node,
+      node.getAttribute('data-icon-file'),
+      node.getAttribute('data-icon-label') || 'icon'
+    )));
   } catch (error) {
     if (totals) {
       totals.innerHTML = `
@@ -733,22 +825,32 @@ async function copyIconInventory() {
 }
 
 async function copyIconAsset(file, label) {
-  const svg = await loadIconAsset(file);
-  if (!svg) {
-    copyText(label, `No SVG asset available for ${label}`);
-    return;
+  try {
+    const svg = await loadIconAsset(file);
+    if (!svg) {
+      copyText(label, `No SVG asset available for ${label}`);
+      return;
+    }
+    copyText(svg, `${label} SVG copied!`);
+  } catch (error) {
+    logIconAssetError(file, label, error);
+    copyText(label, `Failed to copy ${label} SVG`);
   }
-  copyText(svg, `${label} SVG copied!`);
 }
 
 async function downloadIconAsset(file, slug) {
-  const svg = await loadIconAsset(file);
-  if (!svg) return;
-  const blob = new Blob([svg], { type: 'image/svg+xml' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = `icon-${slug}.svg`;
-  a.click();
+  try {
+    const svg = await loadIconAsset(file);
+    if (!svg) return;
+    const blob = new Blob([svg], { type: 'image/svg+xml' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `icon-${slug}.svg`;
+    a.click();
+  } catch (error) {
+    logIconAssetError(file, slug, error);
+    copyText(slug, `Failed to download ${slug} SVG`);
+  }
 }
 
 
